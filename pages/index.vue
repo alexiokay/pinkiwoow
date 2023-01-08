@@ -39,6 +39,16 @@ import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 const { t } = useLang();
 const route = useRoute();
 
+useHead({
+  title: t("meta.title"),
+  meta: [
+    {
+      hid: "etsy verification",
+      name: "p:domain_verify",
+      content: "1df788f2259b39e3c4173116761bc795",
+    },
+  ],
+});
 definePageMeta({
   pageTransition: {
     name: "page",
