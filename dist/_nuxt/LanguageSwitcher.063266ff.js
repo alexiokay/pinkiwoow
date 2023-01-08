@@ -1,1 +1,0 @@
-import"./LanguageSwitcher.vue_vue_type_script_setup_true_lang.0f222a83.js";import{_ as t}from"./LanguageSwitcher.vue_vue_type_script_setup_true_lang.0f222a83.js";import"./entry.60681874.js";export{t as default};
