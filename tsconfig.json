@@ -1,0 +1,31 @@
+{
+  // https://v3.nuxtjs.org/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
+  "vueCompilerOptions": {
+    "plugins": [
+      "@volar/vue-language-plugin-pug"
+    ]
+  },
+  "compilerOptions": {
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "types": [
+      "unplugin-icons/types/vue",
+      "pinia-plugin-persist",
+      "pinia",
+      "vitest/globals",
+      "@intlify/nuxt3",
+      "@iconify"
+
+    ],
+    "paths": {
+      "@/*": [
+       "./*"
+      ]
+     }
+  },
+  "allowSyntheticDefaultImports": true,
+  "exclude": ["node_modules"]
+}

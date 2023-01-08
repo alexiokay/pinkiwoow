@@ -1,0 +1,215 @@
+components:
+  video:
+    title: sehen sie, wie es in wirklichkeit funktioniert!
+  cooming_soon:
+    title: demnächst!
+    subtitle: vertikale hydroponik-farm
+  FAQ:
+    title: häufig gestellte fragen
+    subtitle: eine frage haben? wir sind hier um zu helfen.
+    free_trial:
+      question: gibt es eine kostenlose testversion?
+      answer: >-
+        ja, treten sie der warteliste bei und testen sie strawcart eine woche
+        lang kostenlos, wenn es verfügbar ist
+    broken:
+      question: was ist, wenn mir etwas kaputt gegangen ist?
+      answer: >-
+        keine sorge, wir haben einen mini-shop eingerichtet, in dem sie
+        zusätzliche teile wie werkzeuge, räder, dach, schrauben usw. erhalten
+        können.
+    what_inside:
+      question: was ist in der bestellung?
+      answer: leer
+    delivery:
+      question: wie wird geliefert?
+      answer: sie können zwischen dhl wählen
+    why:
+      question: warum sollte ich es überhaupt versuchen?
+      answer: >-
+        strawcart, wenn es mit unserem strawframework verbunden ist, kann ihr
+        unternehmen um 170 % effizienter machen als ihre mitbewerber.
+  contact:
+    title: kontaktiere uns
+    subtitle: unser freundliches team freut sich, von ihnen zu hören!
+    name: vorname
+    surname: familien-oder nachname
+    email:
+      text: email
+      error: ungültige e-mail
+      succeed: richtige e-mail
+    telephone:
+      text: telefonnummer
+      error: ungültige telefonnummer
+      succeed: korrekte nummer
+    message:
+      text: nachricht
+      error: leere nachricht
+      succeed: richtig
+    privacy_policy:
+      title: datenschutz-bestimmungen
+      subtitle: >-
+        durch ankreuzen akzeptieren sie die bedingungen der
+        datenschutzerklärung.
+      error: akzeptieren sie die datenschutzerklärung
+      succeed: akzeptiert
+    button: nachricht senden
+  navbar:
+    contact: kontakt
+    login: anmeldung
+    register: registrieren
+    safe: cliphoard
+    cart: wagen
+  footer:
+    information:
+      information: information
+      regulations: vorschriften
+      cookies: cookie-richtlinie
+      return: rücksendung und reklamation
+      delivery: lieferung und zahlung
+      privacy_policy: datenschutz-bestimmungen
+    account:
+      your_account: ihr konto
+      login: anmeldung
+      orders: deine bestellungen
+      registration: anmeldung
+    newsletter:
+      button: anmeldung
+      placeholder: deine e-mail
+      description: >-
+        wenn sie informationen über neue produkte und aktionen im shop erhalten
+        möchten - geben sie ihre e-mail ein. wir verarbeiten ihre daten gemäss
+        unserer
+      description2: datenschutz-bestimmungen.
+  language_switcher:
+    change_language: sprache ändern
+  theme_switcher:
+    theme: thema
+    change_theme: thema wechseln
+  advantages:
+    income_productivity:
+      title: steigert einkommen und produktivität
+      description: >-
+        dank unserer produkte können sie ihr einkommen um 20 % und ihre
+        produktivität um 30 % steigern
+    framework:
+      title: bewährter werterahmen
+      description: unsere produkte werden von unseren kunden getestet und vertrauen darauf
+    peak_experience:
+      title: spitzenerlebnis
+      description: erhöht die moral der mitarbeiter
+    support:
+      title: kundendienst
+      description: holen sie sich innerhalb von 24 stunden hilfe von unserem support-team
+    sustainability:
+      title: nachhaltigkeit
+      description: >-
+        sogar der strawcart pro wird von sonnenkollektoren aufgeladen, sodass
+        sie sich nicht um strom kümmern müssen
+    customization:
+      title: anpassung
+      description: höhe, regal anpassen
+  strawcart_showcase:
+    title: verbessern sie ihre erdbeerfarm mit strawcart
+    description: >-
+      diese idee kommt aus der schweiz und bringt geprüftes system auf ihre
+      plantage. entwickelt, um das einkommen, den ruf und die moral der
+      mitarbeiter zu maximieren :) verwandeln sie ihr unternehmen in einen
+      lokalen hegemon.
+    pricing: kaufen 770 $ / mieten 60 $
+    button: jetzt erhalten
+  product_overwiew:
+    straw_box:
+      h1: kartons für erdbeeren
+      h2: endprodukt-box, bereit zum verkauf!
+      p1: >-
+        verleiht ihrem produkt prestige-flair. perfekt, wenn sie das einkommen
+        ihres unternehmens steigern möchten.
+      p2: 500 gramm kapazität streckfolie gratis für bestellungen über 300.
+    straw_tote:
+      h1: faltbar
+      h2: inklusive platz für 8 strohboxen
+      p1: entwickelt, um platz in ihrem lager zu sparen,
+      p2: entwickelt, um platz in ihrem lager zu sparen,
+    straw_shop:
+      h1: verkaufen sie, wo sie wollen
+      h2: verkaufen sie prestige mit strawshop auf der ganzen welt!
+      p1: >-
+        gehen sie mit dem originalen schild von strawcart.com oder wählen sie
+        ihr eigenes. faltbare 2x2 m2 größen.
+    straw_warehouse:
+      h1: mobiles außenlager
+      h2: ein puffer für ihr produkt!
+      p1: >-
+        vorgesehen für die zwischenlagerung von bis zu 6 paletten bis zur
+        ankunft des transports zum einfahren in das kühlhaus.
+      p2: schützt erdbeeren vor starker sonne,
+pages:
+  '404':
+    title: seite nicht gefunden
+  shop:
+    nav: einkaufen
+  index:
+    title: nuxt 3[]super[]starter
+  blank:
+    nav: leer
+    title: leere seite
+    description: das ist eine leere seite
+    just_blank_page_with_title: nur leere seite mit titel
+  configurator:
+    nav: konfigurator
+    title: post
+    description: dies ist eine beitragsseite
+  test:
+    nav: prüfung
+    title: testen
+    description: dies ist eine testseite
+    counter: schalter
+    increment: zuwachs
+    decrement: dekrementieren
+    reset: zurücksetzen
+    identity: identität
+    full_name: vollständiger name
+  getting-started:
+    nav: einstieg
+    title: einstieg
+    description: dies ist eine seite für erste schritte
+  setting:
+    nav: einstellung
+    title: einstellung
+    description: dies ist eine einstellungsseite
+    sections:
+      validate_username:
+        title: github-profil validieren
+        description: >-
+          geben sie ihren github-benutzernamen ein und klicken sie zur
+          bestätigung auf die schaltfläche.
+        footer: lerne mehr über
+        footer_button: bestätigen
+        footer_link: github-benutzer-api
+      bot_id:
+        title: bot-id
+        description: dies ist ihre bot-id.
+        footer: wird bei der interaktion mit dem bot verwendet.
+      protection_spam:
+        title: spamschutz
+        description: toggle enable, um den roten rand zu entfernen
+        footer: >-
+          wenn sie diese option aktivieren, schützen wir ihre kommentare vor
+          spam
+      advanced_enable_advanced:
+        title: erweiterte einstellungen aktivieren
+        description: >-
+          sie können erweiterte einstellungen aktivieren, um die einstellungen
+          zu ändern
+      advanced_dir_listing:
+        title: verzeichnisliste
+        description: >-
+          wenn in einem verzeichnis keine indexdatei vorhanden ist, wird der
+          inhalt des verzeichnisses angezeigt.
+  dashboard:
+    nav: instrumententafel
+    title: instrumententafel
+    index:
+      nav: zuhause
+      title: zuhause

@@ -1,0 +1,90 @@
+components:
+  video:
+    title: See how it works in real!
+  cooming_soon:
+    title: Cooming Soon!
+    subtitle: Vertical Hydroponics Farm
+  FAQ:
+    title: Frequently Asked Questions
+    subtitle: Have a question? We’re here to help.
+    free_trial:
+      question: IS there a free trial avalible?
+      answer: Yes, Join the waiting list and try Strawcart for a week, when it’s avalible, without any cost
+    broken:
+      question: What if my something got broken?
+      answer: Dont worry, we created mini shop where you can get any additional parts like.. tools, wheels, roof, screws etc.
+    what_inside:
+      question: What's inside the order?
+      answer: Empty
+    delivery:
+      question: How is it delivered?
+      answer: You can choose between DHL & Fedex Services or your own transport.
+    why:
+      question: Why should I even try?
+      answer: Strawcart if connected with our StrawFramework can make your business around 170% more efficient than your competitors.
+  contact:
+    title: Contact Us
+    subtitle: Our friendly team would love to hear from you!
+    name: Forename
+    surname: Surname
+    email:
+      text: Email
+      error: Invalid email
+      succeed: Correct email
+    telephone:
+      text: Telephone Number
+      error: Invalid phone number
+      succeed: Correct number
+    message:
+      text: Message
+      error: Empty message
+      succeed: Correct
+    privacy_policy:
+      title: Privacy Policy
+      subtitle: By ticking you accept the terms of the privacy policy.
+      error: Accept the privacy policy
+      succeed: Accepted
+    button: Send Message
+  navbar:
+    contact: CONTACT
+    login: LOGIN
+    register: REGISTER
+    safe: CLIPHOARD
+    cart: CART
+    products: PRODUCTS
+  footer:
+    information:
+      information: INFORMATION
+      regulations: Regulations
+      cookies: Cookies Policy
+      return: Return and Complaint
+      delivery: Delivery and payment
+      privacy_policy: Privacy Policy
+    account:
+      your_account: Your account
+      login: Login
+      orders: Your orders
+      registration: Registration
+    newsletter:
+      button: SIGN UP
+      placeholder: your email
+      description: IF YOU WANT TO RECEIVE INFORMATION ABOUT NEW PRODUCTS AND PROMOTIONS IN THE STORE - ENTER YOUR E-MAIL. WE WILL PROCESS YOUR DATA IN ACCORDANCE WITH OUR
+      description2: PRIVACY POLICY.
+  language_switcher:
+    change_language: change language
+  theme_switcher:
+    theme: theme
+    change_theme: change theme
+
+pages:
+  shop:
+    nav: SHOP
+  index:
+    title: nuxt 3[]awesome[]starter
+  404:
+    title: page not found
+  blank:
+    nav: blank
+    title: blank page
+    description: this is a blank page
+    just_blank_page_with_title: just blank page with title

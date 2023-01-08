@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Brown";
+  src: url("/fonts/brown-bold.ttf");
+}
+
+@font-face {
+  font-family: "ITIM";
+  src: url("/fonts/Itim-Regular.ttf");
+}
+
+@font-face {
+  font-family: "INTERN";
+  src: url("/fonts/INTERN.ttf");
+}
+
+@layer components {
+  .col {
+    @apply flex flex-col;
+  }
+
+  .row {
+    @apply flex flex-row;
+  }
+}
+
+@layer utilities responsive {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}

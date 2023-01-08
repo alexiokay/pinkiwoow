@@ -1,0 +1,205 @@
+components:
+  video:
+    title: lihat cara kerjanya secara nyata!
+  cooming_soon:
+    title: segera!
+    subtitle: pertanian hidroponik vertikal
+  FAQ:
+    title: pertanyaan yang sering diajukan
+    subtitle: ada pertanyaan? kami siap membantu.
+    free_trial:
+      question: apakah ada uji coba gratis yang tersedia?
+      answer: >-
+        ya, bergabunglah dengan daftar tunggu dan coba strawcart selama
+        seminggu, jika tersedia, tanpa biaya apa pun
+    broken:
+      question: bagaimana jika barang saya rusak?
+      answer: >-
+        jangan khawatir, kami membuat toko mini tempat anda bisa mendapatkan
+        suku cadang tambahan seperti .. perkakas, roda, atap, sekrup, dll.
+    what_inside:
+      question: apa yang ada di dalam pesanan?
+      answer: kosong
+    delivery:
+      question: bagaimana pengirimannya?
+      answer: anda dapat memilih antara dhl
+    why:
+      question: mengapa saya harus mencoba?
+      answer: >-
+        strawcart jika dihubungkan dengan strawframework kami dapat membuat
+        bisnis anda sekitar 170% lebih efisien dibandingkan pesaing anda.
+  contact:
+    title: hubungi kami
+    subtitle: tim kami yang ramah akan senang mendengar dari anda!
+    name: nama kecil
+    surname: nama belakang
+    email:
+      text: surel
+      error: email tidak valid
+      succeed: email yang benar
+    telephone:
+      text: nomor telepon
+      error: nomor telepon tidak valid
+      succeed: nomor yang benar
+    message:
+      text: pesan
+      error: pesan kosong
+      succeed: benar
+    privacy_policy:
+      title: kebijakan pribadi
+      subtitle: dengan mencentang anda menerima persyaratan kebijakan privasi.
+      error: terima kebijakan privasi
+      succeed: diterima
+    button: mengirim pesan
+  navbar:
+    contact: kontak
+    login: gabung
+    register: daftar
+    safe: kliphoard
+    cart: keranjang
+  footer:
+    information:
+      information: informasi
+      regulations: peraturan
+      cookies: kebijakan cookie
+      return: kembali dan pengaduan
+      delivery: pengiriman dan pembayaran
+      privacy_policy: kebijakan pribadi
+    account:
+      your_account: akun anda
+      login: gabung
+      orders: pesanan anda
+      registration: registrasi
+    newsletter:
+      button: daftar
+      placeholder: email mu
+      description: >-
+        jika anda ingin menerima informasi tentang produk baru dan promosi di
+        toko - masukkan e-mail anda. data anda akan kami proses sesuai dengan
+        keterangan kami
+      description2: kebijakan pribadi.
+  language_switcher:
+    change_language: ganti bahasa
+  theme_switcher:
+    theme: tema
+    change_theme: ganti tema
+  advantages:
+    income_productivity:
+      title: meningkatkan pendapatan dan produktivitas
+      description: >-
+        berkat produk kami, anda dapat meningkatkan penghasilan sebesar 20% dan
+        produktivitas sebesar 30%
+    framework:
+      title: kerangka nilai yang terbukti
+      description: produk kami diuji dan dipercaya oleh klien kami
+    peak_experience:
+      title: pengalaman puncak
+      description: meningkatkan moral karyawan
+    support:
+      title: pelayanan pelanggan
+      description: dapatkan bantuan dari tim dukungan kami dalam 24 jam
+    sustainability:
+      title: keberlanjutan
+      description: >-
+        bahkan strawcart pro diisi oleh panel surya, jadi anda tidak perlu
+        khawatir dengan listrik
+    customization:
+      title: kustomisasi
+      description: menyesuaikan tinggi, rak
+  strawcart_showcase:
+    title: tingkatkan pertanian stroberi anda dengan strawcart
+    description: >-
+      ide ini berasal dari swiss dan membawa sistem yang diperiksa ke perkebunan
+      anda. dibuat untuk memaksimalkan pendapatan, renome, dan moral karyawan :)
+      ubah bisnis anda menjadi hegemon lokal.
+    pricing: beli $770 / sewa $60
+    button: dapatkan sekarang
+  product_overwiew:
+    straw_box:
+      h1: kotak karton untuk stroberi
+      h2: kotak produk akhir, siap dijual!
+      p1: >-
+        memberikan penebangan prestise produk anda. sempurna jika anda ingin
+        meningkatkan pendapatan bisnis anda.
+      p2: streaching folia kapasitas 500 gram gratis untuk pemesanan di atas 300.
+    straw_tote:
+      h1: dapat dilipat
+      h2: termasuk ruang untuk 8 buah strawbox
+      p1: dirancang untuk menghemat ruang di gudang anda,
+      p2: dirancang untuk menghemat ruang di gudang anda,
+    straw_shop:
+      h1: jual di mana pun anda mau
+      h2: jual prestise dengan strawshop di seluruh dunia!
+      p1: >-
+        gunakan papan nama strawcart.com asli atau pilih sendiri. ukuran 2x2 m2
+        yang dapat dilipat.
+    straw_warehouse:
+      h1: gudang lapangan seluler
+      h2: penyangga untuk produk anda!
+      p1: >-
+        ditujukan untuk penyimpanan sementara hingga 6 palet sampai kedatangan
+        transportasi untuk masuk ke cold store.
+      p2: melindungi stroberi dari sinar matahari yang kuat,
+pages:
+  '404':
+    title: halaman tidak ditemukan
+  shop:
+    nav: toko
+  index:
+    title: nuxt 3[]mengagumkan[]pemula
+  blank:
+    nav: kosong
+    title: halaman kosong
+    description: ini adalah halaman kosong
+    just_blank_page_with_title: hanya halaman kosong dengan judul
+  configurator:
+    nav: konfigurasi
+    title: pos
+    description: ini adalah halaman postingan
+  test:
+    nav: uji
+    title: pengujian
+    description: ini adalah halaman percobaan
+    counter: menangkal
+    increment: kenaikan
+    decrement: pengurangan
+    reset: mengatur ulang
+    identity: identitas
+    full_name: nama lengkap
+  getting-started:
+    nav: mulai
+    title: mulai
+    description: ini adalah halaman memulai
+  setting:
+    nav: pengaturan
+    title: pengaturan
+    description: ini adalah halaman pengaturan
+    sections:
+      validate_username:
+        title: memvalidasi profil github
+        description: ketik nama pengguna github anda dan klik tombol untuk memvalidasi.
+        footer: belajar lebih tentang
+        footer_button: mengesahkan
+        footer_link: pengguna github api
+      bot_id:
+        title: id bot
+        description: ini adalah id bot anda.
+        footer: digunakan saat berinteraksi dengan bot.
+      protection_spam:
+        title: proteksi spam
+        description: beralih aktifkan untuk menghapus batas merah
+        footer: jika memungkinkan kami akan mengamankan komentar anda dari spam
+      advanced_enable_advanced:
+        title: mengaktifkan pengaturan lanjutan
+        description: anda dapat mengaktifkan pengaturan lanjutan untuk mengubah pengaturan
+      advanced_dir_listing:
+        title: daftar direktori
+        description: >-
+          jika tidak ada file indeks di dalam direktori, isi direktori akan
+          ditampilkan.
+  dashboard:
+    nav: dasbor
+    title: dasbor
+    index:
+      nav: rumah
+      title: rumah

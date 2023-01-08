@@ -1,0 +1,181 @@
+components:
+  video:
+    title: 看看它是如何实际工作的！
+  cooming_soon:
+    title: 马上就来！
+    subtitle: 垂直水培农场
+  FAQ:
+    title: 经常问的问题
+    subtitle: 有一个问题？我们随时为您提供帮助。
+    free_trial:
+      question: 有免费试用吗？
+      answer: 是的，加入等候名单并试用 strawcart 一周，当它可用时，无需任何费用
+    broken:
+      question: 如果我的东西坏了怎么办？
+      answer: 别担心，我们创建了迷你商店，您可以在其中购买任何其他零件，例如工具、轮子、车顶、螺丝等。
+    what_inside:
+      question: 订单里面有什么？
+      answer: 空的
+    delivery:
+      question: 它是如何交付的？
+      answer: 您可以选择 dhl
+    why:
+      question: 我为什么要尝试？
+      answer: strawcart 如果与我们的 strawframework 连接，可以使您的业务效率比竞争对手高 170% 左右。
+  contact:
+    title: 联系我们
+    subtitle: 我们友好的团队很乐意收到您的来信！
+    name: 名字
+    surname: 姓
+    email:
+      text: 电子邮件
+      error: 不合规电邮
+      succeed: 正确的电子邮件
+    telephone:
+      text: 电话号码
+      error: 无效的电话号码
+      succeed: 正确的号码
+    message:
+      text: 信息
+      error: 空消息
+      succeed: 正确的
+    privacy_policy:
+      title: 隐私政策
+      subtitle: 勾选即表示您接受隐私政策的条款。
+      error: 接受隐私政策
+      succeed: 公认
+    button: 发信息
+  navbar:
+    contact: 接触
+    login: 登录
+    register: 登记
+    safe: 剪贴板
+    cart: 大车
+  footer:
+    information:
+      information: 信息
+      regulations: 规定
+      cookies: 饼干政策
+      return: 退货投诉
+      delivery: 交货和付款
+      privacy_policy: 隐私政策
+    account:
+      your_account: 您的帐户
+      login: 登录
+      orders: 你的命令
+      registration: 登记
+    newsletter:
+      button: 报名
+      placeholder: 你的邮件
+      description: 如果您想接收有关商店新产品和促销活动的信息 - 请输入您的电子邮件。我们将根据我们的规定处理您的数据
+      description2: 隐私政策。
+  language_switcher:
+    change_language: 改变语言
+  theme_switcher:
+    theme: 主题
+    change_theme: 改变主题
+  advantages:
+    income_productivity:
+      title: 增加收入和生产力
+      description: 得益于我们的产品，您的收入可以增加 20%，生产率可以提高 30%
+    framework:
+      title: 已证明的价值框架
+      description: 我们的产品经过测试，深受客户信赖
+    peak_experience:
+      title: 巅峰体验
+      description: 提高员工士气
+    support:
+      title: 客户服务
+      description: 在 24 小时内从我们的支持团队获得帮助
+    sustainability:
+      title: 可持续性
+      description: 连strawcart pro都是太阳能电池板充电，完全不用担心电量
+    customization:
+      title: 客制化
+      description: 自定义高度，搁板
+  strawcart_showcase:
+    title: 使用 strawcart 改善您的草莓农场
+    description: 这个想法来自瑞士，并将经过检查的系统带到您的种植园。旨在最大限度地提高收入、重命名和员工士气 :) 将您的企业转变为当地的霸主。
+    pricing: 购买 770 美元/租用 60 美元
+    button: 立即获取
+  product_overwiew:
+    straw_box:
+      h1: 草莓纸箱
+      h2: 成品包装盒，待售！
+      p1: 给您的产品威望感。如果您想增加您的业务收入，这是完美的选择。
+      p2: 300 份以上的订单免费提供 500 克容量的叶子。
+    straw_tote:
+      h1: 折叠式
+      h2: 包括 8 个吸管盒的空间
+      p1: 专为节省仓库空间而设计，
+      p2: 专为节省仓库空间而设计，
+    straw_shop:
+      h1: 想卖就卖
+      h2: 通过 strawshop 在世界各地销售声望！
+      p1: 使用原始的 strawcart.com 招牌或选择您自己的招牌。可折叠的 2x2 平方米尺寸。
+    straw_warehouse:
+      h1: 移动野战仓库
+      h2: 为您的产品提供缓冲！
+      p1: 用于临时存储多达 6 个托盘，直到运输工具到达进入冷库。
+      p2: 保护草莓免受强烈阳光照射，
+pages:
+  '404':
+    title: 找不到网页
+  shop:
+    nav: 店铺
+  index:
+    title: nuxt 3[]awesome[]starter
+  blank:
+    nav: 空白的
+    title: 空白页
+    description: 这是一个空白页
+    just_blank_page_with_title: 只是带有标题的空白页
+  configurator:
+    nav: 配置器
+    title: 邮政
+    description: 这是一个帖子页面
+  test:
+    nav: 测试
+    title: 测试
+    description: 这是一个测试页面
+    counter: 柜台
+    increment: 增量
+    decrement: 递减
+    reset: 重启
+    identity: 身份
+    full_name: 全名
+  getting-started:
+    nav: 入门
+    title: 入门
+    description: 这是一个入门页面
+  setting:
+    nav: 环境
+    title: 环境
+    description: 这是一个设置页面
+    sections:
+      validate_username:
+        title: 验证 github 配置文件
+        description: 输入您的 github 用户名并单击按钮进行验证。
+        footer: 学习更多关于
+        footer_button: 证实
+        footer_link: github 用户 api
+      bot_id:
+        title: 机器人编号
+        description: 这是您的机器人 id。
+        footer: 与机器人交互时使用。
+      protection_spam:
+        title: 垃圾邮件保护
+        description: 切换启用以删除红色边框
+        footer: 如果启用，我们将保护您的评论免受垃圾邮件
+      advanced_enable_advanced:
+        title: 启用高级设置
+        description: 您可以启用高级设置来更改设置
+      advanced_dir_listing:
+        title: 目录列表
+        description: 如果目录中没有索引文件，则显示目录内容。
+  dashboard:
+    nav: 仪表盘
+    title: 仪表盘
+    index:
+      nav: 家
+      title: 家
