@@ -32,7 +32,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  mt-20")
 </template>
 
 <script setup lang="ts">
-// If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
+// If you are using PurgeCSS, make sure to whitelistgi the carousel CSS classes
 import { wizytowki, header } from "../libs/sliders";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
