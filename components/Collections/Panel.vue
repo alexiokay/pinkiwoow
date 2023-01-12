@@ -1,12 +1,15 @@
 <template lang="pug">
 div.collections-panel(class="flex relative  h-full flex-row w-full gap-x-8 px-16 mt-12 full-width ")
-    div(class="flex flex-col w-1/2 h-full items-center justify-center  py-8 shadow-lg rounded-xl bg-[#EC92BA] ") <!-- bg-[#EC92BA] -->
-        CollectionsItem
-        CollectionsItem
-        CollectionsItem
-        CollectionsItem
-    div( class="sticky flex mt-6 w-1/2 h-[35rem] aspect-square flex-col items-center justify-center bg-[#9DD9CF]  shadow-lg rounded-xl overflow-hidden  ") <!--bg-[#9DD9CF] -->
-        nuxt-img(src="https://picsum.photos/600/600" format="webp"  class="w-full h-full object-cover ")
+    div(class="flex flex-col w-1/2 h-full items-center justify-center  py-8 shadow-lg rounded-xl border-[#EC92BA] border-2") <!-- bg-[#EC92BA] -->
+        CollectionsItem(title="Ganja Mug" :bestseller="true" :price="200" :rated="8" image="images/products/mugs/ganja-left.png" image2="images/products/mugs/ganja-right.png" stripePriceId="200")
+        CollectionsItem(title="Ben 10" :price="200" :rated="5" image="images/products/mugs/ben-10-left.png" image2="images/products/mugs/ben-10-right.png" stripePriceId="200")
+    div( class="sticky flex mt-6 w-1/2 h-[35rem] aspect-square flex-col items-center justify-center bg-[#E4E5E9]  shadow-lg rounded-xl overflow-hidden  ") <!--bg-[#9DD9CF] -->
+        nuxt-img(src="/images/your-design.webp" format="webp"  class="w-full h-full object-contain ")
+        .collections-panel(class=" group  smooth-bg absolute text-black flex flex-col justify-around py-5 items-center w-3/4 bottom-10 rounded-xl h-2/5 bg-[rgba(255,255,255,0.7)] ")
+          p(class="text-4xl font-robotolight") Get your own design
+          p(class="text-xl mb-2") Express yourself
+          
+          NuxtLink(to="/personalize/mug" class=" flex justify-center items-center  opacity-100  smooth-bg m-0 h-12 x-4 py-4 px-5  group-hover:py-6 group-hover:px-6 smart-button  bg-[#CBCF03] text-white text-lg font-publicsans  rounded-lg shadow-xl ") Zaprojektuj własny
     div.ghost(class="w-1/2")
 
     </template>
@@ -56,7 +59,7 @@ onMounted(() => {
     console.log(collectionsPanel.getBoundingClientRect().top);
   });
 
-  function getOffset(el) {
+  function getOffset(el: any) {
     var _x = 0;
     var _y = 0;
     while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
@@ -69,7 +72,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #sticky {
   position: fixed;
 
@@ -79,6 +82,20 @@ onMounted(() => {
 
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+.smooth-bg {
+  -webkit-transition: visibility 0.3s linear, opacity 0.3s linear;
+  -moz-transition: visibility 0.3s linear, opacity 0.3s linear;
+  -o-transition: visibility 0.3s linear, opacity 0.3s linear;
+  transition: visibility 0.3s linear, opacity 0.3s linear;
+}
+
+.smart-button {
+  -webkit-transition: padding 0.3s linear;
+  -moz-transition: padding 0.3s linear;
+  -o-transition: padding 0.3s linear;
+  transition: padding 0.3s linear;
 }
 
 .sticky-bottom {

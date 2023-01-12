@@ -1,0 +1,1 @@
+import"./Footer.vue_vue_type_script_setup_true_lang.ffc7950e.js";import{_ as s}from"./Footer.vue_vue_type_script_setup_true_lang.ffc7950e.js";import"./BarMain.vue_vue_type_style_index_0_lang.c30f3975.js";import"./useLang.6902ede2.js";import"./entry.267e7f08.js";import"./Cart.0ec10aed.js";import"./_commonjsHelpers.cebfa718.js";export{s as default};

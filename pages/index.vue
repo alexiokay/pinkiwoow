@@ -4,7 +4,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  mt-20")
   
 
   div(class="w-full h-auto flex justify-center gap-x-4 items-start   ")
-    div(class="w-1/4 h-[50rem] flex flex-col rounded-xl shadow-lg px-4 py-4 space-y-4 bg-white text-xl items-center ")
+    div(class="w-1/4 h-[50rem] flex flex-col rounded-xl shadow-lg px-4 py-4 space-y-4 bg-white text-xl items-center border-2 border-[#47C1BF] ")
       NuxtLink(to="/kubki") Kubki 
       p Puzzle
       p Koszulki
@@ -21,7 +21,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  mt-20")
       
       div(class="w-full h-auto flex flex-col p-4")
             p(class="text-[#434447] text-[1.5rem] font-bold") Produkty
-            LazySwiper(:slides="wizytowki") 
+            LazySwiper(:slides="randomProducts") 
   Wheeler(  )
   
   CollectionsPanel(class="")
@@ -29,25 +29,25 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  mt-20")
   
   Video(class="mt-8 h-[45rem] w-full")
   Testimonials
+ 
 </template>
 
 <script setup lang="ts">
 // If you are using PurgeCSS, make sure to whitelistgi the carousel CSS classes
-import { wizytowki, header } from "../libs/sliders";
+import { mousePads, mugs, wizytowki, header } from "../libs/sliders";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 const { t } = useLang();
 const route = useRoute();
 
-useHead({
-  title: t("meta.title"),
-  meta: [
-    {
-      hid: "etsy verification",
-      name: "p:domain_verify",
-      content: "1df788f2259b39e3c4173116761bc795",
-    },
-  ],
+const randomProducts = computed(() => {
+  let randomProduct_temp = [...mugs, ...mousePads].sort(
+    () => Math.random() - 0.5
+  );
+  randomProduct_temp = randomProduct_temp.slice(0, 9);
+
+  console.log(randomProduct_temp);
+  return randomProduct_temp;
 });
 definePageMeta({
   pageTransition: {

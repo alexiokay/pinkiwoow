@@ -1,11 +1,11 @@
 <template lang="pug">
 div(class="flex flex-row w-full h-auto gap-x-4 text-2xl items-center justify-center ")
     div(ref="root" class="w-full flex flex-row justify-center items-center")
-        RatingStar(type="full" id=0 class="w-12 h-12" @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)")
-        RatingStar(type="half" id=2 class="w-12 h-12" @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)")
-        RatingStar(type="empty" id=4 class="w-12 h-12" @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)")
-        RatingStar(type="empty" id=6 class="w-12 h-12" @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)")
-        RatingStar(type="empty" id=8 class="w-12 h-12" @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)")
+        RatingStar(type="full" id=0   @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
+        RatingStar(type="half" id=2  @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
+        RatingStar(type="empty" id=4  @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
+        RatingStar(type="empty" id=6  @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
+        RatingStar(type="empty" id=8  @rate="(id) => rate(id)" @fill="(event, id) => fill(event, id)" @unfill="(event, id) => unfill(event, id)" :class="{'w-6 h-6': props.size === 'small','w-8 h-8': props.size === 'medium','w-10 h-10': props.size === 'big','w-12 h-12': props.size === 'huge', }")
     
     
     
@@ -13,50 +13,77 @@ div(class="flex flex-row w-full h-auto gap-x-4 text-2xl items-center justify-cen
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import type { PropType } from "vue";
 import type { Ref } from "vue";
-let rated = ref(6);
+
+const props = defineProps({
+  size: {
+    type: String as PropType<Size>,
+    default: "small",
+  },
+  rated: {
+    type: Number,
+    default: 0,
+  },
+  editable: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+let isFirstRate = true;
+let rated = ref(props.rated);
 const root: Ref<HTMLElement | null> = ref(null);
 
 const rate = (rating: number) => {
-  const stars = root.value?.querySelectorAll(".star");
-  let i = 0;
-  rated.value = rating;
-  stars?.forEach((star) => {
-    if (i <= rated.value) star.classList.add("filter-gold");
+  if (props.editable || isFirstRate === true) {
+    const stars = root.value?.querySelectorAll(".star");
+    let i = 0;
+    rated.value = rating;
+    stars?.forEach((star) => {
+      if (i <= rated.value) star.classList.add("filter-gold");
 
-    i++;
-  });
-  console.log(rated);
+      i++;
+    });
+    console.log(rated);
+  }
+  isFirstRate = false;
 };
 
 const fill = (event: any, id: number) => {
-  const stars = root.value?.querySelectorAll(".star");
-  let i = 0;
-  stars?.forEach((star) => {
-    if (i <= id) star.classList.add("filter-gold");
-    else star.classList.remove("filter-gold");
+  if (props.editable) {
+    const stars = root.value?.querySelectorAll(".star");
+    let i = 0;
+    stars?.forEach((star) => {
+      if (i <= id) star.classList.add("filter-gold");
+      else star.classList.remove("filter-gold");
 
-    i++;
-  });
+      i++;
+    });
 
-  console.log(id);
+    console.log(id);
+  }
 };
 
 const unfill = (event: any, id: number) => {
-  const stars = root.value?.querySelectorAll(".star");
-  let i = 0;
-  stars?.forEach((star) => {
-    star.classList.remove("filter-gold");
-    i++;
-  });
-  rate(rated.value);
+  if (props.editable) {
+    const stars = root.value?.querySelectorAll(".star");
+    let i = 0;
+    stars?.forEach((star) => {
+      star.classList.remove("filter-gold");
+      i++;
+    });
+    rate(rated.value);
 
-  console.log(id);
+    console.log(id);
+  }
 };
 
 onMounted(() => {
   rate(rated.value);
 });
+
+type Size = "small" | "medium" | "big" | "huge";
 </script>
 <style lang="scss">
 .filter-gold {

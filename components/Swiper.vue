@@ -2,24 +2,25 @@
 div(class="relative h-auto overflow-hidden ")
   .swiper-container(class='')
       .swiper-wrapper(class='')
-          .swiper-slide(v-for="slide in props.slides" class="hover:cursor-pointer  flex flex-col ")
+          .swiper-slide(v-for="slide in props.slides" :key="slide.name"  class="hover:cursor-pointer  flex flex-col ")
             div(class="h-[54rem] w-full flex flex-col ")
-              img.swiper-image(:src="slide.img" class="swiper-lazy overflow-hidden rounded-lg")
+              img.swiper-image(:src="slide.img" class="swiper-lazy overflow-hidden rounded-lg object-contain w-full h-full")
               .swiper-lazy-preloader
-            p(class=" text-base font-normal text-black mt-3") NOTATKI Z WYJAZDU
-            p 109,99 ZL
+            p(class=" text-lg font-robotolight font-bold text-black mt-3") {{slide.name}}
+            p {{slide.price }} ZŁ
       .swiper-pagination(class=" absolute left-0 right-0 bottom-[-58rem] ml-auto mr-auto")
 </template>
 
 <script setup lang="ts">
 import { Swiper, Lazy, Pagination } from "swiper";
-
+import type { PropType } from "vue";
+import type { SlideType } from "../types/Slide";
 import "swiper/css";
 import "swiper/css/pagination";
 
 const props = defineProps({
   slides: {
-    type: Array,
+    type: Array as PropType<SlideType[]>,
     required: true,
   },
 });

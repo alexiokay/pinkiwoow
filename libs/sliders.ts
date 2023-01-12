@@ -47,3 +47,44 @@ export const header = [
     img: "https://picsum.photos/800/414",
   },
 ];
+
+export const mugs = [
+  {
+    name: "Ben 10 - Mug",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    img: "images/products/mugs/ben-10-left.png",
+    img2: "images/products/mugs/ben-10-right.png",
+    price: 20,
+  },
+  {
+    name: "Ganja - Mug",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    img: "images/products/mugs/ganja-left.png",
+    img2: "images/products/mugs/ganja-right.png",
+    price: 20,
+  },
+];
+
+export const mousePads = [
+  {
+    name: "Black Holdes - Mouse Pad",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    img: "images/products/mouse-pads/many-black-holes.png",
+    img2: "images/products/mugs/ganja-left.png",
+    price: 20,
+  },
+  {
+    name: "Ukrainian tanks - Mouse Pad",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    img: "images/products/mouse-pads/ukrainian-tanks.png",
+    img2: "images/products/mugs/ganja-left.png",
+    price: 20,
+  },
+  {
+    name: "amfisbena - Mouse Pad",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+    img: "images/products/mouse-pads/amfisbena.png",
+    img2: "i",
+    price: 33,
+  },
+];
