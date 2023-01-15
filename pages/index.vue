@@ -44,10 +44,32 @@ import { onMounted } from "vue";
 import type { Ref } from "vue";
 import { isProxy, toRaw } from "vue";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+import { useMainStore } from "@/stores/Main";
+import { availableLocales } from "@/utils/lang";
+import { useGeolocation } from "@vueuse/core";
 const { t } = useLang();
 const route = useRoute();
 
+const store = useMainStore();
 const config = useRuntimeConfig();
+const localeSetting = useState<string>("locale.setting");
+
+let response: Ref<any> = ref();
+response.value = await useGeolocationX();
+
+const setLangByGeolocation = () => {
+  for (const locale in availableLocales) {
+    console.log("locale: " + locale);
+    console.log(response.value.country.toLowerCase());
+    if (locale === response.value.country.toLowerCase()) {
+      localeSetting.value = locale;
+    } else {
+      localeSetting.value = "en";
+    }
+  }
+};
+
+setLangByGeolocation();
 
 const options = {
   method: "GET",
@@ -59,7 +81,6 @@ const options = {
 let products: Ref<any> = ref();
 products.value = await getProducts();
 
-useGeolocation();
 const mugs = computed(() => {
   return products.value.filter((product: any) => {
     return product.category.name == "mug";

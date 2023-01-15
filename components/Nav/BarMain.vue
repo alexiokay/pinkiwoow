@@ -24,7 +24,7 @@ div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-f
         div(class="w-12 h-12 flex items-center justify-center")
           IconCart(class="w-full h-full text-gray-500")
           p(class="absolute top-[0.9rem]  text-white") {{cartStore.getCartLength}}
-        p ({{cartStore.getCartTotal}}ZŁ)
+        p ({{cartStore.getCartTotal}}{{ store.getCurrency }})
         IconDown(@click="openCartDropdown" class="text-gray-500 w-5 h-5 hover:cursor-pointer")
         NuxtLink(to="/cart" class="h-full w-[8rem] ")
           button( class='w-full h-full text-center bg-[#DB2878] hover:bg-[#47C1BF] smooth-color text-white')  {{$t('components.navbar.cart').toUpperCase()}} 

@@ -1,8 +1,5 @@
-import { useMainStore } from "@/stores/Main";
 export const getProducts = async () => {
-  const store = useMainStore();
   const config = useRuntimeConfig();
-
   const options = {
     method: "GET",
     headers: {

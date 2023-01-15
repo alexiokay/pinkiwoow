@@ -24,6 +24,7 @@ const props = defineProps({
 // state
 const currentStyle = toRef(props, "type");
 const localeSetting = useState<string>("locale.setting");
+localeSetting.value.toLowerCase();
 </script>
 
 <template>
