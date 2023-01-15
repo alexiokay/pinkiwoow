@@ -16,7 +16,7 @@ div.col-1(class="w-2/4 h-full flex flex-col space-y-3")
 div(class="flex flex-col font-montserrat justify-center items-center")
     p(class="text-2xl font-semibold") {{$props.title}}
     p {{  props.description }}
-    p {{ $props.price }} ZŁ
+    p {{ $props.price }} {{ store.getCurrency }}
     
 
     Rating(class="mt-4" width="small" :rated="props.rated" :editable="false")
@@ -29,7 +29,8 @@ import IconCart from "~icons/ph/shopping-cart-simple-fill";
 import IconHeart from "~icons/ph/heart-fill";
 import { useCartStore } from "../../stores/Cart";
 import uniqid from "uniqid";
-
+import { useMainStore } from "@/stores/Main";
+const store = useMainStore();
 type Range =
   | 1
   | 1.5

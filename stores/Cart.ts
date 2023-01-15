@@ -52,7 +52,7 @@ type StrawStore = {
   image: "/images/products/strawWarehouse.png";
   stripePriceId: string;
 };
-
+// @ts-ignore: Unreachable code error
 export const useCartStore = defineStore("cart", {
   state: () => {
     return {

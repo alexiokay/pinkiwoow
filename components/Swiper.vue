@@ -2,12 +2,12 @@
 div(class="relative h-auto overflow-hidden ")
   .swiper-container(class='')
       .swiper-wrapper(class='')
-          .swiper-slide(v-for="slide in props.slides" :key="slide.name"  class="hover:cursor-pointer  flex flex-col ")
+          .swiper-slide(v-for="slide in props.slides" :key="slide.title"  class="hover:cursor-pointer  flex flex-col ")
             div(class="h-[54rem] w-full flex flex-col ")
-              img.swiper-image(:src="slide.img" class="swiper-lazy overflow-hidden rounded-lg object-contain w-full h-full")
+              img.swiper-image(:src="slide.image?.url" :alt="slide.image?.alt" class="swiper-lazy overflow-hidden rounded-lg object-contain w-full h-full")
               .swiper-lazy-preloader
-            p(class=" text-lg font-robotolight font-bold text-black mt-3") {{slide.name}}
-            p {{slide.price }} ZŁ
+            p(class=" text-lg font-robotolight font-bold text-black mt-3") {{slide.title  }}
+            p {{slide.price }} {{ store.getCurrency }}
       .swiper-pagination(class=" absolute left-0 right-0 bottom-[-58rem] ml-auto mr-auto")
 </template>
 
@@ -17,7 +17,9 @@ import type { PropType } from "vue";
 import type { SlideType } from "../types/Slide";
 import "swiper/css";
 import "swiper/css/pagination";
+import { useMainStore } from "@/stores/Main";
 
+const store = ref(useMainStore());
 const props = defineProps({
   slides: {
     type: Array as PropType<SlideType[]>,

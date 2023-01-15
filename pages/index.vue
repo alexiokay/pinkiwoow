@@ -5,7 +5,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  mt-20")
 
   div(class="w-full h-auto flex justify-center gap-x-4 items-start   ")
     div(class="w-1/4 h-[50rem] flex flex-col rounded-xl shadow-lg px-4 py-4 space-y-4 bg-white text-xl items-center border-2 border-[#47C1BF] ")
-      NuxtLink(to="/kubki") Kubki 
+      NuxtLink(to="/") Kubki 
       p Puzzle
       p Koszulki
       p Etui
@@ -17,11 +17,13 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  mt-20")
       
     div(class="w-3/4 h-auto flex flex-col ")
       div(class="w-full h-[33rem] flex bg-white rounded-xl overflow-hidden shadow-lg")
-        Header(:slides="header") 
+        ClientOnly
+          Header(:slides="header") 
       
       div(class="w-full h-auto flex flex-col p-4")
             p(class="text-[#434447] text-[1.5rem] font-bold") Produkty
-            LazySwiper(:slides="randomProducts") 
+            ClientOnly
+              LazySwiper(:slides="randomProducts") 
   Wheeler(  )
   
   CollectionsPanel(class="")
@@ -29,19 +31,44 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  mt-20")
   
   Video(class="mt-8 h-[45rem] w-full")
   Testimonials
+
+ 
  
 </template>
 
 <script setup lang="ts">
 // If you are using PurgeCSS, make sure to whitelistgi the carousel CSS classes
-import { mousePads, mugs, wizytowki, header } from "../libs/sliders";
+import { header } from "../libs/sliders";
 import "vue3-carousel/dist/carousel.css";
+import { onMounted } from "vue";
+import type { Ref } from "vue";
+import { isProxy, toRaw } from "vue";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 const { t } = useLang();
 const route = useRoute();
 
+const config = useRuntimeConfig();
+
+const options = {
+  method: "GET",
+  headers: {
+    Host: "localhost",
+    Authorization: `${config.API_TOKEN}`,
+  },
+};
+let products: Ref<any> = ref();
+products.value = await getProducts();
+
+useGeolocation();
+const mugs = computed(() => {
+  return products.value.filter((product: any) => {
+    return product.category.name == "mug";
+  });
+});
+console.log(mugs.value);
+
 const randomProducts = computed(() => {
-  let randomProduct_temp = [...mugs, ...mousePads].sort(
+  let randomProduct_temp = [...mugs.value, ...mousePads.value].sort(
     () => Math.random() - 0.5
   );
   randomProduct_temp = randomProduct_temp.slice(0, 9);
@@ -49,6 +76,13 @@ const randomProducts = computed(() => {
   console.log(randomProduct_temp);
   return randomProduct_temp;
 });
+
+const mousePads = computed(() => {
+  return products.value.filter((product: any) => {
+    return product.category == "mousepad";
+  });
+});
+
 definePageMeta({
   pageTransition: {
     name: "page",
@@ -61,81 +95,15 @@ type Advantage = {
   image: string;
 };
 
-const settings = ref({
-  itemsToShow: 1,
-  snapAlign: "center",
-  slideWidth: "100%",
-  autoplay: 5000,
-  transition: 1000,
-  wrapAround: true,
-});
-const income_producitivity = computed(() => {
-  return {
-    title: t("components.advantages.income_productivity.title"),
-    description: t("components.advantages.income_productivity.description"),
-    image: "/images/advantages/104.png",
-  };
-});
-
-const customization = computed(() => {
-  return {
-    title: t("components.advantages.customization.title"),
-    description: t("components.advantages.customization.description"),
-    image: "/images/advantages/customization.jpg",
-  };
-});
-
-const framework = computed(() => {
-  return {
-    title: t("components.advantages.framework.title"),
-    description: t("components.advantages.framework.description"),
-    image: "/images/advantages/120.png",
-  };
-});
-
-const peak_experience = computed(() => {
-  return {
-    image: "/images/advantages/appreciation.png",
-    title: t("components.advantages.peak_experience.title"),
-    description: t("components.advantages.peak_experience.description"),
-  };
-});
-
-const support = computed(() => {
-  return {
-    image: "/images/advantages/support.png",
-    title: t("components.advantages.support.title"),
-    description: t("components.advantages.support.description"),
-  };
-});
-
-const sustainability = computed(() => {
-  return {
-    image: "/images/advantages/sustainable.jpg",
-    title: t("components.advantages.sustainability.title"),
-    description: t("components.advantages.sustainability.description"),
-  };
-});
-
-const slides = ref([
-  {
-    title: "Slide 1",
-    image: "https://defjam.pl/img/imagecache/1300x500_pictures_baner_lp_88.png",
-  },
-  {
-    title: "Slide 2",
-    image:
-      "https://defjam.pl/img/imagecache/1300x500_pictures_bbbbimage003.jpg",
-  },
-]);
-
-setTimeout(async () => {
-  const CollectionsElements = document.querySelectorAll(
-    ".collections-panel"
-  ) as NodeListOf<HTMLElement>;
-  const stickyElement = document.querySelectorAll(
-    ".sticky"
-  ) as NodeListOf<HTMLElement>;
+onMounted(() => {
+  setTimeout(async () => {
+    const CollectionsElements = document.querySelectorAll(
+      ".collections-panel"
+    ) as NodeListOf<HTMLElement>;
+    const stickyElement = document.querySelectorAll(
+      ".sticky"
+    ) as NodeListOf<HTMLElement>;
+  });
 });
 </script>
 

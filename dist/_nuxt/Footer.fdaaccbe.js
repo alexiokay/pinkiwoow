@@ -1,0 +1,1 @@
+import"./Footer.vue_vue_type_script_setup_true_lang.919cbe09.js";import{_ as f}from"./Footer.vue_vue_type_script_setup_true_lang.919cbe09.js";/* empty css                                                */import"./useLang.aa290110.js";import"./entry.4f483ef8.js";export{f as default};

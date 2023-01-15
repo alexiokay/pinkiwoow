@@ -1,1 +1,0 @@
-import{o,L as t}from"./entry.267e7f08.js";import{_ as e}from"./_plugin-vue_export-helper.a1a6add7.js";const c={src:"https://picsum.photos/200/300"};function n(s,_){return o(),t("img",c)}const r={},a=e(r,[["render",n]]);export{a as default};

@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     [
       "@pinia/nuxt",
       {
-        autoImports: ["defineStore", "acceptHMRUpdate"],
+        autoImports: ["defineStore", "acceptHMRUpdate", "useStore"],
       },
     ],
     "@intlify/nuxt3",
@@ -90,15 +90,12 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       stripePrices: {
-        strawtote: "1",
-        strawbox: "2",
-        strawshop: "1",
-        strawstore: "1",
+        test: "1",
       },
-      GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
       cwd: process.cwd(),
       BASE_URL: process.env.BASE_URL,
-      STORYBLOK_API_KEY: process.env.STORYBLOK_API_KEY,
+      API_TOKEN: process.env.API_TOKEN,
+      API_URL: process.env.API_URL,
     },
   },
 });

@@ -36,7 +36,7 @@ onMounted(() => {
 
     let top = getOffset(document.querySelector(".collections-panel")).top;
     let bottom = top + collectionsPanel.offsetHeight - 770;
-    console.log(bottom);
+
     if (scroll_position < -top + 180) {
       stickyel.id = "sticky";
       ghost.style.display = "flex";
@@ -55,8 +55,6 @@ onMounted(() => {
 
       stickyel.id = "";
     }
-    console.log(scroll_position);
-    console.log(collectionsPanel.getBoundingClientRect().top);
   });
 
   function getOffset(el: any) {
