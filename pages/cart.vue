@@ -117,29 +117,23 @@ import type { Ref } from "vue";
 
 let cartStore: any = ref(useCartStore());
 let cart = ref(computed(() => useCartStore().getCart));
-onMounted(() => {
-  if (process.client) {
-    cartStore.value = useCartStore();
-  }
-});
+
+cartStore.value = useCartStore();
 
 console.log(cart.value);
 
 let interval: any = null;
 
 const increaseQuantity = (itemId: any) => {
-  if (process.client)
-    setTimeout(() => {
-      interval = setInterval(() => {
-        cartStore.value.increaseItemQuantity(itemId);
-      }, 130);
-    }, 300);
+  setTimeout(() => {
+    interval = setInterval(() => {
+      cartStore.value.increaseItemQuantity(itemId);
+    }, 130);
+  }, 300);
 };
 
 const getCart = (itemId: any) => {
-  if (process.client) {
-    return cartStore.value.getCart;
-  }
+  return cartStore.value.getCart;
 };
 
 const selectedItems: Ref<any> = ref([]);
@@ -170,12 +164,10 @@ const stopHolding = () => {
 };
 
 const removeSelected = () => {
-  if (process.client) {
-    selectedItems.value.forEach((item: any) => {
-      cartStore.value.removeFromCart(item);
-    });
-    selectedItems.value = [];
-  }
+  selectedItems.value.forEach((item: any) => {
+    cartStore.value.removeFromCart(item);
+  });
+  selectedItems.value = [];
 };
 const checkBox = (el: any) => {
   const AimingCheckbox = el.target.querySelector("input") as HTMLInputElement;

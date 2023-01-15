@@ -16,9 +16,13 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  mt-20")
       p Itemy
       
     div(class="w-3/4 h-auto flex flex-col ")
-      div(class="w-full h-[33rem] flex bg-white rounded-xl overflow-hidden shadow-lg")
-        ClientOnly
+      div(class="w-full h-[33rem] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
+        ClientOnly()
           Header(:slides="header") 
+          template(#fallback class="w-full h-full flex justify-center items-center")
+            <!-- this will be rendered on server side -->
+            p Loading...
+         
       
       div(class="w-full h-auto flex flex-col p-4")
             p(class="text-[#434447] text-[1.5rem] font-bold") Produkty
@@ -45,12 +49,19 @@ import type { Ref } from "vue";
 import { isProxy, toRaw } from "vue";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 import { useMainStore } from "@/stores/Main";
+import { useCartStore } from "@/stores/Cart";
 import { availableLocales } from "@/utils/lang";
 import { useGeolocation } from "@vueuse/core";
 const { t } = useLang();
 const route = useRoute();
 
-const store = useMainStore();
+let cartStore = useCartStore();
+let store: any = ref();
+
+store.value = useMainStore();
+store.value.initialize();
+cartStore.initialize();
+
 const config = useRuntimeConfig();
 const localeSetting = useState<string>("locale.setting");
 
@@ -58,18 +69,20 @@ let response: Ref<any> = ref();
 response.value = await useGeolocationX();
 
 const setLangByGeolocation = () => {
-  for (const locale in availableLocales) {
-    console.log("locale: " + locale);
-    console.log(response.value.country.toLowerCase());
-    if (locale === response.value.country.toLowerCase()) {
-      localeSetting.value = locale;
-    } else {
-      localeSetting.value = "en";
+  if (store.value.isLocaleSet) return;
+  else {
+    for (const locale in availableLocales) {
+      if (locale === response.value.country.toLowerCase()) {
+        localeSetting.value = locale;
+        store.value.setLocaleSet();
+      } else {
+        localeSetting.value = "en";
+      }
     }
   }
 };
 
-setLangByGeolocation();
+if (process.client) setLangByGeolocation();
 
 const options = {
   method: "GET",

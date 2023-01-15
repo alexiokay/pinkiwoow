@@ -5,6 +5,7 @@ import piniaPersist from "pinia-plugin-persist";
 import uniqid from "uniqid";
 import { useStorage } from "@vueuse/core";
 import type { Currency } from "@/types/Currency";
+import { U } from "@/dist/_nuxt/entry.59017b9d";
 const pinia = createPinia();
 pinia.use(piniaPersist);
 // @ts-ignore: Unreachable code error
@@ -12,9 +13,10 @@ export const useMainStore = defineStore("Main", {
   state: () => {
     return {
       // all these properties will have their type inferred automatically
-
+      initialized: useStorage("initialized", false),
       isMobileNavbarOpen: useStorage("isMobileNavbarOpen", false),
       currency: useStorage("currency", "USD" as Currency),
+      isLocaleSet: useStorage("isLocaleSet", false),
     };
   },
   getters: {
@@ -24,8 +26,15 @@ export const useMainStore = defineStore("Main", {
     getCurrency(state) {
       return state.currency;
     },
+    isInitiated(state) {
+      return state.initialized;
+    },
   },
   actions: {
+    initialize() {
+      // this is called when the store is initialized
+      this.initialized = true;
+    },
     hideMobileNavbar() {
       this.isMobileNavbarOpen = false;
     },
@@ -34,6 +43,9 @@ export const useMainStore = defineStore("Main", {
     },
     setCurrentCurrency(currency: Currency) {
       this.currency = currency;
+    },
+    setLocaleSet() {
+      this.isLocaleSet = true;
     },
   },
 

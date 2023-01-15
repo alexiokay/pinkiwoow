@@ -19,16 +19,18 @@ div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-f
           p(class="absolute top-[0.6rem]  text-white") {{cartStore.getCartLength}}
     div(v-if="!mobileMenu && !loaded" class="flex space-x-3 w-full justify-end items-center")
       <LanguageSwitcher  />
-      div(v-show="route.name!=='cart'" class='hidden md:flex relative w-[13.3rem] h-[3.1rem] border-[1.2px] mb-2 p-[0.5rem] space-x-2 border-[#47C1BF] items-center justify-center  ')
       
-        div(class="w-12 h-12 flex items-center justify-center")
-          IconCart(class="w-full h-full text-gray-500")
-          p(class="absolute top-[0.9rem]  text-white") {{cartStore.getCartLength}}
-        p ({{cartStore.getCartTotal}}{{ store.getCurrency }})
-        IconDown(@click="openCartDropdown" class="text-gray-500 w-5 h-5 hover:cursor-pointer")
-        NuxtLink(to="/cart" class="h-full w-[8rem] ")
-          button( class='w-full h-full text-center bg-[#DB2878] hover:bg-[#47C1BF] smooth-color text-white')  {{$t('components.navbar.cart').toUpperCase()}} 
-        CartDropdown(class="hidden")
+      div(v-show="route.name!=='cart'" class='hidden md:flex relative w-[13.3rem] h-[3.1rem] border-[1.2px] mb-2 p-[0.5rem] space-x-2 border-[#47C1BF] items-center justify-center  ')
+        ClientOnly(placeholder="Loading...")
+          div(class="w-12 h-12 flex items-center justify-center")
+            IconCart(class="w-full h-full text-gray-500")
+            p(class="absolute top-[0.9rem]  text-white") {{cartStore.getCartLength}}
+          
+          p ({{cartStore.getCartTotal}}{{ store.getCurrency }})
+          IconDown(@click="openCartDropdown" class="text-gray-500 w-5 h-5 hover:cursor-pointer")
+          NuxtLink(to="/cart" class="h-full w-[8rem] ")
+            button( class='w-full h-full text-center bg-[#DB2878] hover:bg-[#47C1BF] smooth-color text-white')  {{$t('components.navbar.cart').toUpperCase()}} 
+          CartDropdown(class="hidden")
 
       div(v-show="route.name=='cart'" class='hidden md:flex relative w-[13.3rem] h-[3.1rem] border-[1.2px] mb-2 p-[0.5rem] space-x-2 border-gray-200 items-center justify-center  ')
         p asds
@@ -74,8 +76,8 @@ import { onMounted } from "vue";
 import { useCartStore } from "../../stores/Cart";
 import { useMainStore } from "../../stores/Main";
 
-let store: any = ref(useMainStore());
-const mobileMenu = computed(() => store.value.getIsMobileNavbarOpen);
+let store = useMainStore();
+const mobileMenu = computed(() => store.getIsMobileNavbarOpen);
 const loaded = ref(false);
 
 const route = useRoute();
@@ -85,10 +87,8 @@ const { t } = useLang();
 
 let cartStore: any = ref(useCartStore());
 
-if (process.client) {
-  cartStore.value = useCartStore();
-  store.value = useMainStore();
-}
+cartStore.value = useCartStore();
+store = useMainStore();
 
 const isRouteRestriceted = computed(() => {
   if (
@@ -101,17 +101,13 @@ const isRouteRestriceted = computed(() => {
 });
 
 const closeMobileNavbar = () => {
-  if (process.client) {
-    store.value.hideMobileNavbar();
-  }
+  store.hideMobileNavbar();
 };
 
 const showMobileNavbar = () => {
-  if (process.client) {
-    loaded.value = true;
-    store.value.showMobileNavbar();
-    console.log(store.value.getIsMobileNavbarOpen);
-  }
+  loaded.value = true;
+  store.showMobileNavbar();
+  console.log(store.getIsMobileNavbarOpen);
 };
 
 const openCartDropdown = () => {

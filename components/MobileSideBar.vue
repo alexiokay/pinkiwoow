@@ -39,14 +39,10 @@ const showServices = () => {
 
 let store: any = ref(useMainStore());
 
-if (process.client) {
-  store.value = useMainStore();
-}
+store.value = useMainStore();
 
 const closeMobileNavbar = () => {
-  if (process.client) {
-    store.value.hideMobileNavbar();
-  }
+  store.value.hideMobileNavbar();
 };
 
 const toContact = () => {

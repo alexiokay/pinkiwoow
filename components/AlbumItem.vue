@@ -59,9 +59,7 @@ const changeToImage = (imga: String, event: any) => {
 
 let cartStore: any = ref(useCartStore());
 
-if (process.client) {
-  cartStore.value = useCartStore();
-}
+cartStore.value = useCartStore();
 
 const getRandomItem = () => {
   const exampleItem = {
@@ -89,7 +87,7 @@ const generateItem = () => {
 };
 
 const addToCart = () => {
-  if (process.client) cartStore.value.addToCart(generateItem());
+  cartStore.value.addToCart(generateItem());
 };
 </script>
 

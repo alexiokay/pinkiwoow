@@ -16,9 +16,7 @@ import { useCartStore } from "../../stores/Cart";
 
 let cartStore: any = ref(useCartStore());
 
-if (process.client) {
-  cartStore.value = useCartStore();
-}
+cartStore.value = useCartStore();
 </script>
 
 <style lang="css">

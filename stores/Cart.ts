@@ -56,6 +56,7 @@ type StrawStore = {
 export const useCartStore = defineStore("cart", {
   state: () => {
     return {
+      initialized: useStorage("initialized", false),
       // all these properties will have their type inferred automatically
       cart: useStorage("cart", [
         {
@@ -89,6 +90,11 @@ export const useCartStore = defineStore("cart", {
     },
   },
   actions: {
+    initialize() {
+      // this is called when the store is initialized
+      this.initialized = true;
+    },
+
     addToCart(item: CartItem) {
       const cartItem = this.cart.find(
         (cartItem) => cartItem.title === item.title
