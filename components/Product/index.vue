@@ -3,7 +3,7 @@ div.collections-panel(class="flex relative  h-full flex-row w-5/6 items-start ju
     div(class="sticky flex mt-6 w-[57%] flex-col h-[42rem]")
         div( class="flex h-[20rem] md:h-[35rem]  relative aspect-square flex-col items-center justify-center bg-[#E4E5E9]  shadow-lg overflow-hidden  ") <!--bg-[#9DD9CF] -->
         
-            nuxt-img(src="/images/your-design.webp" format="webp"  class="w-full h-full object-contain ")
+            nuxt-img(src="/images/your-design.webp"  class="w-full h-full object-contain ")
             div(class=" group  smooth-bg absolute text-black flex flex-col justify-around py-5 items-center w-3/4 bottom-10 rounded-xl h-2/5 bg-[rgba(255,255,255,0.7)] ")
                 p(class="text-4xl font-robotolight") Get your own design
                 p(class="text-xl mb-2") Express yourself
