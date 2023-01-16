@@ -7,7 +7,7 @@ export const useGeolocationX = async () => {
   const options = {
     method: "GET",
     headers: {
-      Host: "localhost",
+      Host: "${process.env.HOST }}",
       Authorization: `${config.API_TOKEN}`,
     },
   };
