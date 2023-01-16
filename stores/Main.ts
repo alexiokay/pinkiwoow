@@ -5,7 +5,6 @@ import piniaPersist from "pinia-plugin-persist";
 import uniqid from "uniqid";
 import { useStorage } from "@vueuse/core";
 import type { Currency } from "@/types/Currency";
-import { U } from "@/dist/_nuxt/entry.59017b9d";
 const pinia = createPinia();
 pinia.use(piniaPersist);
 // @ts-ignore: Unreachable code error
