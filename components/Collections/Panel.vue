@@ -4,7 +4,7 @@ div.collections-panel(class="flex relative  h-full flex-row w-full gap-x-8 px-16
         CollectionsItem(title="Ganja Mug" :bestseller="true" :price="200" :rated="8" image="images/products/mugs/ganja-left.png" image2="images/products/mugs/ganja-right.png" stripePriceId="200")
         CollectionsItem(title="Ben 10" :price="200" :rated="5" image="images/products/mugs/ben-10-left.png" image2="images/products/mugs/ben-10-right.png" stripePriceId="200")
     div( class="sticky flex mt-6 w-1/2 h-[35rem] aspect-square flex-col items-center justify-center bg-[#E4E5E9]  shadow-lg rounded-xl overflow-hidden  ") <!--bg-[#9DD9CF] -->
-        nuxt-img(src="/images/your-design.webp" format="webp"  class="w-full h-full object-contain ")
+        nuxt-img(src="/images/your-design.webp"  class="w-full h-full object-contain ")
         .collections-panel(class=" group  smooth-bg absolute text-black flex flex-col justify-around py-5 items-center w-3/4 bottom-10 rounded-xl h-2/5 bg-[rgba(255,255,255,0.7)] ")
           p(class="text-4xl font-robotolight") Get your own design
           p(class="text-xl mb-2") Express yourself
