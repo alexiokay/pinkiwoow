@@ -86,14 +86,38 @@ const setLangByGeolocation = () => {
 };
 
 if (process.client) setLangByGeolocation();
-
 const options = {
-  method: "GET",
+  method: "POST",
   headers: {
-    Host: "localhost",
+    Host: `${config.HOST}`,
     Authorization: `${config.API_TOKEN}`,
+    Accept: "application/json",
+    "Content-Type": "application/json",
   },
+  body: JSON.stringify({
+    ip: "10.10.10.10",
+  }),
 };
+if (process.client) {
+  const response = await fetch(
+    `${config.API_URL}api/v1/get_geolocation`,
+    options
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
+  try {
+    console.log("geolocation: ");
+    console.log(response);
+    store.setCurrentCurrency(response.currency);
+    console.log(store.getCurrency);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 let products: Ref<any> = ref();
 products.value = await getProducts();
 
