@@ -62,6 +62,15 @@ store.value = useMainStore();
 store.value.initialize();
 cartStore.initialize();
 
+const checkUserIp = async () => {
+  const response = await fetch("https://api.ipify.org?format=json");
+  const data = await response.json();
+  console.log(data.ip);
+  return data.ip;
+};
+
+checkUserIp();
+
 const config = useRuntimeConfig();
 const localeSetting = useState<string>("locale.setting");
 
