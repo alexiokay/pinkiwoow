@@ -7,7 +7,7 @@ export const useGeolocation2 = async () => {
   const options = {
     method: "GET",
     headers: {
-      Host: `ef72-77-173-234-232.eu.ngrok.io`,
+      Host: `pinkiwoow-backend.onrender.com`,
       Authorization: `${config.API_TOKEN}`,
       Accept: "application/json",
       "Content-Type": "application/json",
