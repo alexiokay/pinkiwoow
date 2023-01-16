@@ -7,7 +7,7 @@ export const useGeolocation2 = async (ip: string) => {
   const options = {
     method: "POST",
     headers: {
-      Host: `${config.HOST}`,
+      Host: `ef72-77-173-234-232.eu.ngrok.io`,
       Authorization: `${config.API_TOKEN}`,
       Accept: "application/json",
       "Content-Type": "application/json",
