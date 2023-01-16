@@ -20,7 +20,7 @@ export const useGeolocation2 = async (ip: string) => {
   console.log(options);
 
   const response = await useFetch(
-    `${config.API_URL}api/v1/get_geolocation`,
+    `ef72-77-173-234-232.eu.ngrok.io/api/v1/get_geolocation`,
     options
   ).then((res) => {
     const data: any = res.data.value;
