@@ -59,7 +59,7 @@ let cartStore = useCartStore();
 let store: any = ref();
 
 store.value = useMainStore();
-store.value.initialize();
+store.value.initialize(); //
 cartStore.initialize();
 
 const config = useRuntimeConfig();
