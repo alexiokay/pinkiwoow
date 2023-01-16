@@ -59,7 +59,7 @@ let cartStore = useCartStore();
 let store: any = ref();
 
 //x-nf-client-connection-ip
-
+//
 store.value = useMainStore();
 store.value.initialize(); //
 cartStore.initialize();
