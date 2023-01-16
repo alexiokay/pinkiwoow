@@ -69,7 +69,7 @@ const localeSetting = useState<string>("locale.setting");
 
 let response: Ref<any> = ref();
 const user_ip = await useCheckIp();
-response.value = await useGeolocation2(user_ip);
+response.value = await useGeolocation2();
 
 const setLangByGeolocation = () => {
   if (store.value.isLocaleSet) return;
@@ -125,19 +125,7 @@ type Advantage = {
   image: string;
 };
 
-onMounted(async () => {
-  if (process.client) {
-    await useFetch("https://api.ipify.org?format=json").then((res) => {
-      const data: any = res.data.value;
-      const error = res.error.value;
-      if (error) {
-        console.log(error);
-      } else {
-        console.log(data.ip);
-        return data.ip;
-      }
-    });
-  }
+onMounted(() => {
   setTimeout(async () => {
     const CollectionsElements = document.querySelectorAll(
       ".collections-panel"

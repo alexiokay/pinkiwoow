@@ -1,20 +1,17 @@
 import { useMainStore } from "@/stores/Main";
 
-export const useGeolocation2 = async (ip: string) => {
+export const useGeolocation2 = async () => {
   const store = useMainStore();
   const config = useRuntimeConfig();
 
   const options = {
-    method: "POST",
+    method: "GET",
     headers: {
       Host: `ef72-77-173-234-232.eu.ngrok.io`,
       Authorization: `${config.API_TOKEN}`,
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      ip: ip,
-    }),
   };
 
   console.log(options);
