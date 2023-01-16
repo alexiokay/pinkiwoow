@@ -7,10 +7,9 @@ export const useGeolocation2 = async (ip: string) => {
   const options = {
     method: "POST",
     headers: {
-      Host: `ef72-77-173-234-232.eu.ngrok.io`,
+      Host: `${config.HOST}`,
       Authorization: `${config.API_TOKEN}`,
       Accept: "application/json",
-      "ngrok-skip-browser-warning": "skip",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
@@ -21,7 +20,7 @@ export const useGeolocation2 = async (ip: string) => {
   console.log(options);
 
   const response = await useFetch(
-    `https://ef72-77-173-234-232.eu.ngrok.io/api/v1/get_geolocation`,
+    `${config.API_URL}api/v1/get_geolocation`,
     options
   ).then((res) => {
     const data: any = res.data.value;
