@@ -7,7 +7,8 @@ div(class="relative h-auto overflow-hidden ")
               img.swiper-image(:src="slide.image?.url" :alt="slide.image?.alt" class="swiper-lazy overflow-hidden rounded-lg object-contain w-full h-full")
               .swiper-lazy-preloader
             p(class=" text-lg font-robotolight font-bold text-black mt-3") {{slide.title  }}
-            p {{slide.price }} {{ store.getCurrency }}
+            p(v-if="store.currency === 'EUR'") {{slide.price }} {{ store.getCurrency }}
+            p(v-if="store.currency === 'PLN'") {{slide.price_pln }} {{ store.getCurrency }}
       .swiper-pagination(class=" absolute left-0 right-0 bottom-[-58rem] ml-auto mr-auto")
 </template>
 

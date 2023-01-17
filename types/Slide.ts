@@ -13,4 +13,5 @@ export type SlideType = {
   image2: Image;
   image3: Image;
   price?: number;
+  price_pln?: number;
 };

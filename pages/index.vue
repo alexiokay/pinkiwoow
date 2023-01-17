@@ -68,24 +68,6 @@ const config = useRuntimeConfig();
 const localeSetting = useState<string>("locale.setting");
 
 let response: Ref<any> = ref();
-const user_ip = await useCheckIp();
-response.value = await useGeolocation2();
-
-const setLangByGeolocation = () => {
-  if (store.value.isLocaleSet) return;
-  else {
-    for (const locale in availableLocales) {
-      if (locale === response.value.country.toLowerCase()) {
-        localeSetting.value = locale;
-        store.value.setLocaleSet();
-      } else {
-        localeSetting.value = "en";
-      }
-    }
-  }
-};
-
-if (process.client) setLangByGeolocation();
 
 let products: Ref<any> = ref();
 products.value = await getProducts();

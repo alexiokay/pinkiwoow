@@ -19,6 +19,7 @@ div(class="flex flex-col w-full h-auto")
             input(@change="selectItem(item.id) " type="checkbox" class="w-4 h-4")
         div(class="flex flex-col w-[15%] h-auto")
             p {{item.price}} zł
+            
         div(class="flex flex-row  justify-center items-start w-aut   h-auto gap-x-2")
             input(type="number" class="w-[3rem] h-[2rem] border-[1px] focus:drop-shadow-lg text-center" :value="item.quantity" min="1" @change="item.quantity = $event.target.value")
             div(@click="cartStore.increaseItemQuantity(item.id)" @mousedown="increaseQuantity(item.id)" @mouseup="stopHolding()"  @mouseleave="stopHolding()" class="w-[2rem] h-[2rem] bg-[#434447] select-none hover:cursor-pointer flex flex-col justify-center items-center text-2xl text-white")

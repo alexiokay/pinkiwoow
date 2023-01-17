@@ -14,7 +14,7 @@ export const useMainStore = defineStore("Main", {
       // all these properties will have their type inferred automatically
       initialized: useStorage("initialized", false),
       isMobileNavbarOpen: useStorage("isMobileNavbarOpen", false),
-      currency: useStorage("currency", "USD" as Currency),
+      currency: useStorage("currency", "EUR" as Currency),
       isLocaleSet: useStorage("isLocaleSet", false),
     };
   },
@@ -40,8 +40,9 @@ export const useMainStore = defineStore("Main", {
     showMobileNavbar() {
       this.isMobileNavbarOpen = true;
     },
-    setCurrentCurrency(currency: Currency) {
-      this.currency = currency;
+    setCurrentCurrency(iso: string) {
+      if (iso == "pl") this.currency = "PLN";
+      else this.currency = "EUR";
     },
     setLocaleSet() {
       this.isLocaleSet = true;

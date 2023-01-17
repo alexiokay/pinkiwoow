@@ -75,6 +75,7 @@ const generateItem = () => {
     id: uniqid(),
     title: props.title,
     price: props.price,
+    price_pln: props.price_pln,
     quantity: 1,
     image: props.image,
     stripePriceId: props.stripePriceId,
@@ -93,6 +94,10 @@ const props = defineProps({
     required: true,
   },
   price: {
+    type: Number,
+    required: true,
+  },
+  price_pln: {
     type: Number,
     required: true,
   },

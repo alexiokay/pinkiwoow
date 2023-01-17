@@ -12,6 +12,7 @@ export type CartItem = {
   id: any;
   title: string;
   price: number;
+  price_pln: number;
   quantity: number;
   image: string;
   stripePriceId: string;
@@ -63,6 +64,7 @@ export const useCartStore = defineStore("cart", {
           id: uniqid(),
           title: "Koszulka",
           price: 100,
+          price_pln: 100,
           quantity: 1,
           image: "https://picsum.photos/200",
         },
@@ -70,6 +72,7 @@ export const useCartStore = defineStore("cart", {
           id: uniqid(),
           title: "Koszulka",
           price: 100,
+          price_pln: 100,
           quantity: 1,
           image: "https://picsum.photos/200",
         },
