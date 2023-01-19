@@ -15,7 +15,9 @@ import { useProductsStore } from "@/stores/Products";
 import { availableLocales } from "@/utils/lang";
 import type { ProductType } from "@/types/Product";
 import { ref } from "vue";
+import { geoFindMe } from "./functions/functions";
 import type { Ref } from "vue";
+import { useGeolocation } from "@vueuse/core";
 const localeSetting = useState<string>("locale.setting");
 AppSetup();
 const locale = useState<string>("locale.setting");
@@ -30,6 +32,7 @@ console.log(productsStore.getProducts);
 productsStore.setProducts(products);
 
 console.log(productsStore.getMousePads); //
+const config = useRuntimeConfig();
 
 const mousePads = ref(productsStore.getMousePads);
 const mugs = ref(productsStore.getMugs);
@@ -37,6 +40,61 @@ const mugs = ref(productsStore.getMugs);
 console.log(mugs.value);
 
 console.log(products);
+fetch(`${config.API_URL}api/v1/get_geolocation`, {
+  method: "POST",
+  headers: {
+    Host: `${config.HOST}`,
+    Authorization: `${config.API_TOKEN}`,
+    "Content-Type": "text/plain",
+  },
+  body: JSON.stringify({
+    latitude: "51.3831461",
+    longitude: "6.1921298",
+  }),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  });
+// ----------------------------
+
+const geoFindMe = () => {
+  let latitude: number = 0;
+  let longitude: number = 0;
+  const successCallback = (position: any) => {
+    console.log(position);
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+    fetch(`${config.API_URL}api/v1/get_geolocation`, {
+      method: "POST",
+      headers: {
+        Host: `${config.HOST}`,
+        Authorization: `${config.API_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        latitude: latitude,
+        longitude: longitude,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
+  const errorCallback = (error: any) => {
+    console.log(error);
+  };
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  }
+};
+
+onMounted(() => {
+  geoFindMe();
+});
 </script>
 
 <style lang="sass">

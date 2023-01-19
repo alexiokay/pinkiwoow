@@ -1,23 +1,22 @@
-import { useMainStore } from "@/stores/Main";
-
-export const useGeolocation2 = async () => {
-  const store = useMainStore();
+export const useGeolocation2 = async (latitude: number, longitude: number) => {
   const config = useRuntimeConfig();
 
   const options = {
-    method: "GET",
+    method: "POST",
     headers: {
-      Host: `pinkiwoow-backend.onrender.com`,
+      Host: `${config.HOST}`,
       Authorization: `${config.API_TOKEN}`,
-      Accept: "application/json",
-      "Content-Type": "application/json",
     },
+    body: JSON.stringify({
+      latitude: latitude,
+      longitude: longitude,
+    }),
   };
 
   console.log(options);
 
   const response = await useFetch(
-    `${config.API_URL}api/v1/get_geolocation`,
+    `${config.API_URL}api/v1/get_geolocation/`,
     options
   ).then((res) => {
     const data: any = res.data.value;
@@ -29,10 +28,8 @@ export const useGeolocation2 = async () => {
     }
   });
   try {
-    console.log("geolocation: ");
+    console.log("user geo data: ");
     console.log(response);
-    store.setCurrency(response.currency);
-    console.log(store.getCurrency);
   } catch (error) {
     console.log(error);
   }
