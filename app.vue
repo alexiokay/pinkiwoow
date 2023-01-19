@@ -13,7 +13,7 @@ import { useMainStore } from "@/stores/Main";
 import { useCartStore } from "@/stores/Cart";
 import { useProductsStore } from "@/stores/Products";
 import { availableLocales } from "@/utils/lang";
-
+import type { ProductType } from "@/types/Product";
 import { ref } from "vue";
 import type { Ref } from "vue";
 const localeSetting = useState<string>("locale.setting");
@@ -22,21 +22,23 @@ const locale = useState<string>("locale.setting");
 const app = useAppConfig();
 const MainStore = useMainStore();
 const productsStore = useProductsStore();
-let products = null;
+let products: Array<ProductType> | null = null;
 products = await getProducts();
 // set products in store
 MainStore.setCurrency(localeSetting.value);
-
+console.log(productsStore.getProducts);
 productsStore.setProducts(products);
-if (productsStore.getProducts.length > 0) {
+
+onMounted(() => {
   console.log(productsStore.getMousePads);
 
   const mousePads = ref(productsStore.getMousePads);
   const mugs = ref(productsStore.getMugs);
 
   console.log(mugs.value);
-}
-console.log(products.value);
+
+  console.log(products);
+});
 </script>
 
 <style lang="sass">

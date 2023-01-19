@@ -31,7 +31,7 @@ export const useProductsStore = defineStore("Products", {
     },
     getMousePads(state) {
       return state.products.filter((product: any) => {
-        if (product.category) return product.category == "mousepad";
+        if (product.category) return product.category.name == "mousepad";
       });
     },
     getRandomProducts(state) {
