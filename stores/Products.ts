@@ -17,7 +17,7 @@ type Mug = ProductType & {
 export const useProductsStore = defineStore("Products", {
   state: () => {
     return {
-      products: useStorage("Products", [] as ProductType[]),
+      products: useStorage("Products", [] as Array<any>),
     };
   },
   getters: {
@@ -30,9 +30,10 @@ export const useProductsStore = defineStore("Products", {
       });
     },
     getMousePads(state) {
-      return state.products.filter((product: any) => {
+      const mugs = state.products.filter((product: any) => {
         if (product.category) return product.category.name == "mousepad";
       });
+      return mugs;
     },
     getRandomProducts(state) {
       const mugs = state.products.filter((product: any) => {
