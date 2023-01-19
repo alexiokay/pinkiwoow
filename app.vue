@@ -22,20 +22,21 @@ const locale = useState<string>("locale.setting");
 const app = useAppConfig();
 const MainStore = useMainStore();
 const productsStore = useProductsStore();
-let products: Ref<any> = ref();
-products.value = await getProducts();
+let products = null;
+products = await getProducts();
 // set products in store
-productsStore.setProducts(products.value);
-
 MainStore.setCurrency(localeSetting.value);
-console.log(productsStore.getMousePads);
 
-const mousePads = ref(productsStore.getMousePads);
-const mugs = ref(productsStore.getMugs);
+productsStore.setProducts(products);
+if (productsStore.getProducts.length > 0) {
+  console.log(productsStore.getMousePads);
 
+  const mousePads = ref(productsStore.getMousePads);
+  const mugs = ref(productsStore.getMugs);
+
+  console.log(mugs.value);
+}
 console.log(products.value);
-
-console.log(mugs.value);
 </script>
 
 <style lang="sass">

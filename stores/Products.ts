@@ -21,6 +21,9 @@ export const useProductsStore = defineStore("Products", {
     };
   },
   getters: {
+    getProducts(state) {
+      return state.products;
+    },
     getMugs(state) {
       return state.products.filter((product: any) => {
         if (product.category) return product.category.name == "mug";
