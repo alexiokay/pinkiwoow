@@ -28,6 +28,7 @@ products.value = await getProducts();
 productsStore.setProducts(products.value);
 
 MainStore.setCurrency(localeSetting.value);
+console.log(productsStore.getMousePads);
 
 const mousePads = ref(productsStore.getMousePads);
 const mugs = ref(productsStore.getMugs);
