@@ -2,7 +2,7 @@ import "pinia";
 
 declare module "pinia" {
   export interface PiniaCustomProperties {
-    setCurrentCurrency: (currency) => void;
+    setCurrency: (currency) => void;
     getCurrency: () => void;
     initialize: () => void;
   }

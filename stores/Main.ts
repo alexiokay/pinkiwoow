@@ -1,11 +1,11 @@
 import { defineStore } from "pinia";
 import Cookies from "js-cookie";
 import { createPinia } from "pinia";
-import piniaPersist from "pinia-plugin-persist";
 import uniqid from "uniqid";
 import { useStorage } from "@vueuse/core";
 import type { Currency } from "@/types/Currency";
 const pinia = createPinia();
+import piniaPersist from "pinia-plugin-persist";
 pinia.use(piniaPersist);
 // @ts-ignore: Unreachable code error
 export const useMainStore = defineStore("Main", {
@@ -40,7 +40,7 @@ export const useMainStore = defineStore("Main", {
     showMobileNavbar() {
       this.isMobileNavbarOpen = true;
     },
-    setCurrentCurrency(iso: string) {
+    setCurrency(iso: string) {
       if (iso == "pl") this.currency = "PLN";
       else this.currency = "EUR";
     },

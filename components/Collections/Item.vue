@@ -58,18 +58,6 @@ let cartStore: any = ref(useCartStore());
 
 cartStore.value = useCartStore();
 
-const getRandomItem = () => {
-  const exampleItem = {
-    id: uniqid(),
-    title: "Koszulka",
-    price: 100,
-    quantity: 1,
-    image: "https://picsum.photos/200",
-  };
-
-  return exampleItem;
-};
-
 const generateItem = () => {
   const exampleItem = {
     id: uniqid(),

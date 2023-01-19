@@ -85,6 +85,12 @@ export default defineNuxtConfig({
     ],
   },
 
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => ["per-container"].includes(tag),
+    },
+  },
+
   runtimeConfig: {
     public: {
       stripePrices: {

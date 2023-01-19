@@ -31,7 +31,7 @@ export const useGeolocation2 = async () => {
   try {
     console.log("geolocation: ");
     console.log(response);
-    store.setCurrentCurrency(response.currency);
+    store.setCurrency(response.currency);
     console.log(store.getCurrency);
   } catch (error) {
     console.log(error);

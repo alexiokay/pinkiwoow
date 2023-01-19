@@ -9,9 +9,32 @@
 
 <script lang="ts" setup>
 import { AppSetup } from "./utils/app";
+import { useMainStore } from "@/stores/Main";
+import { useCartStore } from "@/stores/Cart";
+import { useProductsStore } from "@/stores/Products";
+import { availableLocales } from "@/utils/lang";
+
+import { ref } from "vue";
+import type { Ref } from "vue";
+const localeSetting = useState<string>("locale.setting");
 AppSetup();
 const locale = useState<string>("locale.setting");
 const app = useAppConfig();
+const MainStore = useMainStore();
+const productsStore = useProductsStore();
+let products: Ref<any> = ref();
+products.value = await getProducts();
+// set products in store
+productsStore.setProducts(products.value);
+
+MainStore.setCurrency(localeSetting.value);
+
+const mousePads = ref(productsStore.getMousePads);
+const mugs = ref(productsStore.getMugs);
+
+console.log(products.value);
+
+console.log(mugs.value);
 </script>
 
 <style lang="sass">

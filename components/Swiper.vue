@@ -1,4 +1,5 @@
 <template lang="pug">
+
 div(class="relative h-auto overflow-hidden ")
   .swiper-container(class='')
       .swiper-wrapper(class='')
@@ -7,15 +8,16 @@ div(class="relative h-auto overflow-hidden ")
               img.swiper-image(:src="slide.image?.url" :alt="slide.image?.alt" class="swiper-lazy overflow-hidden rounded-lg object-contain w-full h-full")
               .swiper-lazy-preloader
             p(class=" text-lg font-robotolight font-bold text-black mt-3") {{slide.title  }}
-            p(v-if="store.currency === 'EUR'") {{slide.price }} {{ store.getCurrency }}
-            p(v-if="store.currency === 'PLN'") {{slide.price_pln }} {{ store.getCurrency }}
+            p(v-if="store.currency === 'EUR'") {{slide.price_model.price_eur }} {{ store.getCurrency }}
+            p(v-if="store.currency === 'PLN' && slide.price_model.price_pln !== null") {{slide.price_model.price_pln}} {{ store.getCurrency }}
+         
       .swiper-pagination(class=" absolute left-0 right-0 bottom-[-58rem] ml-auto mr-auto")
 </template>
 
 <script setup lang="ts">
 import { Swiper, Lazy, Pagination } from "swiper";
 import type { PropType } from "vue";
-import type { SlideType } from "../types/Slide";
+import type { ProductType } from "../types/Product";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useMainStore } from "@/stores/Main";
@@ -23,7 +25,7 @@ import { useMainStore } from "@/stores/Main";
 const store = ref(useMainStore());
 const props = defineProps({
   slides: {
-    type: Array as PropType<SlideType[]>,
+    type: Array as PropType<ProductType[]>,
     required: true,
   },
 });

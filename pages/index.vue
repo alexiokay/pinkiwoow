@@ -17,7 +17,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  mt-20")
       
     div(class="w-3/4 h-auto flex flex-col ")
       div(class="w-full h-[33rem] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
-        ClientOnly()
+        ClientOnly
           Header(:slides="header") 
           template(#fallback class="w-full h-full flex justify-center items-center")
             <!-- this will be rendered on server side -->
@@ -50,18 +50,20 @@ import { isProxy, toRaw } from "vue";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 import { useMainStore } from "@/stores/Main";
 import { useCartStore } from "@/stores/Cart";
-import { availableLocales } from "@/utils/lang";
+import { useProductsStore } from "@/stores/Products";
 import { useGeolocation } from "@vueuse/core";
 const { t } = useLang();
 const route = useRoute();
 
 let cartStore = useCartStore();
 let store: any = ref();
-
+const productsStore = useProductsStore();
 //x-nf-client-connection-ip
 //
+
 store.value = useMainStore();
 store.value.initialize(); //
+
 cartStore.initialize();
 
 const config = useRuntimeConfig();
@@ -69,31 +71,8 @@ const localeSetting = useState<string>("locale.setting");
 
 let response: Ref<any> = ref();
 
-let products: Ref<any> = ref();
-products.value = await getProducts();
-
-const mugs = computed(() => {
-  return products.value.filter((product: any) => {
-    return product.category.name == "mug";
-  });
-});
-console.log(mugs.value);
-
-const randomProducts = computed(() => {
-  let randomProduct_temp = [...mugs.value, ...mousePads.value].sort(
-    () => Math.random() - 0.5
-  );
-  randomProduct_temp = randomProduct_temp.slice(0, 9);
-
-  console.log(randomProduct_temp);
-  return randomProduct_temp;
-});
-
-const mousePads = computed(() => {
-  return products.value.filter((product: any) => {
-    return product.category == "mousepad";
-  });
-});
+const randomProducts = ref(productsStore.getRandomProducts);
+console.log(randomProducts.value);
 
 definePageMeta({
   pageTransition: {
