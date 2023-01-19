@@ -29,16 +29,14 @@ MainStore.setCurrency(localeSetting.value);
 console.log(productsStore.getProducts);
 productsStore.setProducts(products);
 
-onMounted(() => {
-  console.log(productsStore.getMousePads); //
+console.log(productsStore.getMousePads); //
 
-  const mousePads = ref(productsStore.getMousePads);
-  const mugs = ref(productsStore.getMugs);
+const mousePads = ref(productsStore.getMousePads);
+const mugs = ref(productsStore.getMugs);
 
-  console.log(mugs.value);
+console.log(mugs.value);
 
-  console.log(products);
-});
+console.log(products);
 </script>
 
 <style lang="sass">
