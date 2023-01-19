@@ -30,7 +30,7 @@ console.log(productsStore.getProducts);
 productsStore.setProducts(products);
 
 onMounted(() => {
-  console.log(productsStore.getMousePads);
+  console.log(productsStore.getMousePads); //
 
   const mousePads = ref(productsStore.getMousePads);
   const mugs = ref(productsStore.getMugs);
