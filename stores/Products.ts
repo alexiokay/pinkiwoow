@@ -30,10 +30,10 @@ export const useProductsStore = defineStore("Products", {
       });
     },
     getMousePads(state) {
-      const mugs = state.products.filter((product: any) => {
+      const mousePads = state.products.filter((product: any) => {
         if (product.category) return product.category.name == "mousepad";
       });
-      return mugs;
+      return mousePads;
     },
     getRandomProducts(state) {
       const mugs = state.products.filter((product: any) => {
