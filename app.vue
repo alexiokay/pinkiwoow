@@ -28,18 +28,14 @@ let products: Array<ProductType> | null = null;
 products = await getProducts();
 // set products in store
 MainStore.setCurrency(localeSetting.value);
-console.log(productsStore.getProducts);
+
 productsStore.setProducts(products);
 
-console.log(productsStore.getMousePads); //
 const config = useRuntimeConfig();
 
 const mousePads = ref(productsStore.getMousePads);
 const mugs = ref(productsStore.getMugs);
 
-console.log(mugs.value);
-
-console.log(products);
 fetch(`${config.API_URL}api/v1/get_geolocation`, {
   method: "POST",
   headers: {
@@ -58,42 +54,32 @@ fetch(`${config.API_URL}api/v1/get_geolocation`, {
   });
 // ----------------------------
 
-const geoFindMe = () => {
-  let latitude: number = 0;
-  let longitude: number = 0;
+const headers = useRequestHeaders();
+console.log("headers: ");
+console.log(headers);
+
+const geoFindMe = async () => {
   const successCallback = (position: any) => {
     console.log(position);
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
-    fetch(`${config.API_URL}api/v1/get_geolocation`, {
-      method: "POST",
-      headers: {
-        Host: `${config.HOST}`,
-        Authorization: `${config.API_TOKEN}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        latitude: latitude,
-        longitude: longitude,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    useState("latitude", latitude);
+    useState("longitude", longitude);
   };
 
   const errorCallback = (error: any) => {
     console.log(error);
   };
 
-  if (navigator.geolocation) {
+  if (navigator) {
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
   }
 };
-
-onMounted(() => {
-  geoFindMe();
+geoFindMe();
+onMounted(async () => {
+  await geoFindMe();
+  console.log("latitude", useState("latitude").value),
+    console.log("longitude", useState("longitude").value);
 });
 </script>
 
