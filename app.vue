@@ -45,7 +45,24 @@ const options = {
     "Access-Control-Allow-Origin": "*",
   },
 };
-
+onMounted(async () => {
+  await fetch(`${config.API_URL}api/v1/get_geolocation_ip`, {
+    method: "GET",
+    headers: {
+      Host: `${config.HOST}`,
+      Authorization: `${config.API_TOKEN}`,
+    },
+  })
+    .then((response) => {
+      response.json();
+    })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
 useGeolocationIp();
 </script>
 
