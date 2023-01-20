@@ -45,21 +45,21 @@ const options = {
     "Access-Control-Allow-Origin": "*",
   },
 };
-onMounted(async () => {
-  await fetch(`${config.API_URL}api/v1/get_geolocation_ip`, {
-    method: "GET",
-    headers: {
-      Host: `localhost`,
-    },
+
+await fetch(`${config.API_URL}api/v1/get_geolocation_ip`, {
+  method: "GET",
+  headers: {
+    Host: `localhost`,
+  },
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log("from client: "), console.log(data);
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("from client: "), console.log(data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
+  .catch((error) => {
+    console.log(error);
+  });
+
 useGeolocationIp();
 </script>
 
