@@ -57,30 +57,6 @@ fetch(`${config.API_URL}api/v1/get_geolocation`, {
 const headers = useRequestHeaders();
 console.log("headers: ");
 console.log(headers);
-
-const geoFindMe = async () => {
-  const successCallback = (position: any) => {
-    console.log(position);
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    useState("latitude", latitude);
-    useState("longitude", longitude);
-  };
-
-  const errorCallback = (error: any) => {
-    console.log(error);
-  };
-
-  if (navigator) {
-    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-  }
-};
-geoFindMe();
-onMounted(async () => {
-  await geoFindMe();
-  console.log("latitude", useState("latitude").value),
-    console.log("longitude", useState("longitude").value);
-});
 </script>
 
 <style lang="sass">
