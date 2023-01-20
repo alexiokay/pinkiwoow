@@ -49,15 +49,12 @@ onMounted(async () => {
   await fetch(`${config.API_URL}api/v1/get_geolocation_ip`, {
     method: "GET",
     headers: {
-      Host: `${config.HOST}`,
-      Authorization: `${config.API_TOKEN}`,
+      Host: `localhost`,
     },
   })
-    .then((response) => {
-      response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      console.log("from client: "), console.log(data);
     })
     .catch((error) => {
       console.log(error);
