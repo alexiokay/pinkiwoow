@@ -18,6 +18,7 @@ import { ref } from "vue";
 import { geoFindMe } from "./functions/functions";
 import type { Ref } from "vue";
 import { useGeolocation } from "@vueuse/core";
+import { on } from "events";
 const localeSetting = useState<string>("locale.setting");
 AppSetup();
 const locale = useState<string>("locale.setting");
@@ -57,6 +58,12 @@ fetch(`${config.API_URL}api/v1/get_geolocation`, {
 const headers = useRequestHeaders();
 console.log("headers: ");
 console.log(headers);
+
+onMounted(() => {
+  console.log("cookie: ");
+  let cookie: any = useCookie("headers").value;
+  console.log(cookie);
+});
 </script>
 
 <style lang="sass">
