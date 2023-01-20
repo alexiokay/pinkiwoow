@@ -6,6 +6,6 @@ export default defineEventHandler((event) => {
   const headers = event.node.req.headers;
   setCookie(event, "headers", JSON.stringify(headers));
 
-  console.log("state headers:");
+  console.log("state headers:"); //
   console.log(getCookie(event, "headers"));
 });
