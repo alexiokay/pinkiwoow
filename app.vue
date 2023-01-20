@@ -45,7 +45,7 @@ const options = {
     "Access-Control-Allow-Origin": "*",
   },
 };
-
+// get geolocation to set default currency  and language
 await fetch(`${config.API_URL}api/v1/get_geolocation_ip`, {
   method: "GET",
   headers: {
@@ -59,8 +59,6 @@ await fetch(`${config.API_URL}api/v1/get_geolocation_ip`, {
   .catch((error) => {
     console.log(error);
   });
-
-useGeolocationIp();
 </script>
 
 <style lang="sass">
