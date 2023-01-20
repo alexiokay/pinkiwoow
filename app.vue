@@ -18,7 +18,6 @@ import { ref } from "vue";
 import { geoFindMe } from "./functions/functions";
 import type { Ref } from "vue";
 import { useGeolocation } from "@vueuse/core";
-import { on } from "events";
 const localeSetting = useState<string>("locale.setting");
 AppSetup();
 const locale = useState<string>("locale.setting");
@@ -37,33 +36,27 @@ const config = useRuntimeConfig();
 const mousePads = ref(productsStore.getMousePads);
 const mugs = ref(productsStore.getMugs);
 
-fetch(`${config.API_URL}api/v1/get_geolocation`, {
-  method: "POST",
+const options = {
+  method: "GET",
   headers: {
-    Host: `${config.HOST}`,
+    Host: `pinkiwoow-backend.onrender.com`,
     Authorization: `${config.API_TOKEN}`,
-    "Content-Type": "text/plain",
   },
-  body: JSON.stringify({
-    latitude: "51.3831461",
-    longitude: "6.1921298",
-  }),
-})
-  .then((response) => response.json())
+};
+
+fetch(`${config.API_URL}api/v1/get_geolocation_ip`, options)
+  .then((res) => {
+    res.json();
+    console.log("headers2: ");
+    console.log(res.headers);
+  })
   .then((data) => {
-    console.log(data);
+    console.log("data: " + data);
   });
-// ----------------------------
 
 const headers = useRequestHeaders();
 console.log("headers: ");
 console.log(headers);
-
-onMounted(() => {
-  console.log("cookie: ");
-  let cookie: any = useCookie("headers").value;
-  console.log(cookie);
-});
 </script>
 
 <style lang="sass">
