@@ -18,6 +18,7 @@ import { ref } from "vue";
 import { geoFindMe } from "./functions/functions";
 import type { Ref } from "vue";
 import { useGeolocation } from "@vueuse/core";
+import { on } from "events";
 const localeSetting = useState<string>("locale.setting");
 AppSetup();
 const locale = useState<string>("locale.setting");
@@ -39,24 +40,13 @@ const mugs = ref(productsStore.getMugs);
 const options = {
   method: "GET",
   headers: {
-    Host: `pinkiwoow-backend.onrender.com`,
+    Host: `localhost`,
     Authorization: `${config.API_TOKEN}`,
+    "Access-Control-Allow-Origin": "*",
   },
 };
 
-fetch(`${config.API_URL}api/v1/get_geolocation_ip`, options)
-  .then((res) => {
-    res.json();
-    console.log("headers2: ");
-    console.log(res.headers);
-  })
-  .then((data) => {
-    console.log("data: " + data);
-  });
-
-const headers = useRequestHeaders();
-console.log("headers: ");
-console.log(headers);
+useGeolocationIp();
 </script>
 
 <style lang="sass">

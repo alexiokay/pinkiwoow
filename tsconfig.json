@@ -16,7 +16,9 @@
       "pinia-plugin-persist",
       "pinia",
       "@intlify/nuxt3",
-      "@pinia/nuxt"
+      "@pinia/nuxt",
+      "vitest/globals",
+      "@iconify"
 
     ],
     "paths": {
