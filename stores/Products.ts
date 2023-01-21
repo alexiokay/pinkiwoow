@@ -61,13 +61,13 @@ export const useProductsStore = defineStore("Products", {
       this.products = products;
     },
     setCurrency(iso: string) {
-      if (iso == "pl") this.currency = "PLN";
-      else if (iso == "de") this.currency = "EUR";
-      else if (iso == "gb") this.currency = "GBP";
-      else if (iso == "id") this.currency = "IDR";
-      else if (iso == "ja") this.currency = "JPY";
-      else if (iso == "ko") this.currency = "KRW";
-      else if (iso == "zh") this.currency = "CNY";
+      if (iso == "PL") this.currency = "PLN";
+      else if (iso == "DE") this.currency = "EUR";
+      else if (iso == "GB") this.currency = "GBP";
+      else if (iso == "ID") this.currency = "IDR";
+      else if (iso == "JA") this.currency = "JPY";
+      else if (iso == "KO") this.currency = "KRW";
+      else if (iso == "ZH") this.currency = "CNY";
       else this.currency = "EUR";
       console.log("got iso: " + iso);
       console.log("currency set to: " + this.currency);
