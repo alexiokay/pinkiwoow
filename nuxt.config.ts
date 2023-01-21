@@ -31,6 +31,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    compressPublicAssets: true,
     prerender: {
       crawlLinks: true,
       routes: ["/", "/sitemap.xml", "/portfolio"],
