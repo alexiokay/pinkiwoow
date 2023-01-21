@@ -75,7 +75,7 @@ import MenuIcon from "~icons/material-symbols/menu-rounded";
 import { onMounted } from "vue";
 import { useCartStore } from "../../stores/Cart";
 import { useMainStore } from "../../stores/Main";
-import { useProductsStore } from "../../Stores/Products.ts";
+import { useProductsStore } from "../../Stores/Products";
 
 const productsStore = useProductsStore();
 let store = useMainStore();
