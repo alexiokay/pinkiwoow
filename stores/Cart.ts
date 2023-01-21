@@ -136,6 +136,12 @@ export const useCartStore = defineStore("cart", {
         item.quantity++;
       }
     },
+    decreaseItemQuantity(id: any) {
+      const item = this.cart.find((item) => item.id === id);
+      if (item && item.quantity > 2) {
+        item.quantity--;
+      }
+    },
 
     clearCart() {
       this.cart = [];
