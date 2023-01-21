@@ -4,8 +4,10 @@ import { createPinia } from "pinia";
 import piniaPersist from "pinia-plugin-persist";
 import uniqid from "uniqid";
 import { useStorage } from "@vueuse/core";
+import { useProductsStore } from "@/stores/Products";
 
 const pinia = createPinia();
+const productsStore = useProductsStore();
 pinia.use(piniaPersist);
 
 export type CartItem = {
@@ -84,9 +86,17 @@ export const useCartStore = defineStore("cart", {
       return state.cart;
     },
     getCartTotal(state) {
-      return state.cart.reduce((total, item) => {
-        return total + item.price * item.quantity;
-      }, 0);
+      let response = null;
+      if (productsStore.getCurrency === "PLN") {
+        response = state.cart.reduce((total, item) => {
+          return total + item.price_pln * item.quantity;
+        }, 0);
+      } else {
+        response = state.cart.reduce((total, item) => {
+          return total + item.price * item.quantity;
+        }, 0);
+      }
+      return response;
     },
     getCartLength(state) {
       return state.cart.length;

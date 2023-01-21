@@ -26,7 +26,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
       
       div(class="w-full h-auto flex flex-col p-4")
             p(class="text-[#434447] text-[1.5rem] font-bold") Produkty
-            ClientOnlys
+            ClientOnly
               LazySwiper(:slides="randomProducts") 
   Wheeler(  )
   
