@@ -18,8 +18,7 @@ div(class="flex flex-col w-full h-auto")
         div(class="flex flex-col w-[25%] md:w-[35%]  lg:w-[40%]  h-auto")
             input(@change="selectItem(item.id) " type="checkbox" class="w-4 h-4")
         div(class="flex flex-col w-[15%] h-auto")
-            p {{item.price}} zł
-            
+            p {{item.price}} {{productsStore.getCurrency}}
         div(class="flex flex-row  justify-center items-start w-aut   h-auto gap-x-2")
             input(type="number" class="w-[3rem] h-[2rem] border-[1px] focus:drop-shadow-lg text-center" :value="item.quantity" min="1" @change="item.quantity = $event.target.value")
             div(@click="cartStore.increaseItemQuantity(item.id)" @mousedown="increaseQuantity(item.id)" @mouseup="stopHolding()"  @mouseleave="stopHolding()" class="w-[2rem] h-[2rem] bg-[#434447] select-none hover:cursor-pointer flex flex-col justify-center items-center text-2xl text-white")
@@ -98,10 +97,10 @@ div(class="flex flex-col w-full h-auto")
         div(class="flex flex-col w-full md:w-[30rem] space-y-4 ")
             div.row.w-full.justify-between.items-center
                 p RAZEM
-                p(class="text-xl w-2/5") {{cartStore.getCartTotal}} zł
+                p(class="text-xl w-2/5") {{cartStore.getCartTotal}} {{productsStore.getCurrency}}
             div.row.w-full.justify-between.items-center
                 p(class="text-xl") DO ZAPŁATY
-                p(class="text-xl w-2/5") {{cartStore.getCartTotal}} zł
+                p(class="text-xl w-2/5") {{cartStore.getCartTotal}} {{productsStore.getCurrency}}
             div.row.w-full.justify-between.items-center
                 p Czas realizacji [dni robocze]:
                 p(class="text-xl w-2/5")  1
@@ -115,10 +114,10 @@ div(class="flex flex-col w-full h-auto")
 <script setup lang="ts">
 import { useCartStore } from "../stores/Cart";
 import type { Ref } from "vue";
-
+import { useProductsStore } from "@/stores/Products";
 let cartStore: any = ref(useCartStore());
 let cart = ref(computed(() => useCartStore().getCart));
-
+const productsStore = useProductsStore();
 cartStore.value = useCartStore();
 
 console.log(cart.value);
