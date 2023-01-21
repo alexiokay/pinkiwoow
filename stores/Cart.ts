@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import Cookies from "js-cookie";
 import { createPinia } from "pinia";
 import piniaPersist from "pinia-plugin-persist";
 import uniqid from "uniqid";
@@ -53,6 +52,7 @@ export const useCartStore = defineStore("cart", {
     getCartTotal(state) {
       const productsStore = useProductsStore(pinia);
       let response: any = null;
+
       if (productsStore.getCurrency === "PLN") {
         response = state.cart.reduce((total, item) => {
           return total + item.price_pln * item.quantity;

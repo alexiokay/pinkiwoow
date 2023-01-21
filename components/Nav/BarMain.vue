@@ -21,10 +21,10 @@ div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-f
       <LanguageSwitcher  />
       
       div(v-show="route.name!=='cart'" class='hidden md:flex relative w-[13.3rem] h-[3.1rem] border-[1.2px] mb-2 p-[0.5rem] space-x-2 border-[#47C1BF] items-center justify-center  ')
-        ClientOnly(placeholder="Loading...")
+       
           div(class="w-12 h-12 flex items-center justify-center")
             IconCart(class="w-full h-full text-gray-500")
-            p(class="absolute top-[0.9rem]  text-white") {{cartStore.getCartLength}}
+            p(class="absolute top-[0.9rem]  text-white") {{testCartState.length}}
           
           p ({{cartStore.getCartTotal}}{{ productsStore.getCurrency }})
           IconDown(@click="openCartDropdown" class="text-gray-500 w-5 h-5 hover:cursor-pointer")
@@ -76,6 +76,7 @@ import { useCartStore } from "../../stores/Cart";
 import { useMainStore } from "../../stores/Main";
 import { useProductsStore } from "../../stores/Products";
 
+const testCartState = useCart();
 const productsStore = useProductsStore();
 let store = useMainStore();
 const mobileMenu = computed(() => store.getIsMobileNavbarOpen);
@@ -86,9 +87,9 @@ const router = useRouter();
 const locale = useState<string>("locale.setting");
 const { t } = useLang();
 
-let cartStore: any = ref(useCartStore());
+let cartStore: any = useCartStore();
 
-cartStore.value = useCartStore();
+cartStore = useCartStore();
 store = useMainStore();
 
 const isRouteRestriceted = computed(() => {
