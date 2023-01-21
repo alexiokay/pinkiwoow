@@ -20,41 +20,6 @@ export type CartItem = {
   stripePriceId: string;
 };
 
-type StrawTote = {
-  id: 0;
-  title: "Straw Tote";
-  price: 110;
-  quantity: number;
-  image: "/images/products/strawtote2.png";
-  stripePriceId: string;
-};
-
-type StrawBox = {
-  id: 0;
-  title: "Straw Tote";
-  price: 0.5;
-  quantity: number;
-  image: "/images/products/strawbox.png";
-  stripePriceId: string;
-};
-
-type StrawShop = {
-  id: 0;
-  title: "StrawShop";
-  price: 250;
-  quantity: number;
-  image: "/images/products/strawShop.png";
-  stripePriceId: string;
-};
-
-type StrawStore = {
-  id: 0;
-  title: "Straw Store";
-  price: 300;
-  quantity: number;
-  image: "/images/products/strawWarehouse.png";
-  stripePriceId: string;
-};
 // @ts-ignore: Unreachable code error
 export const useCartStore = defineStore("cart", {
   state: () => {

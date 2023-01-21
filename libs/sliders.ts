@@ -52,15 +52,15 @@ export const mugs = [
   {
     name: "Ben 10 - Mug",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-    img: "images/products/mugs/ben-10-left.png",
-    img2: "images/products/mugs/ben-10-right.png",
+    img: "images/products/mugs/ben-10-left.webp",
+    img2: "images/products/mugs/ben-10-right.webp",
     price: 20,
   },
   {
     name: "Ganja - Mug",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-    img: "images/products/mugs/ganja-left.png",
-    img2: "images/products/mugs/ganja-right.png",
+    img: "images/products/mugs/ganja-left.webp",
+    img2: "images/products/mugs/ganja-right.webp",
     price: 20,
   },
 ];

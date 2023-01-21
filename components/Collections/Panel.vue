@@ -1,8 +1,8 @@
 <template lang="pug">
 div.collections-panel(class=" relative flex flex-col sm:flex-row  h-full  w-full gap-x-8 px-8 lg:px-16 mt-12 full-width ")
     div(class="flex flex-col w-full sm:w-1/2 h-full items-center justify-center order-1 sm:order-0  py-8 shadow-lg rounded-xl border-[#EC92BA] border-2") <!-- bg-[#EC92BA] -->
-        CollectionsItem(title="Ganja Mug" :bestseller="true" :price="200" :price_pln="200" :rated="8" image="images/products/mugs/ganja-left.png" image2="images/products/mugs/ganja-right.png" stripePriceId="200")
-        CollectionsItem(title="Ben 10" :price="200" :price_pln="200" :rated="5" image="images/products/mugs/ben-10-left.png" image2="images/products/mugs/ben-10-right.png" stripePriceId="200")
+        CollectionsItem(title="Ganja Mug" :bestseller="true" :price="200" :price_pln="200" :rated="8" image="images/products/mugs/ganja-left.webp" image2="images/products/mugs/ganja-right.webp" stripePriceId="200")
+        CollectionsItem(title="Ben 10" :price="200" :price_pln="200" :rated="5" image="images/products/mugs/ben-10-left.webp" image2="images/products/mugs/ben-10-right.webp" stripePriceId="200")
 
     div#sticky( class="sm:sticky relative mb-6 overflow-hidden   flex mt-6 w-full order-0 sm:order-1 sm:w-1/2   md:h-[60vh] aspect-square flex-col items-center justify-center bg-[#E4E5E9]  shadow-lg rounded-xl   ") <!--bg-[#9DD9CF] -->
         img(src="/images/your-design.webp"  class="w-full h-full object-contain ")
