@@ -38,17 +38,11 @@ export default defineNuxtConfig({
       routes: ["/", "/sitemap.xml", "/portfolio"],
     },
   },
-  devServer: {
-    https: {
-      key: "/etc/letsencrypt/live/pinkiwoow.com/privkey.pem",
-      cert: "/etc/letsencrypt/live/pinkiwoow.com/fullchain.pem",
-    },
-  },
 
   routeRules: {
     // Static page generated on-demand, revalidates in background (ISG)
 
-    "/**": { ssr: true },
+    "/**": { swr: true },
     "/cart": { ssr: false },
     // Static page generated on-demand once (SSG - or at least mighty close) { static: true },
 

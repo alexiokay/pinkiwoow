@@ -19,6 +19,7 @@ const app = useAppConfig();
 const productsStore = useProductsStore();
 let products: Array<ProductType> | null = null;
 products = await getProducts();
+const p = products[0];
 // set products in store
 productsStore.setCurrency(localeSetting.value);
 
