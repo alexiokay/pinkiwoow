@@ -45,7 +45,7 @@ const rate = (rating: number) => {
 
       i++;
     });
-    console.log(rated);
+    //console.log(rated);
   }
   isFirstRate = false;
 };

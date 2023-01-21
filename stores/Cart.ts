@@ -7,7 +7,7 @@ import { useStorage } from "@vueuse/core";
 import { useProductsStore } from "@/stores/Products";
 
 const pinia = createPinia();
-const productsStore = useProductsStore();
+
 pinia.use(piniaPersist);
 
 export type CartItem = {
@@ -86,7 +86,8 @@ export const useCartStore = defineStore("cart", {
       return state.cart;
     },
     getCartTotal(state) {
-      let response = null;
+      const productsStore = useProductsStore(pinia);
+      let response: any = null;
       if (productsStore.getCurrency === "PLN") {
         response = state.cart.reduce((total, item) => {
           return total + item.price_pln * item.quantity;
