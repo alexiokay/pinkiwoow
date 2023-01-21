@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class=" w-full h-full  flex flex-col px-3  xl:p-8  mt-20")
+div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
   <!-- HEADER -->
   
 
@@ -26,7 +26,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  mt-20")
       
       div(class="w-full h-auto flex flex-col p-4")
             p(class="text-[#434447] text-[1.5rem] font-bold") Produkty
-            ClientOnly
+            ClientOnlys
               LazySwiper(:slides="randomProducts") 
   Wheeler(  )
   
@@ -36,7 +36,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  mt-20")
   Video(class="mt-8 h-[45rem] w-full")
   Testimonials
 
- 
+  StickyPanel
  
 </template>
 

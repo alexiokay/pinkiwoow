@@ -2,12 +2,12 @@ script
 <template lang="pug">
 div(id="default" style="display: flex, flex-direction: column  " class="h-auto flex flex-col justify-center items-center  ")
     div#overlay(class="absolute overlaying top-0 left-0 w-full h-screen bg-black opacity-40 z-10 hidden-overlay")
-    div(class="flex flex-col w-full h-auto  fixed top-0 z-50  ")
+    div(class="flex flex-col w-full h-auto  sticky top-0 z-50  ")
       NavInfoBar(class="" title="🥳 Free shipping on orders over $50 🥳")
       NavBarMain
     
    
-    div#footer-wrapper(class=" w-full h-full mt-20 flex flex-col items-center justify-between lg:justify-center mx-0 bg-white") 
+    div#footer-wrapper(class=" w-full h-full flex flex-col items-center justify-between lg:justify-center mx-0 bg-white") 
         div(class="flex flex-col justify-between items-center w-full h-full   ")
             <slot class="" />
             Footer(class="mt-12")
