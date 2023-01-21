@@ -26,7 +26,7 @@ div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-f
             IconCart(class="w-full h-full text-gray-500")
             p(class="absolute top-[0.9rem]  text-white") {{cartStore.getCartLength}}
           
-          p ({{cartStore.getCartTotal}}{{ store.getCurrency }})
+          p ({{cartStore.getCartTotal}}{{ productsStore.getCurrency }})
           IconDown(@click="openCartDropdown" class="text-gray-500 w-5 h-5 hover:cursor-pointer")
           NuxtLink(to="/cart" class="h-full w-[8rem] ")
             button( class='w-full h-full text-center bg-[#DB2878] hover:bg-[#47C1BF] smooth-color text-white')  {{$t('components.navbar.cart').toUpperCase()}} 
@@ -75,7 +75,9 @@ import MenuIcon from "~icons/material-symbols/menu-rounded";
 import { onMounted } from "vue";
 import { useCartStore } from "../../stores/Cart";
 import { useMainStore } from "../../stores/Main";
+import { useProductsStore } from "@/Stores/Products";
 
+const productsStore = useProductsStore();
 let store = useMainStore();
 const mobileMenu = computed(() => store.getIsMobileNavbarOpen);
 const loaded = ref(false);

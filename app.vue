@@ -28,7 +28,7 @@ const productsStore = useProductsStore();
 let products: Array<ProductType> | null = null;
 products = await getProducts();
 // set products in store
-MainStore.setCurrency(localeSetting.value);
+productsStore.setCurrency(localeSetting.value);
 
 productsStore.setProducts(products);
 
@@ -55,6 +55,7 @@ await fetch(`${config.API_URL}api/v1/get_geolocation_ip`, {
   .then((response) => response.json())
   .then((data) => {
     console.log("from client: "), console.log(data);
+    productsStore.setCurrency(data.country);
   })
   .catch((error) => {
     console.log(error);

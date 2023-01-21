@@ -18,6 +18,7 @@ export const useProductsStore = defineStore("Products", {
   state: () => {
     return {
       products: useStorage("Products", [] as Array<any>),
+      currency: useStorage("currency", "EUR" as Currency),
     };
   },
   getters: {
@@ -47,13 +48,33 @@ export const useProductsStore = defineStore("Products", {
       );
       randomProduct_temp = randomProduct_temp.slice(0, 9);
 
-      console.log(randomProduct_temp);
+      //console.log(randomProduct_temp);
       return randomProduct_temp;
+    },
+    getCurrency(state) {
+      return state.currency;
     },
   },
   actions: {
     setProducts(products: ProductType[]) {
       this.products = products;
+    },
+    setCurrency(iso: string) {
+      if (iso == "pl") this.currency = "PLN";
+      else if (iso == "de") this.currency = "EUR";
+      else if (iso == "gb") this.currency = "GBP";
+      else if (iso == "id") this.currency = "IDR";
+      else if (iso == "ja") this.currency = "JPY";
+      else if (iso == "ko") this.currency = "KRW";
+      else if (iso == "zh") this.currency = "CNY";
+      else this.currency = "EUR";
+      console.log("got iso: " + iso);
+      console.log("currency set to: " + this.currency);
+      // set currencyRate for each currency
+
+      this.products.forEach((product: any) => {
+        product.price = product.price * product.currencyRate;
+      });
     },
   },
 

@@ -8,8 +8,8 @@ div(class="relative h-auto overflow-hidden ")
               img.swiper-image(:src="slide.image?.url" :alt="slide.image?.alt" class="swiper-lazy overflow-hidden rounded-lg object-contain w-full h-full")
               .swiper-lazy-preloader
             p(class=" text-lg font-robotolight font-bold text-black mt-3") {{slide.title  }}
-            p(v-if="store.currency === 'EUR'") {{slide.price_model.price_eur }} {{ store.getCurrency }}
-            p(v-if="store.currency === 'PLN' && slide.price_model.price_pln !== null") {{slide.price_model.price_pln}} {{ store.getCurrency }}
+            p(v-if="productsStore.getCurrency === 'EUR'") {{slide.price_model.price_eur }} {{ productsStore.getCurrency }}
+            p(v-if="productsStore.getCurrency === 'PLN' && slide.price_model.price_pln !== null") {{slide.price_model.price_pln}} {{ productsStore.getCurrency }}
          
       .swiper-pagination(class=" absolute left-0 right-0 bottom-[-58rem] ml-auto mr-auto")
 </template>
@@ -20,9 +20,10 @@ import type { PropType } from "vue";
 import type { ProductType } from "../types/Product";
 import "swiper/css";
 import "swiper/css/pagination";
-import { useMainStore } from "@/stores/Main";
 
-const store = ref(useMainStore());
+import { useProductsStore } from "@/stores/Products";
+
+const productsStore = useProductsStore();
 const props = defineProps({
   slides: {
     type: Array as PropType<ProductType[]>,
