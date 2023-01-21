@@ -9,7 +9,7 @@ div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-f
   div#navbar-content1(class="z-50  flex items-center justify-between w-full h-[4.9rem] text-xs md:px-16 ")
     NavSearchBar.h-full(class='w-full') sda
     NuxtLink(class=" w-48 h-[4.9rem] flex justify-center items-center" to="/")
-      img#logo(class=" h-[4.9rem]" src='/images/pinkiwoowLogo.png' alt="logo")
+      img#logo(class=" h-[4.9rem]" src='/images/pinkiwoowLogo.webp' alt="logo")
       p(class="text-3xl text-pink-600 font-itim") PinkiWoow
     div#mobile-nav(v-if="mobileMenu && loaded" class="flex md:hidden items-center space-x-2 w-full h-full")
       MenuIcon#mobile-menu-button(@click="showMobileNavbar" class=" hover:cursor-pointer w-9 h-9 ")
@@ -72,7 +72,6 @@ import IconCart from "~icons/ph/shopping-cart-simple-fill";
 import IconDown from "~icons/material-symbols/expand-circle-down-rounded";
 import EmailIcon from "~icons/mi/email";
 import MenuIcon from "~icons/material-symbols/menu-rounded";
-import { onMounted } from "vue";
 import { useCartStore } from "../../stores/Cart";
 import { useMainStore } from "../../stores/Main";
 import { useProductsStore } from "../../stores/Products";

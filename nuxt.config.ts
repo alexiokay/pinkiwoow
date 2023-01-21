@@ -65,11 +65,11 @@ export default defineNuxtConfig({
         {
           hid: `description`,
           name: "description",
-          content: "PinkiWoow - Upgrade your strawberry business with us",
+          content: "PinkiWoow - Customized mugs, t-shirts, and more!",
         },
       ],
       link: [
-        { rel: "icon", type: "image/x-icon", href: "images/pinkiwoow.ico" },
+        { rel: "icon", type: "image/x-icon", href: "images/pinkiwoowLogo.ico" },
       ],
     },
   },

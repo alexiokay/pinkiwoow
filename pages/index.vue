@@ -35,8 +35,6 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
   
   Video(class="mt-8 h-[45rem] w-full")
   Testimonials
-
-  StickyPanel
  
 </template>
 
@@ -46,12 +44,10 @@ import { header } from "../libs/sliders";
 import "vue3-carousel/dist/carousel.css";
 import { onMounted } from "vue";
 import type { Ref } from "vue";
-import { isProxy, toRaw } from "vue";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 import { useMainStore } from "@/stores/Main";
 import { useCartStore } from "@/stores/Cart";
 import { useProductsStore } from "@/stores/Products";
-import { useGeolocation } from "@vueuse/core";
 const { t } = useLang();
 const route = useRoute();
 
@@ -69,8 +65,6 @@ cartStore.initialize();
 const config = useRuntimeConfig();
 const localeSetting = useState<string>("locale.setting");
 
-let response: Ref<any> = ref();
-
 const randomProducts = ref(productsStore.getRandomProducts);
 console.log(randomProducts.value);
 
@@ -78,23 +72,6 @@ definePageMeta({
   pageTransition: {
     name: "page",
   },
-});
-
-type Advantage = {
-  title: string;
-  description: string;
-  image: string;
-};
-
-onMounted(() => {
-  setTimeout(async () => {
-    const CollectionsElements = document.querySelectorAll(
-      ".collections-panel"
-    ) as NodeListOf<HTMLElement>;
-    const stickyElement = document.querySelectorAll(
-      ".sticky"
-    ) as NodeListOf<HTMLElement>;
-  });
 });
 </script>
 
