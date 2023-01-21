@@ -12,7 +12,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
       p Kalendarze
       p Przypinki
       p Skarpetky
-      p Zestawy
+      p Zestawy 
       p Itemy
       
     div(class="w-3/4 h-auto flex flex-col ")

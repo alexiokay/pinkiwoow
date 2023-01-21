@@ -1,6 +1,6 @@
 <template lang="pug">
 div.collections-panel(class="flex relative  h-full flex-row w-5/6 items-start justify-center gap-x-8 px-16 mt-12  ")
-    div(class="sticky flex mt-6 w-[57%] flex-col h-[42rem]")
+    div#sticky(class="sticky flex mt-6 w-[57%] flex-col h-[42rem]")
         div( class="flex h-[20rem] md:h-[35rem]  relative aspect-square flex-col items-center justify-center bg-[#E4E5E9]  shadow-lg overflow-hidden  ") <!--bg-[#9DD9CF] -->
         
             img(src="/images/your-design.webp"  class="w-full h-full object-contain ")
@@ -17,8 +17,7 @@ div.collections-panel(class="flex relative  h-full flex-row w-5/6 items-start ju
             ExampleImg(class="w-2/6 md:w-1/6  aspect-square h-auto")
 
         
-    div(class="ghost hidden mt-6 w-[57%] flex-col h-[42rem] invisible ")
-        div( class="flex h-[20rem] md:h-[35rem]  relative aspect-square flex-col items-center justify-center bg-[#E4E5E9]  shadow-lg overflow-hidden  ") <!--bg-[#9DD9CF] -->
+  
         
            
        
@@ -66,101 +65,21 @@ div.collections-panel(class="flex relative  h-full flex-row w-5/6 items-start ju
     </template>
 
 <script setup lang="ts">
-import { height } from "dom7";
-import { on } from "events";
 import { onMounted } from "vue";
 import MyDeviceIcon from "~icons/ic/round-computer";
-onMounted(() => {
-  const stickyel = document.querySelector(".sticky") as HTMLElement;
-  const productOptions = document.querySelector(
-    "#product-options"
-  ) as HTMLElement;
-  const ghost = document.querySelector(".ghost") as HTMLElement;
-  const collectionsPanel = document.querySelector(
-    ".collections-panel"
-  ) as HTMLElement;
-  let scroll_position = 0;
-  let scroll_direction = "down";
-
-  window.addEventListener("scroll", function (e) {
-    scroll_direction =
-      document.body.getBoundingClientRect().top > scroll_position
-        ? "up"
-        : "down";
-    scroll_position = document.body.getBoundingClientRect().top;
-
-    let top = getOffset(document.querySelector(".collections-panel")).top;
-    let bottom = top + collectionsPanel.offsetHeight - 770;
-    console.log(bottom);
-    if (scroll_position < -top + 380) {
-      // if scroll position is less than 180px from top
-      stickyel.id = "sticky";
-      ghost.style.display = "flex";
-      //stickyel.style.width = productOptions.offsetWidth.toString() + "px";
-      calculateNewScale();
-    }
-    if (scroll_position < -bottom + 125) {
-      // if scroll position is less than 180px from bottom
-
-      stickyel.classList.remove("sticky-top");
-      stickyel.classList.add("sticky-bottom");
-      ghost.style.display = "none";
-      stickyel.id = "";
-      stickyel.style.width = "57%";
-    }
-    if (scroll_position > -top + 180) {
-      // if scroll position is greater than 180px from top
-      stickyel.classList.remove("sticky-bottom");
-      stickyel.classList.add("sticky-top");
-      ghost.style.display = "none";
-      stickyel.style.width = "57%";
-      stickyel.id = "";
-    }
-
-    console.log(scroll_position);
-    console.log(collectionsPanel.getBoundingClientRect().top);
-  });
-
-  window.addEventListener("resize", function (e) {
-    //stickyel.style.width = productOptions.offsetWidth.toString() + "px";
-
-    calculateNewScale();
-  });
-
-  function getOffset(el: any) {
-    var _x = 0;
-    var _y = 0;
-    while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
-      _x += el.offsetLeft - el.scrollLeft;
-      _y += el.offsetTop - el.scrollTop;
-      el = el.offsetParent;
-    }
-    return { top: _y, left: _x };
-  }
-
-  const calculateNewScale = () => {
-    if (ghost.style.display !== "none") {
-      let ghostWidth = ghost.offsetWidth;
-      let ghostHeight = ghost.offsetHeight;
-      let ghostLeft = getOffset(ghost).left;
-
-      stickyel.style.width = ghostWidth + "px";
-      stickyel.style.height = ghostHeight + "px";
-      stickyel.style.left = ghostLeft + "px";
-    }
-  };
-});
 </script>
 
 <style lang="scss" scoped>
-#sticky {
-  position: fixed;
-
-  top: 22%;
-  left: 12.5rem;
-
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+@media screen and (max-width: 640px) {
+  #sticky {
+    height: calc(75vh - 4em);
+  }
+}
+@media screen and (min-width: 640px) {
+  #sticky {
+    height: calc(75vh - 4em);
+    top: calc(11vh + 7.5em);
+  }
 }
 
 .smooth-bg {
