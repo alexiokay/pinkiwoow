@@ -7,6 +7,7 @@ declare module "@nuxt/schema" {
     intlify?: IntlifyModuleOptions;
   }
 }
+
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   modules: [
@@ -35,6 +36,12 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: ["/", "/sitemap.xml", "/portfolio"],
+    },
+  },
+  devServer: {
+    https: {
+      key: "/etc/letsencrypt/live/pinkiwoow.com/privkey.pem",
+      cert: "/etc/letsencrypt/live/pinkiwoow.com/fullchain.pem",
     },
   },
 
@@ -84,6 +91,12 @@ export default defineNuxtConfig({
         autoInstall: true,
       }),
     ],
+    build: {
+      cssCodeSplit: true,
+    },
+    optimizeDeps: {
+      include: ["@googlemaps/js-api-loader"],
+    },
   },
 
   vue: {
