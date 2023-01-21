@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import { createPinia } from "pinia";
 import uniqid from "uniqid";
 import { useStorage } from "@vueuse/core";
-import type { Currency } from "@/types/Currency";
+
 const pinia = createPinia();
 import piniaPersist from "pinia-plugin-persist";
 pinia.use(piniaPersist);

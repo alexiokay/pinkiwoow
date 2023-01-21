@@ -7,6 +7,7 @@ const pinia = createPinia();
 import piniaPersist from "pinia-plugin-persist";
 pinia.use(piniaPersist);
 import type { ProductType, Category } from "@/types/Product";
+import type { Currency } from "@/types/Currency";
 
 type Mug = ProductType & {
   category: Category & {
