@@ -18,7 +18,7 @@ type Mug = ProductType & {
 export const useProductsStore = defineStore("Products", {
   state: () => {
     return {
-      products: useStorage("Products", [] as Array<any>),
+      products: useStorage("products", [] as Array<any>),
       currency: useStorage("currency", "EUR" as Currency),
     };
   },
@@ -73,9 +73,9 @@ export const useProductsStore = defineStore("Products", {
       console.log("currency set to: " + this.currency);
       // set currencyRate for each currency
 
-      this.products.forEach((product: any) => {
-        product.price = product.price * product.currencyRate;
-      });
+      // this.products.forEach((product: any) => {
+      //   product.price = product.price * product.currencyRate;
+      // });
     },
   },
 
