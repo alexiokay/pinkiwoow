@@ -40,7 +40,6 @@ localeSetting.value.toLowerCase();
       as="div"
       class="relative flex items-center"
     >
-      <ListboxLabel class="">Theme</ListboxLabel>
       <!-- ssr-only class was before -->
       <ListboxButton
         type="button"

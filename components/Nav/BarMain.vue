@@ -18,8 +18,8 @@ div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-f
           IconCart(class="w-full h-full text-gray-500")
           p(class="absolute top-[0.6rem]  text-white") {{cartStore.getCartLength}}
     div(v-if="!mobileMenu && !loaded" class="flex space-x-3 w-full justify-end items-center")
-      ClientOnly
-        <LanguageSwitcher  />
+     
+      <LanguageSwitcher  />
       
       div(v-show="route.name!=='cart'" class='hidden md:flex relative w-[13.3rem] h-[3.1rem] border-[1.2px] mb-2 p-[0.5rem] space-x-2 border-[#47C1BF] items-center justify-center  ')
        
