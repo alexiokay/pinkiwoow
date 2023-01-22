@@ -51,6 +51,10 @@ export default defineNuxtConfig({
 
     "/**": { ssr: true },
     "/cart": { ssr: false },
+    "/checkout": { ssr: false },
+    "/public/images**": { swr: 7776000 },
+    "/assets/**": { swr: 7776000 },
+    "/_ipx/**": { swr: 7776000 },
 
     // Static page generated on-demand once (SSG - or at least mighty close) { static: true },
 
