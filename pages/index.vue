@@ -4,7 +4,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
  
 
   div(class="w-full h-auto flex justify-center gap-x-4 items-start   ")
-    div(class="w-1/4 h-[50rem] flex flex-col rounded-xl shadow-lg px-4 py-4 space-y-4 bg-white text-xl items-center border-2 border-[#47C1BF] ")
+    div(class="w-1/4 h-auto flex flex-col rounded-xl shadow-lg px-4 py-4 space-y-4 bg-white text-xl items-center border-2 border-[#47C1BF] ")
       NuxtLink(to="/") Kubki 
       p Puzzle
       p Koszulki
@@ -17,18 +17,15 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
       p {{ message }}
       
     div(class="w-3/4 h-auto flex flex-col ")
-      div(class="w-full h-[33rem] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
-        ClientOnly
-          Header(:slides="header") 
-          template(#fallback class="w-full h-full flex justify-center items-center")
-            <!-- this will be rendered on server side -->
-            p Loading...
+      div(class="w-full h-[65vh] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
+        
+        Header(:slides="header") 
+          
          
       
       div(class="w-full h-auto flex flex-col p-4")
             p(class="text-[#434447] text-[1.5rem] font-bold") Produkty
-            ClientOnly
-              LazySwiper(:slides="randomProducts") 
+            Swiper(:slides="randomProducts") 
   Wheeler(  )
   LazyHydrate(when-visible)
     CollectionsPanel(class="")

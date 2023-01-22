@@ -3,10 +3,10 @@
 div(class="relative h-auto overflow-hidden ")
   .swiper-container(class='')
       .swiper-wrapper(class='')
-          .swiper-slide(v-for="slide in props.slides" :key="slide.title"  class="hover:cursor-pointer  flex flex-col ")
-            div(class="h-[54rem] w-full flex flex-col ")
-              img.swiper-image(:src="slide.image?.url" :alt="slide.image?.alt" class="swiper-lazy overflow-hidden rounded-lg object-contain w-full h-full")
-              .swiper-lazy-preloader
+          .swiper-slide(v-for="slide in props.slides" :key="slide.title"  class="hover:cursor-pointer overflow-hidden flex flex-col ")
+            div(class=" h-3/5  w-auto flex flex-col ")
+              nuxt-img.swiper-image(:src="slide.image?.url" :alt="slide.image?.alt"  class="aspect-square w-full h-full object-contain")
+              
             p(class=" text-lg font-robotolight font-bold text-black mt-3") {{slide.title  }}
             p(v-if="productsStore.getCurrency === 'EUR'") {{slide.price_model.price_eur }} {{ productsStore.getCurrency }}
             p(v-if="productsStore.getCurrency === 'PLN' && slide.price_model.price_pln !== null") {{slide.price_model.price_pln}} {{ productsStore.getCurrency }}
@@ -50,6 +50,7 @@ onMounted(() => {
       // amount of images to load
       loadPrevNextAmount: 2,
     },
+    cssMode: true,
 
     slidesPerGroup: 1,
 

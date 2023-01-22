@@ -1,11 +1,11 @@
 <template lang="pug">per-container
-div(class="relative h-auto overflow-hidden ")
+div(class="relative h-full overflow-hidden ")
     #header-container(class='')
         .swiper-wrapper(class='')
             .swiper-slide(v-for="slide in props.slides" class="hover:cursor-pointer  flex flex-col")
-                div(class="h-[54rem] w-full flex flex-col ")
-                    nuxt-img.swiper-image(:src="slide.img" class="swiper-lazy ")
-                    .swiper-lazy-preloader //
+                div(class="h-[54rem] w-full flex flex-col overflow-hidden ")
+                    nuxt-img.swiper-image(:src="slide.img" class="w-full h-full object-cover ")
+                   
            
         .swiper-pagination(class=" absolute left-0 right-0 bottom-[-58rem] ml-auto mr-auto")
 </template>
@@ -40,12 +40,12 @@ onMounted(() => {
     },
     loop: true,
     speed: 1000,
-
+    cssMode: true,
     lazy: {
       //  tell swiper to load images before they appear
       loadPrevNext: true,
       // amount of images to load
-      loadPrevNextAmount: 2,
+      loadPrevNextAmount: 1,
     },
     pagination: {
       el: ".swiper-pagination",
@@ -91,7 +91,7 @@ onMounted(() => {
 
 #header-container
   width: 100%
-  height: 42vh
+  height: 52vh
   margin: 20px auto
 
 .swiper-pagination > *
