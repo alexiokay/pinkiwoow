@@ -38,9 +38,6 @@ export default defineNuxtConfig({
       routes: ["/", "/sitemap.xml", "/portfolio"],
     },
   },
-  devServer: {
-    port: 3002,
-  },
 
   routeRules: {
     // Static page generated on-demand, revalidates in background (ISG)
