@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import ArrowIcon from "~icons/ic/outline-play-arrow";
-import { useCartStore } from "../../stores/Cart";
+import { useCartStore } from "@/stores/Cart";
 
 let cartStore: any = ref(useCartStore());
 

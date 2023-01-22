@@ -19,7 +19,7 @@ div.col-1(class="w-2/4 h-auto flex flex-col space-y-3")
 <script setup lang="ts">
 import IconCart from "~icons/ph/shopping-cart-simple-fill";
 import IconHeart from "~icons/ph/heart-fill";
-import { useCartStore } from "../stores/Cart";
+import { useCartStore } from "@/stores/Cart";
 import uniqid from "uniqid";
 
 const props = defineProps({

@@ -72,9 +72,9 @@ import IconCart from "~icons/ph/shopping-cart-simple-fill";
 import IconDown from "~icons/material-symbols/expand-circle-down-rounded";
 import EmailIcon from "~icons/mi/email";
 import MenuIcon from "~icons/material-symbols/menu-rounded";
-import { useCartStore } from "../../stores/Cart";
-import { useMainStore } from "../../stores/Main";
-import { useProductsStore } from "../../stores/Products";
+import { useCartStore } from "@/stores/Cart";
+import { useMainStore } from "@/stores/Main";
+import { useProductsStore } from "@/stores/Products";
 
 const testCartState = useCart();
 const productsStore = useProductsStore();

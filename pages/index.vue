@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
   <!-- HEADER -->
-  
+ 
 
   div(class="w-full h-auto flex justify-center gap-x-4 items-start   ")
     div(class="w-1/4 h-[50rem] flex flex-col rounded-xl shadow-lg px-4 py-4 space-y-4 bg-white text-xl items-center border-2 border-[#47C1BF] ")
@@ -14,6 +14,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
       p Skarpetky
       p Zestawy 
       p Itemy
+      p {{ data }}
       
     div(class="w-3/4 h-auto flex flex-col ")
       div(class="w-full h-[33rem] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
@@ -50,7 +51,7 @@ import { useCartStore } from "@/stores/Cart";
 import { useProductsStore } from "@/stores/Products";
 const { t } = useLang();
 const route = useRoute();
-
+const { data } = await useFetch("api/test");
 let cartStore = useCartStore();
 let store: any = ref();
 const productsStore = useProductsStore();
@@ -63,16 +64,10 @@ store.value.initialize(); //
 cartStore.initialize();
 
 const config = useRuntimeConfig();
-const localeSetting = useState<string>("locale.setting");
+//const localeSetting = useState<string>("locale.setting");
 
 const randomProducts = ref(productsStore.getRandomProducts);
 console.log(randomProducts.value);
-
-definePageMeta({
-  pageTransition: {
-    name: "page",
-  },
-});
 </script>
 
 <style lang="sass">

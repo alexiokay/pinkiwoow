@@ -27,7 +27,7 @@ import { ref } from "vue";
 import type { PropType } from "vue";
 import IconCart from "~icons/ph/shopping-cart-simple-fill";
 import IconHeart from "~icons/ph/heart-fill";
-import { useCartStore } from "../../stores/Cart";
+import { useCartStore } from "@/stores/Cart";
 import uniqid from "uniqid";
 import { useProductsStore } from "@/stores/Products";
 const productsStore = useProductsStore();

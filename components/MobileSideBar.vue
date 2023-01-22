@@ -25,7 +25,7 @@ div#sidebar-open( class='w-3/5 h-screen gap-y-2 px-4 flex flex-col bg-white drop
 </template>
 
 <script setup lang="ts">
-import { useMainStore } from "@/stores/Main";
+import { useMainStore } from "../stores/Main";
 import CloseIcon from "~icons/ic/outline-close";
 const { t } = useLang();
 const route = useRoute();

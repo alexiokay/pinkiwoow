@@ -113,7 +113,7 @@ div(class="flex flex-col w-full h-auto items-center justify-center")
 </template>
 
 <script setup lang="ts">
-import { useCartStore } from "../stores/Cart";
+import { useCartStore } from "@/stores/Cart";
 import type { Ref } from "vue";
 import { useProductsStore } from "@/stores/Products";
 let cartStore: any = ref(useCartStore());

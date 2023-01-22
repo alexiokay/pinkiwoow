@@ -17,7 +17,7 @@ div(class="relative h-auto overflow-hidden ")
 <script setup lang="ts">
 import { Swiper, Lazy, Pagination } from "swiper";
 import type { PropType } from "vue";
-import type { ProductType } from "../types/Product";
+import type { ProductType } from "@/types/Product";
 import "swiper/css";
 import "swiper/css/pagination";
 

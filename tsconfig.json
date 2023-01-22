@@ -1,5 +1,5 @@
 {
-  // https://v3.nuxtjs.org/concepts/typescript
+  // hyttps://v3.nuxtjs.org/concepts/typescript
   
   "extends": "./.nuxt/tsconfig.json",
   "vueCompilerOptions": {
@@ -9,6 +9,7 @@
   },
   "compilerOptions": {
     "strict": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "baseUrl": ".",
@@ -16,18 +17,10 @@
       "unplugin-icons/types/vue",
       "pinia-plugin-persist",
       "pinia",
+      "@vueuse/nuxt",
       "@intlify/nuxt3",
       "@pinia/nuxt",
-      "vitest/globals",
-      "@iconify"
 
     ],
-    "paths": {
-      "@/*": [
-       "./*"
-      ]
-     }
   },
-  "allowSyntheticDefaultImports": true,
-  "exclude": ["node_modules"]
 }

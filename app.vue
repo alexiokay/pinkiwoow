@@ -12,16 +12,14 @@ import { AppSetup } from "./utils/app";
 import { useProductsStore } from "@/stores/Products";
 import type { ProductType } from "@/types/Product";
 
-const localeSetting = useState<string>("locale.setting");
 AppSetup();
 const locale = useState<string>("locale.setting");
 const app = useAppConfig();
 const productsStore = useProductsStore();
 let products: Array<ProductType> | null = null;
 products = await getProducts();
-const p = products[0];
 // set products in store
-productsStore.setCurrency(localeSetting.value);
+productsStore.setCurrency(locale.value);
 
 productsStore.setProducts(products);
 
