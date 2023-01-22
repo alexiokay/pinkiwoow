@@ -30,12 +30,12 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
             ClientOnly
               LazySwiper(:slides="randomProducts") 
   Wheeler(  )
+  LazyHydrate(when-visible)
+    CollectionsPanel(class="")
+    Info
   
-  CollectionsPanel(class="")
-  Info
-  
-  Video(class="mt-8 h-[45rem] w-full")
-  Testimonials
+    Video(class="mt-8 h-[45rem] w-full")
+    Testimonials
  
 </template>
 

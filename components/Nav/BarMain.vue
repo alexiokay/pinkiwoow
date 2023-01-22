@@ -38,7 +38,8 @@ div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-f
         
         hr(class="border-1 border-gray-100 w-full")
   div#navbar-navigation(class="text-lg font-itim bg-[#F4F6F8] text-black flex items-center justify-center w-full h-[3rem] md:px-16  gap-x-4")
-    NavDropdown#dropdown-1(@click="openDropdown('1')" class="dropdown-hidden hidden hover:flex absolute top-[6.90rem] left-0 z-40")
+    LazyHydrate(when-idle)
+      NavDropdown#dropdown-1(@click="openDropdown('1')" class="dropdown-hidden hidden hover:flex absolute top-[6.90rem] left-0 z-40")
    
 
     div(class="h-full")

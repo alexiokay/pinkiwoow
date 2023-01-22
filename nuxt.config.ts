@@ -21,6 +21,7 @@ export default defineNuxtConfig({
     ],
     "@intlify/nuxt3",
     "@nuxt/image-edge",
+    "nuxt-lazy-hydrate",
     ["@funken-studio/sitemap-nuxt-3", { generateOnBuild: true }],
   ],
 
