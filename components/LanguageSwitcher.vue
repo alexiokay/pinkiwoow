@@ -48,11 +48,11 @@ localeSetting.value.toLowerCase();
       >
         <span class="relative top-[-5px] flex items-start justify-start">
           <PolishFlag v-if="localeSetting === 'pl'" class="w-6 h-6" />
-          <EnglishFlag v-else="localeSetting === 'en'" class="w-6 h-6" />
-          <DeutschFlag v-else="localeSetting === 'de'" class="w-6 h-6" />
-          <ChinneseFlag v-else="localeSetting === 'zh'" class="w-6 h-6" />
-          <IndonesianFlag v-else="localeSetting === 'id'" class="w-6 h-6" />
-          <JapaneseFlag v-else="localeSetting === 'ja'" class="w-6 h-6" />
+          <EnglishFlag v-else-if="localeSetting === 'en'" class="w-6 h-6" />
+          <DeutschFlag v-else-if="localeSetting === 'de'" class="w-6 h-6" />
+          <ChinneseFlag v-else-if="localeSetting === 'zh'" class="w-6 h-6" />
+          <IndonesianFlag v-else-if="localeSetting === 'id'" class="w-6 h-6" />
+          <JapaneseFlag v-else-if="localeSetting === 'ja'" class="w-6 h-6" />
           <SouthCoreanFlag v-else="localeSetting === 'ko'" class="w-6 h-6" />
         </span>
       </ListboxButton>
