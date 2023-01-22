@@ -14,7 +14,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
       p Skarpetky
       p Zestawy 
       p Itemy
-      p {{ data }}
+      p {{ message }}
       
     div(class="w-3/4 h-auto flex flex-col ")
       div(class="w-full h-[33rem] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
@@ -51,7 +51,9 @@ import { useCartStore } from "@/stores/Cart";
 import { useProductsStore } from "@/stores/Products";
 const { t } = useLang();
 const route = useRoute();
-const { data } = await useFetch("api/test");
+const message = ref();
+const { data: messageData } = await useFetch("api/test");
+message.value = messageData.value;
 let cartStore = useCartStore();
 let store: any = ref();
 const productsStore = useProductsStore();
