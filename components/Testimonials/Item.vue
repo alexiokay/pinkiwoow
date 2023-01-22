@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class="w-1/4 h-[25.5rem] flex flex-col items-center smooth-shadow hover:shadow-[0px_0px_35px_1px_rgb(0,0,0,0.15)] justify-center py-4 space-y-5 border-[1px] border-[#E35796]")
     
-    img(:src="props.image"  class="rounded-full w-2/6")
+    nuxt-img(:src="props.image" loading="lazy"  class="rounded-full w-2/6")
     div(class="flex flex-row w-auto h-auto") 
         StarFullIcon(class="text-[#FF9529]" v-for="i in Math.floor(props.stars)" :key="i")
        
