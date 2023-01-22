@@ -4,4 +4,4 @@ Disallow: /nogooglebot/
 User-agent: *
 Allow: /
 
-Sitemap: pinkiwoow.com/sitemap.xml
+Sitemap: https://pinkiwoow.com/sitemap.xml
