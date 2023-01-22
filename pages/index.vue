@@ -4,7 +4,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
  
 
   div(class="w-full h-auto flex justify-center gap-x-4 items-start   ")
-    div(class="w-1/4 h-auto flex flex-col rounded-xl shadow-lg px-4 py-4 space-y-4 bg-white text-xl items-center border-2 border-[#47C1BF] ")
+    div(class="w-1/4 h-auto hidden md:flex flex-col rounded-xl shadow-lg px-4 py-4 space-y-4 bg-white text-xl items-center border-2 border-[#47C1BF] ")
       NuxtLink(to="/") Kubki 
       p Puzzle
       p Koszulki
@@ -16,8 +16,8 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
       p Itemy
       p {{ message }}
       
-    div(class="w-3/4 h-auto flex flex-col ")
-      div(class="w-full h-[65vh] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
+    div(class="w-full md:w-3/4 h-auto flex flex-col ")
+      div(class="w-full h-[52vh] md:h-[65vh] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
         
         Header(:slides="header") 
           
@@ -31,7 +31,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
     CollectionsPanel(class="")
     Info
   
-    Video(class="mt-8 h-[45rem] w-full")
+    Video(class="mt-8 h-[26rem] md:h-[calc(90vh-5em)] w-full")
     Testimonials
  
 </template>

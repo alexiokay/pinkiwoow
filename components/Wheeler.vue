@@ -1,9 +1,9 @@
 <template lang="pug">
 .logo-slider
   .logo-slide-track.space-x-4
-    .slide.row.w-auto.items-center.flex.gap-x-8.relative(v-for="i in 14" :key="i")
-        button(class="bg-[#47C1BF] text-lg rounded-full h-12 text-white w-auto px-8 absolute right-8 hover:top-[4.5rem] hover:drop-shadow-xl") Shop Collection
-        p(class="font-itim text-5xl ") Last chance to buy
+    .slide.row.w-auto.items-center.flex.relative(class=" md:gap-x-8 " v-for="i in 14" :key="i")
+        button(class="bg-[#47C1BF] text-lg rounded-full h-10 md:h-12 text-white w-auto px-8 absolute right-8 hover:top-[4.5rem] hover:drop-shadow-xl") Shop Collection
+        p(class="font-itim text-3xl md:text-5xl ") Last chance to buy
    
 </template>
 
@@ -51,6 +51,14 @@ onMounted(() => {
   height: 200px;
   width: 650px;
   padding: 0px;
+}
+
+@media screen and (max-width: 640px) {
+  .logo-slider .slide {
+    height: 40px;
+    width: 550px;
+    padding: 0px;
+  }
 }
 
 @-webkit-keyframes logo-scroll {

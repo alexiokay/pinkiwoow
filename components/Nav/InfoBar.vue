@@ -1,6 +1,6 @@
 <template lang="pug">
-div.w-full.h-auto.p-2.flex.justify-center.items-center.text-white(class="bg-[#47C1BF]")
-    p {{props.title}} 
+div.w-full.p-2.flex.justify-center.items-center.text-white(class="bg-[#47C1BF] h-[2.3rem] md:h-auto ")
+    p(class="mb-1") {{props.title}} 
 
 </template>
 

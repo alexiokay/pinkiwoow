@@ -3,25 +3,26 @@
 div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-full text-gray-500 h-auto flex flex-col items-center justify-between lg:justify-center mx-0 bg-white") 
   div(@click="closeMobileNavbar()" class="w-full h-screen bg-[rgba(0,0,0,0.25)] z-40 fixed top-0 block md:hidden" v-if="mobileMenu && loaded")
         ClientOnly
-          MobileSideBar#mobile-menu(v-if="loaded" :class="mobileMenu? 'show-right ' : 'hide-left '" class="z-10 block md:hidden")
+          MobileSideBar#mobile-menu(v-if="loaded" :class="mobileMenu? 'show-right ' : 'hide-left '" class="z-50 block md:hidden")
     
   
-  div#navbar-content1(class="z-50  flex items-center justify-between w-full h-[4.9rem] text-xs md:px-16 ")
-    NavSearchBar.h-full(class='w-full') sda
-    NuxtLink(class=" w-48 h-[4.9rem] flex justify-center items-center" to="/")
-      nuxt-img#logo(class=" h-[4.9rem]" sizes="sm:90px md:130px lg:150px" src='/images/pinkiwoowLogo.webp' alt="logo")
-      p(class="text-3xl text-pink-600 font-itim") PinkiWoow
-    div#mobile-nav(v-if="mobileMenu && loaded" class="flex md:hidden items-center space-x-2 w-full h-full")
-      MenuIcon#mobile-menu-button(@click="showMobileNavbar" class=" hover:cursor-pointer w-9 h-9 ")
+  div#navbar-content1(class="z-30 flex items-center justify-between w-full h-[4rem] md:h-[4.9rem] text-xs px-6 md:px-16 ")
+    div#mobile-nav(class="flex md:hidden items-center space-x-2 w-[6rem] h-full")
+      MenuIcon#mobile-menu-button(@click="showMobileNavbar" class=" hover:cursor-pointer w-7 h-7 text-black ")
       
-      NuxtLink(class="w-9 h-9 flex items-center justify-center relative" to="/cart")
+    
+    NavSearchBar.h-full(class='hidden md:flex w-full') sda
+    NuxtLink(class=" w-full h-full md:h-[4.9rem] flex justify-start md:justify-center items-center" to="/")
+      nuxt-img#logo(class=" h-[3.2rem] md:h-[4.9rem" sizes="sm:90px md:130px lg:150px" src='/images/pinkiwoowLogo.webp' alt="logo")
+      p(class="text-2xl md:text-3xl text-pink-600 font-itim") PinkiWoow
+   
+    div(class="flex space-x-3 h-full w-full justify-end items-center")
+      NuxtLink(class="w-9 h-9 flex md:hidden items-center justify-center relative" to="/cart")
           IconCart(class="w-full h-full text-gray-500")
           p(class="absolute top-[0.6rem]  text-white") {{cartStore.getCartLength}}
-    div(v-if="!mobileMenu && !loaded" class="flex space-x-3 w-full justify-end items-center")
-     
       <LanguageSwitcher  />
       
-      div(v-show="route.name!=='cart'" class='hidden md:flex relative w-[13.3rem] h-[3.1rem] border-[1.2px] mb-2 p-[0.5rem] space-x-2 border-[#47C1BF] items-center justify-center  ')
+      div(v-show="route.name!=='cart'" class='hidden lg:flex relative w-[13.3rem] h-[3.1rem] border-[1.2px] mb-2 p-[0.5rem] space-x-2 border-[#47C1BF] items-center justify-center  ')
        
           div(class="w-12 h-12 flex items-center justify-center")
             IconCart(class="w-full h-full text-gray-500")
@@ -38,7 +39,7 @@ div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-f
         
         
         hr(class="border-1 border-gray-100 w-full")
-  div#navbar-navigation(class="text-lg font-itim bg-[#F4F6F8] text-black flex items-center justify-center w-full h-[3rem] md:px-16  gap-x-4")
+  div#navbar-navigation(class="text-lg font-itim bg-[#F4F6F8] text-black hidden md:flex items-center justify-center w-full h-[3rem] md:px-16  gap-x-4")
     LazyHydrate(when-idle)
       NavDropdown#dropdown-1(@click="openDropdown('1')" class="dropdown-hidden hidden hover:flex absolute top-[6.90rem] left-0 z-40")
    

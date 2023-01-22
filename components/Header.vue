@@ -1,6 +1,6 @@
 <template lang="pug">per-container
 div(class="relative h-full overflow-hidden ")
-    #header-container(class='')
+    #header-container(class=' h-[40vh] md:h-[52vh]')
         .swiper-wrapper(class='')
             .swiper-slide(v-for="slide in props.slides" class="hover:cursor-pointer  flex flex-col")
                 div(class="h-[54rem] w-full flex flex-col overflow-hidden ")
@@ -91,7 +91,7 @@ onMounted(() => {
 
 #header-container
   width: 100%
-  height: 52vh
+
   margin: 20px auto
 
 .swiper-pagination > *

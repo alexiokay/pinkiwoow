@@ -1,7 +1,7 @@
 <template lang="pug">
 
 
-div#sidebar-open( class='w-3/5 h-screen gap-y-2 px-4 flex flex-col bg-white drop-shadow-xl fixed z-40 top-0 left-0')
+div#sidebar-open( class='w-[calc(30vw+10em)] h-screen gap-y-2 px-4 flex flex-col bg-white drop-shadow-xl fixed z-40 top-0 left-0')
     
     div.w-full.h-auto.flex.justify-between.text-3xl
         p Menu

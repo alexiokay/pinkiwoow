@@ -1,39 +1,39 @@
 <template lang="pug">
-div#footer-wrapper(class=" bottom-0 w-full xl:w-3/4 h-[19rem] flex flex-col md:flex-row items-between justify-around mx-0 bg-white") 
+div#footer-wrapper(class=" bottom-0 w-full xl:w-3/4 h-auto px-4 pb-4 md:px-0 gap-y-4 bg-[#00848E] flex flex-col md:flex-row items-between justify-around mx-0 md:bg-white") 
 
-        div(class="flex w-2/5  xl:w-full ml-2 mt-5 xl:ml-6 flex-col text-gray-600 xl:items-start text-sm ")
+        div(class="flex w-full md:w-2/5  xl:w-full ml-2 mt-5 xl:ml-6 flex-col text-[#cfe0de] md:text-gray-600 xl:items-start text-base md:text-sm ")
             div(class="items-start space-y-[0.4rem] ")
-                h5(class="text-black text-base") {{ $t('components.footer.information.information').toUpperCase() }}
+                h5(class="text-white md:text-black text-lg md:text-base") {{ $t('components.footer.information.information').toUpperCase() }}
                 p.footer-text  - {{ $t('components.footer.information.regulations') }}
                 p.footer-text  - {{ $t('components.footer.information.cookies') }}
                 p.footer-text  - {{ $t('components.footer.information.return') }}
                 p.footer-text  - {{ $t('components.footer.information.delivery') }}
                 p.footer-text  - {{ $t('components.footer.information.privacy_policy') }}
-        div(class="w-2/5  xl:w-full flex mt-5 ml-2 xl:ml-6 flex-col xl:items-start text-gray-600 text-sm ")
+        div(class="w-full md:w-2/5 xl:w-full flex mt-5 ml-2 xl:ml-6 flex-col xl:items-start text-[#cfe0de] md:text-gray-600 text-base md:text-sm ")
             div(class="items-start space-y-[0.4rem] ")
-                h5(class="text-black text-base") {{ $t('components.footer.account.your_account').toUpperCase() }}
+                h5(class="text-white md:text-black  text-lg md:text-base") {{ $t('components.footer.account.your_account').toUpperCase() }}
                 p.footer-text - {{ $t('components.footer.account.your_account') }}
                 p.footer-text  - {{ $t('components.footer.account.login') }}
                 p.footer-text  - {{ $t('components.footer.account.orders') }}
                 p.footer-text  - {{ $t('components.footer.account.registration') }}
           
-        div(class=" w-3/5 xl:w-full flex flex-col justify-start items-start h-full   ")
+        div(class=" w-full md:w-3/5 xl:w-full flex flex-col  justify-start items-start h-full   ")
             div(class="flex flex-col items-center mt-2 ")
-                div(class='w-1/6 h-[1px]  bg-gray-600')
+                div(class='w-1/6 h-[1.84px] md:h-[1px]  bg-white md:bg-gray-600 ')
                 h5#newsletter-heading(class="text-[2.4rem] h-auto font-sans-serif font-bold tracking-wide ") NEWSLETTER
-                div(class='w-1/6 h-[2px] mt-1 bg-gray-600')
-            div(class="mt-3 text-sm w-3/5 xl:w-[89%] leading-4 text-gray-800")
+                div(class='w-1/6 h-[2px] mt-1 bg-white md:bg-gray-600 ')
+            div(class="mt-3 text-base md:text-sm w-3/5 xl:w-[89%] leading-4 text-white md:text-gray-800")
                 p {{ $t('components.footer.newsletter.description') }}
-                    span(class="ml-1 text-gray-500 hover:underline hover:cursor-pointer") {{ $t('components.footer.newsletter.description2') }}
+                    span(class="ml-1 text-[#b3c5c3] md:text-gray-500 hover:underline hover:cursor-pointer") {{ $t('components.footer.newsletter.description2') }}
             div(class="flex w-full flex-row items-center mt-6 space-x-2")
                 
                 input(class="outline-0 border-[1px] h-7 text-sm px-2 text-gray-800" :placeholder="$t('components.footer.newsletter.placeholder')")
-                button#newsletter-button(class="border-2 w-[7.5rem] h-[1.9rem] flex items-center justify-center border-gray-700 font-light text-gray-600")  {{ $t('components.footer.newsletter.button') }}
+                button#newsletter-button(class="border-2 w-[7.5rem] h-[1.9rem] flex items-center justify-center border-white md:border-gray-700 font-light text-[#ffffff] md:text-gray-600")  {{ $t('components.footer.newsletter.button') }}
             div(class="flex hover:cursor-pointer  items-center space-x-3")
                 div(class="flex justify-center ")
                     input(type="checkbox" class="mt-4 w-5 h-5")
                     p(class="absolute mt-4 text-sm font-extrabold ") X
-                p(class="mt-3 text-xs") Marketing
+                p(class="mt-3 text-sm md:text-xs text-[#cfe0de] md:text-gray-800") Marketing
 </template>
 
 <script setup lang="ts">
