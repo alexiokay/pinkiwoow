@@ -70,14 +70,14 @@ export const mousePads = [
     name: "Black Holdes - Mouse Pad",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
     img: "images/products/mouse-pads/many-black-holes.png",
-    img2: "images/products/mugs/ganja-left.png",
+    img2: "images/products/mugs/ganja-left.webp",
     price: 20,
   },
   {
     name: "Ukrainian tanks - Mouse Pad",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
     img: "images/products/mouse-pads/ukrainian-tanks.png",
-    img2: "images/products/mugs/ganja-left.png",
+    img2: "images/products/mugs/ganja-left.webp",
     price: 20,
   },
   {
