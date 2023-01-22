@@ -52,7 +52,7 @@ export default defineNuxtConfig({
     "/**": { ssr: true },
     "/cart": { ssr: false },
     "/checkout": { ssr: false },
-    "/public/images**": { headers: { "cache-control": "s-maxage=7776000" } },
+    "/public/**": { headers: { "cache-control": "s-maxage=7776000" } },
     "/_nuxt/**": { headers: { "cache-control": "s-maxage=6000" } },
     "/assets/**": { headers: { "cache-control": "s-maxage=7776000" } },
     "/_ipx/**": { headers: { "cache-control": "s-maxage=7776000" } },
