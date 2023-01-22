@@ -4,7 +4,7 @@ export const useGeolocation2 = async (latitude: number, longitude: number) => {
   const options = {
     method: "POST",
     headers: {
-      Host: `${config.HOST}`,
+      Host: `${config.FETCH_HOST}`,
       Authorization: `${config.API_TOKEN}`,
     },
     body: JSON.stringify({

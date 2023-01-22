@@ -116,7 +116,7 @@ export default defineNuxtConfig({
       BASE_URL: process.env.BASE_URL,
       API_TOKEN: process.env.API_TOKEN,
       API_URL: process.env.API_URL,
-      HOST: process.env.HOST,
+      FETCH_HOST: process.env.FETCH_HOST,
     },
   },
 });

@@ -3,7 +3,7 @@ export const getProducts = async () => {
   const options = {
     method: "GET",
     headers: {
-      Host: `${config.HOST}`,
+      Host: `${config.FETCH_HOST}`,
       Authorization: `${config.API_TOKEN}`,
     },
   };
