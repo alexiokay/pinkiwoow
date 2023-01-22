@@ -4,4 +4,4 @@ Disallow: /nogooglebot/
 User-agent: *
 Allow: /
 
-Sitemap: strawcart.com/sitemap.xml
+Sitemap: pinkiwoow.com/sitemap.xml

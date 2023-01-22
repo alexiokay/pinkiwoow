@@ -49,6 +49,7 @@
     "vue": "^3.2.45"
   },
   "dependencies": {
+    "@funken-studio/sitemap-nuxt-3": "^4.0.4",
     "@googlemaps/js-api-loader": "^1.15.1",
     "@headlessui/vue": "^1.7.5",
     "@nuxtjs/tailwindcss": "^6.1.3",

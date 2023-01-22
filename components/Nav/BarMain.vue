@@ -9,7 +9,7 @@ div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-f
   div#navbar-content1(class="z-50  flex items-center justify-between w-full h-[4.9rem] text-xs md:px-16 ")
     NavSearchBar.h-full(class='w-full') sda
     NuxtLink(class=" w-48 h-[4.9rem] flex justify-center items-center" to="/")
-      nuxt-img#logo(class=" h-[4.9rem]" sizes="sm:50px md:65px lg:75px" src='/images/pinkiwoowLogo.webp' alt="logo")
+      nuxt-img#logo(class=" h-[4.9rem]" sizes="sm:90px md:130px lg:150px" src='/images/pinkiwoowLogo.webp' alt="logo")
       p(class="text-3xl text-pink-600 font-itim") PinkiWoow
     div#mobile-nav(v-if="mobileMenu && loaded" class="flex md:hidden items-center space-x-2 w-full h-full")
       MenuIcon#mobile-menu-button(@click="showMobileNavbar" class=" hover:cursor-pointer w-9 h-9 ")

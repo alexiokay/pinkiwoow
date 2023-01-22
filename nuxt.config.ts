@@ -21,7 +21,13 @@ export default defineNuxtConfig({
     ],
     "@intlify/nuxt3",
     "@nuxt/image-edge",
+    ["@funken-studio/sitemap-nuxt-3", { generateOnBuild: true }],
   ],
+
+  sitemap: {
+    hostname: "https://pinkiwoow.com",
+    gzip: true,
+  },
 
   build: {
     transpile: ["swiper", "@googlemaps/js-api-loader", "@headlessui/vue"],
@@ -44,6 +50,7 @@ export default defineNuxtConfig({
 
     "/**": { ssr: true },
     "/cart": { ssr: false },
+
     // Static page generated on-demand once (SSG - or at least mighty close) { static: true },
 
     // Render these routes on the client (SPA) { ssr: false },

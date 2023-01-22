@@ -4,7 +4,7 @@ div(class="relative h-auto overflow-hidden ")
         .swiper-wrapper(class='')
             .swiper-slide(v-for="slide in props.slides" class="hover:cursor-pointer  flex flex-col")
                 div(class="h-[54rem] w-full flex flex-col ")
-                    nuxt-img.swiper-image(:src="slide.img" width="" class="swiper-lazy ")
+                    nuxt-img.swiper-image(:src="slide.img" class="swiper-lazy ")
                     .swiper-lazy-preloader //
            
         .swiper-pagination(class=" absolute left-0 right-0 bottom-[-58rem] ml-auto mr-auto")
