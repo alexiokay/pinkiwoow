@@ -4,7 +4,7 @@ div.collections-panel(class=" relative flex flex-col sm:flex-row  h-full  w-full
         CollectionsItem(title="Ganja Mug" :bestseller="true" :price="200" :price_pln="200" :rated="8" image="images/products/mugs/ganja-left.webp" image2="images/products/mugs/ganja-right.webp" stripePriceId="200")
         CollectionsItem(title="Ben 10" :price="200" :price_pln="200" :rated="5" image="images/products/mugs/ben-10-left.webp" image2="images/products/mugs/ben-10-right.webp" stripePriceId="200")
 
-    div#sticky( class="sm:sticky relative mb-6 overflow-hidden   flex mt-6 w-full order-0 sm:order-1 sm:w-1/2   md:h-[60vh] aspect-square flex-col items-center justify-center bg-[#E4E5E9]  shadow-lg rounded-xl   ") <!--bg-[#9DD9CF] -->
+    div#sticky( class="sm:sticky relative mb-6 overflow-hidden   flex mt-6 w-full order-0 sm:order-1 sm:w-1/2   aspect-square flex-col items-center justify-center bg-[#E4E5E9]  shadow-lg rounded-xl   ") <!--bg-[#9DD9CF] -->
         img(src="/images/your-design.webp"  class="w-full h-full object-contain ")
         .collections-panel(class=" group  smooth-bg absolute text-black flex flex-col justify-around py-5 items-center w-3/4 bottom-10 rounded-xl h-2/5 bg-[rgba(255,255,255,0.7)] ")
           p(class="text-4xl font-robotolight") Get your own design
@@ -25,7 +25,7 @@ import { onMounted } from "vue";
 <style lang="scss" scoped>
 @media screen and (max-width: 640px) {
   #sticky {
-    height: calc(75vh - 4em);
+    height: auto;
   }
 }
 @media screen and (min-width: 640px) {

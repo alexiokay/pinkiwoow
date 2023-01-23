@@ -17,11 +17,19 @@ div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-f
       p(class="text-2xl md:text-3xl text-pink-600 font-itim h-full items-center flex ") PinkiWoow
    
     div(class="flex space-x-3 h-full w-full justify-end items-center")
-      NuxtLink(class="w-9 h-9 flex md:hidden items-center justify-center relative" to="/cart")
-          IconCart(class="w-full h-full text-gray-500")
-          p(class="absolute top-[0.6rem]  text-white") {{cartStore.getCartLength}}
+      
       <LanguageSwitcher class="h-full" />
       
+
+      <!-- User desktop button -->
+      div#user-dropdown-wrapper(@click="openUserMobileDropdown"  @mouseenter="openUserDropdown(true)"  class="relative group hover:cursor-pointer flex   bg-white p-4 h-[3rem] lg:h-[4rem] rounded-t-lg md:hover:shadow-[0px_-3px_10px_-5px_rgb(0,0,0,0.15)]  smooth-color  items-center justify-center")
+        div.dropdown-hider(:class="isUserMobileDropdown? 'hidden  ': 'md:flex'" class="absolute   top-[2.5rem] lg:top-[3.38rem] -left-[2rem] w-[4rem] h-[1rem]  bg-white z-[50] [transform:translateX(50%)]")
+        UserIcon(class="h-8 w-8 ")
+        <component @close="closeUserMobileDropdown" :is="isUserDropdown ? userdropdown : null"  :class="isUserMobileDropdown? 'fixed  ': 'hidden md:-left-[13rem] lg:-left-[0rem] md:top-[3.4rem] lg:top-[4.3rem] md:absolute md:h-[25rem]  md:w-[17rem] md:group-hover:flex '" class="pointer-events-auto  cursor-default  "/>
+     
+      NuxtLink(class="w-9 h-9 flex lg:hidden items-center justify-center relative" to="/cart")
+          IconCart(class="w-full h-full text-gray-500")
+          p(class="absolute top-[0.6rem]  text-white") {{cartStore.getCartLength}}
       div(v-show="route.name!=='cart'" class='hidden lg:flex relative w-[13.3rem] h-[3.1rem] border-[1.2px] mb-2 p-[0.5rem] space-x-2 border-[#47C1BF] items-center justify-center  ')
        
           div(class="w-12 h-12 flex items-center justify-center")
@@ -34,7 +42,7 @@ div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-f
             button( class='w-full h-full text-center bg-[#DB2878] hover:bg-[#47C1BF] smooth-color text-white')  {{$t('components.navbar.cart').toUpperCase()}} 
           
           <component :is="isCartDropdown ? cartdropdown : null" />
-
+         
       div(v-show="route.name=='cart'" class='hidden md:flex relative w-[13.3rem] h-[3.1rem] border-[1.2px] mb-2 p-[0.5rem] space-x-2 border-gray-200 items-center justify-center  ')
         p asds
         
@@ -76,6 +84,7 @@ import IconCart from "~icons/ph/shopping-cart-simple-fill";
 import IconDown from "~icons/material-symbols/expand-circle-down-rounded";
 import EmailIcon from "~icons/mi/email";
 import MenuIcon from "~icons/material-symbols/menu-rounded";
+import UserIcon from "~icons/heroicons/user-circle";
 import { useCartStore } from "@/stores/Cart";
 import { useMainStore } from "@/stores/Main";
 import { useProductsStore } from "@/stores/Products";
@@ -86,7 +95,12 @@ let store = useMainStore();
 const mobileMenu = computed(() => store.getIsMobileNavbarOpen);
 const loaded = ref(false);
 const cartdropdown = resolveComponent("CartDropdown");
+const userdropdown = resolveComponent("NavUserDropdown");
+
 const isCartDropdown = ref(false);
+const isUserDropdown = ref(false);
+const isUserMobileDropdown = useState("isUserMobileDropdown", () => false);
+
 const route = useRoute();
 const router = useRouter();
 const locale = useState<string>("locale.setting");
@@ -94,6 +108,26 @@ const { t } = useLang();
 
 let cartStore: any = useCartStore();
 
+const closeUserMobileDropdown = () => {
+  console.log("test");
+  const userDropdownWrapper = document.getElementById(
+    "user-dropdown-wrapper"
+  ) as HTMLElement;
+  userDropdownWrapper.addEventListener("click", (e) => {
+    isUserMobileDropdown.value = false;
+  });
+  isUserMobileDropdown.value = false;
+  console.log(isUserMobileDropdown.value);
+  setTimeout(() => {
+    userDropdownWrapper.addEventListener("click", (e) => {
+      if (window.innerWidth < 768) isUserMobileDropdown.value = true;
+    });
+  }, 200);
+};
+
+const openUserMobileDropdown = () => {
+  if (window.innerWidth < 768) isUserMobileDropdown.value = true;
+};
 cartStore = useCartStore();
 store = useMainStore();
 
@@ -124,6 +158,14 @@ const openCartDropdown = async () => {
   await resolveDropdown();
   const cartDropdown = document.getElementById("cart-dropdown") as HTMLElement;
   cartDropdown.classList.toggle("cart-dropdown-visible");
+};
+
+const openUserDropdown = async (bool: boolean = true) => {
+  const resolveDropdown = async () => {
+    if (bool) isUserDropdown.value = true;
+  };
+  await resolveDropdown();
+  const userDropdown = document.getElementById("user-dropdown") as HTMLElement;
 };
 
 const scrollToAbout = () => {
@@ -162,7 +204,7 @@ const toContact = () => {
 .smooth-color
   -webkit-transition: background 0.3s
   transition: background 0.3s
-  cursor: pointer
+
 
 
 
