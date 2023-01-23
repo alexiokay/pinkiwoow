@@ -61,11 +61,6 @@ export const useProductsStore = defineStore("Products", {
       this.products = products;
     },
     setCurrency(iso: string, initializing: boolean = false) {
-      const locale = useCookie("locale");
-      if (iso !== "ZZ") {
-        console.log("setting cookie");
-        locale.value = iso;
-      }
       iso = iso.toLowerCase();
 
       if (iso == "pl") this.currency = "PLN";
@@ -80,7 +75,6 @@ export const useProductsStore = defineStore("Products", {
       console.log("initializing: " + initializing);
       console.log("got iso: " + iso);
       console.log("currency set to: " + this.currency);
-      console.log("locale set to: " + locale.value);
 
       // set currencyRate for each currency
 

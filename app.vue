@@ -35,6 +35,12 @@ await fetch(`${config.API_URL}api/v1/get_geolocation_ip`, {
   .then((response) => response.json())
   .then((data) => {
     console.log("from client: "), console.log(data);
+    const locale = useCookie("locale");
+    if (data.country !== "ZZ") {
+      console.log("setting cookie");
+      locale.value = data.country;
+    }
+    console.log("locale set to: " + locale.value);
     productsStore.setCurrency(data.country, true);
   })
   .catch((error) => {
