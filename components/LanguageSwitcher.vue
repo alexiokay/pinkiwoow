@@ -46,7 +46,7 @@ localeSetting.value.toLowerCase();
         title="Change Language"
         class="transition-colors duration-300"
       >
-        <span class="relative top-[-5px] flex items-start justify-start">
+        <span class="relative flex items-start justify-start">
           <PolishFlag v-if="localeSetting === 'pl'" class="w-6 h-6" />
           <EnglishFlag v-else-if="localeSetting === 'en'" class="w-6 h-6" />
           <DeutschFlag v-else-if="localeSetting === 'de'" class="w-6 h-6" />

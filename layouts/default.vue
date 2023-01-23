@@ -1,7 +1,7 @@
 script
 <template lang="pug">
 div(id="default" style="display: flex, flex-direction: column  " class="h-auto flex flex-col justify-center items-center overflow-clip ")
-    div#overlay(class="fixed overlaying top-0 left-0 w-full h-screen bg-black opacity-40 z-10 hidden-overlay")
+    div#overlay(@click="mainStore.setOverlaying(false);" class="fixed overlaying top-0 left-0 w-full h-screen bg-black opacity-40 z-40 hidden-overlay")
    
     NavInfoBar(class="" title="🥳 Free shipping on orders over $50 🥳")
     NavBarMain(class="sticky top-0 z-50")
@@ -20,6 +20,8 @@ import IconFb from "~icons/ic/baseline-facebook";
 import IconPhone from "~icons/ic/baseline-phone";
 import IconEmail from "~icons/material-symbols/alternate-email";
 import { onBeforeMount } from "vue";
+import { useMainStore } from "@/stores/Main";
+const mainStore = useMainStore();
 const router = useRouter();
 
 const sendEmail = () => {

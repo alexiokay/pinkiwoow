@@ -19,13 +19,13 @@ const productsStore = useProductsStore();
 let products: Array<ProductType> | null = null;
 products = await getProducts();
 // set products in store
-productsStore.setCurrency(locale.value);
 
 productsStore.setProducts(products);
 
 const config = useRuntimeConfig();
 
 // get geolocation to set default currency  and language
+
 await fetch(`${config.API_URL}api/v1/get_geolocation_ip`, {
   method: "GET",
   headers: {
@@ -35,7 +35,7 @@ await fetch(`${config.API_URL}api/v1/get_geolocation_ip`, {
   .then((response) => response.json())
   .then((data) => {
     console.log("from client: "), console.log(data);
-    productsStore.setCurrency(data.country);
+    productsStore.setCurrency(data.country, true);
   })
   .catch((error) => {
     console.log(error);

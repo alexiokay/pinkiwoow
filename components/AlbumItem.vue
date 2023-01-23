@@ -81,6 +81,7 @@ const generateItem = () => {
     quantity: 1,
     image: props.img,
     stripePriceId: props.stripePriceId,
+    select: false,
   };
 
   return exampleItem;

@@ -6,6 +6,8 @@ div#searchbar(@click="focusNavbar"  class="flex items-center justify-start text-
 
 <script setup lang="ts">
 import SearchIcon from "~icons/ri/search-line";
+import { useMainStore } from "@/stores/Main";
+const mainStore = useMainStore();
 
 const focusNavbar = () => {
   const overlay = document.getElementById("overlay");
@@ -25,6 +27,7 @@ const focusNavbar = () => {
   navbarNavigation.style.opacity = "0.4";
 
   console.log(overlay?.classList);
+  mainStore.setOverlaying(true);
 };
 
 onMounted(() => {

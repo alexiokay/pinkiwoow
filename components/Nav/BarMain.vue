@@ -11,16 +11,16 @@ div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-f
       MenuIcon#mobile-menu-button(@click="showMobileNavbar" class=" hover:cursor-pointer w-7 h-7 text-black ")
       
     
-    NavSearchBar.h-full(class='hidden md:flex w-full') sda
-    NuxtLink(class=" w-full h-full md:h-[4.9rem] flex justify-start md:justify-center items-center" to="/")
-      nuxt-img#logo(class=" h-[3.2rem] md:h-[4.9rem" sizes="sm:90px md:130px lg:150px" src='/images/pinkiwoowLogo.webp' alt="logo")
-      p(class="text-2xl md:text-3xl text-pink-600 font-itim") PinkiWoow
+    NavSearchBar.h-full(class='hidden md:flex w-full') 
+    NuxtLink(class="select-none w-full h-full md:h-[4.9rem] flex justify-start md:justify-center items-center" to="/")
+      nuxt-img#logo(class=" h-[3.2rem] md:h-[4.9rem" sizes="sm:90px md:130px lg:150px " src='/images/pinkiwoowLogo.webp' alt="logo")
+      p(class="text-2xl md:text-3xl text-pink-600 font-itim h-full items-center flex ") PinkiWoow
    
     div(class="flex space-x-3 h-full w-full justify-end items-center")
       NuxtLink(class="w-9 h-9 flex md:hidden items-center justify-center relative" to="/cart")
           IconCart(class="w-full h-full text-gray-500")
           p(class="absolute top-[0.6rem]  text-white") {{cartStore.getCartLength}}
-      <LanguageSwitcher  />
+      <LanguageSwitcher class="h-full" />
       
       div(v-show="route.name!=='cart'" class='hidden lg:flex relative w-[13.3rem] h-[3.1rem] border-[1.2px] mb-2 p-[0.5rem] space-x-2 border-[#47C1BF] items-center justify-center  ')
        
@@ -32,14 +32,15 @@ div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-f
           IconDown(@click="openCartDropdown" class="text-gray-500 w-5 h-5 hover:cursor-pointer")
           NuxtLink(to="/cart" class="h-full w-[8rem] ")
             button( class='w-full h-full text-center bg-[#DB2878] hover:bg-[#47C1BF] smooth-color text-white')  {{$t('components.navbar.cart').toUpperCase()}} 
-          CartDropdown(class="hidden")
+          
+          <component :is="isCartDropdown ? cartdropdown : null" />
 
       div(v-show="route.name=='cart'" class='hidden md:flex relative w-[13.3rem] h-[3.1rem] border-[1.2px] mb-2 p-[0.5rem] space-x-2 border-gray-200 items-center justify-center  ')
         p asds
         
         
         hr(class="border-1 border-gray-100 w-full")
-  div#navbar-navigation(class="text-lg font-itim bg-[#F4F6F8] text-black hidden md:flex items-center justify-center w-full h-[3rem] md:px-16  gap-x-4")
+  div#navbar-navigation(:class="{'pointer-events-none': store.isOverlaying}" class=" text-lg font-itim bg-[#F4F6F8] text-black hidden md:flex items-center justify-center w-full h-[3rem] md:px-16  gap-x-4")
     LazyHydrate(when-idle)
       NavDropdown#dropdown-1(@click="openDropdown('1')" class="dropdown-hidden hidden hover:flex absolute top-[6.90rem] left-0 z-40")
    
@@ -84,7 +85,8 @@ const productsStore = useProductsStore();
 let store = useMainStore();
 const mobileMenu = computed(() => store.getIsMobileNavbarOpen);
 const loaded = ref(false);
-
+const cartdropdown = resolveComponent("CartDropdown");
+const isCartDropdown = ref(false);
 const route = useRoute();
 const router = useRouter();
 const locale = useState<string>("locale.setting");
@@ -115,7 +117,11 @@ const showMobileNavbar = () => {
   console.log(store.getIsMobileNavbarOpen);
 };
 
-const openCartDropdown = () => {
+const openCartDropdown = async () => {
+  const resolveDropdown = async () => {
+    isCartDropdown.value = true;
+  };
+  await resolveDropdown();
   const cartDropdown = document.getElementById("cart-dropdown") as HTMLElement;
   cartDropdown.classList.toggle("cart-dropdown-visible");
 };

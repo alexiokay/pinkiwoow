@@ -16,6 +16,7 @@ export const useMainStore = defineStore("Main", {
       isMobileNavbarOpen: useStorage("isMobileNavbarOpen", false),
 
       isLocaleSet: useStorage("isLocaleSet", false),
+      isOverlaying: useStorage("isOverlaying", false),
     };
   },
   getters: {
@@ -41,6 +42,9 @@ export const useMainStore = defineStore("Main", {
 
     setLocaleSet() {
       this.isLocaleSet = true;
+    },
+    setOverlaying(bool: boolean) {
+      this.isOverlaying = bool;
     },
   },
 

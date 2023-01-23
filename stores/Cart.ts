@@ -1,9 +1,9 @@
 import { defineStore } from "pinia";
 import { createPinia } from "pinia";
-import piniaPersist from "pinia-plugin-persist";
 import uniqid from "uniqid";
 import { useStorage } from "@vueuse/core";
 import { useProductsStore } from "@/stores/Products";
+import piniaPersist from "pinia-plugin-persist";
 
 const pinia = createPinia();
 
@@ -17,6 +17,7 @@ export type CartItem = {
   quantity: number;
   image: string;
   stripePriceId: string;
+  select: boolean;
 };
 
 // @ts-ignore: Unreachable code error
@@ -33,6 +34,7 @@ export const useCartStore = defineStore("cart", {
           price_pln: 100,
           quantity: 1,
           image: "https://picsum.photos/200",
+          select: false,
         },
         {
           id: uniqid(),
@@ -41,6 +43,7 @@ export const useCartStore = defineStore("cart", {
           price_pln: 100,
           quantity: 1,
           image: "https://picsum.photos/200",
+          select: false,
         },
       ] as Array<CartItem>),
     };
@@ -80,20 +83,14 @@ export const useCartStore = defineStore("cart", {
       );
       if (cartItem) {
         cartItem.quantity += 1;
-        console.log(cartItem);
-        console.log(
-          this.cart.find((cartItem) => cartItem.title === item.title)
-        );
       } else {
         this.cart.push(item);
       }
     },
     removeFromCart(_item: any) {
-      console.log(_item);
       this.cart = this.cart.filter((item) => {
         return item.id != _item;
       });
-      console.log(this.cart);
     },
 
     increaseItemQuantity(id: any) {

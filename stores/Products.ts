@@ -60,7 +60,12 @@ export const useProductsStore = defineStore("Products", {
     setProducts(products: ProductType[]) {
       this.products = products;
     },
-    setCurrency(iso: string) {
+    setCurrency(iso: string, initializing: boolean = false) {
+      const localeSetting = useState<string>("locale.setting");
+      if (iso !== "ZZ") {
+        localeSetting.value = iso;
+      }
+
       if (iso == "pl") this.currency = "PLN";
       else if (iso == "de") this.currency = "EUR";
       else if (iso == "gb") this.currency = "GBP";
@@ -69,8 +74,11 @@ export const useProductsStore = defineStore("Products", {
       else if (iso == "ko") this.currency = "KRW";
       else if (iso == "zh") this.currency = "CNY";
       else this.currency = "EUR";
+
+      console.log("initializing: " + initializing);
       console.log("got iso: " + iso);
       console.log("currency set to: " + this.currency);
+
       // set currencyRate for each currency
 
       // this.products.forEach((product: any) => {
