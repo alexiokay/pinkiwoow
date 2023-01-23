@@ -15,7 +15,7 @@ div(class="flex flex-col w-full h-auto items-center px-4 md:px-12 justify-center
     hr(class=" w-full border-[0.8px] mt-4 mb-4 hidden md:flex ")
     div#cart-process(class  ="flex md:hidden w-full h-10 bg-slate-50  ")
     div(v-for="item in cart" :key='item.title' class="flex md:flex-row w-full h-auto mt-4 justify-center space-x-2 ")
-        img(class="w-[15vw] h-auto acpect-square md:hidden" :src="item.image" )
+        img(class="w-1/4 h-auto aspect-square md:hidden" :src="item.image" )
         div(class="flex w-full h-auto flex-col justify-between md:hidden")
             div(class="w-full space-x-4 flex")
                
@@ -57,7 +57,7 @@ div(class="flex flex-col w-full h-auto items-center px-4 md:px-12 justify-center
         div(class="hidden md:flex flex-col w-[15%] justify-start items-end h-auto")
             p(class="w-[3rem] md:w-[4rem] lg:w-[5rem] flex items-center justify-center") {{item.price * item.quantity}} zł
     hr(class=" w-full border-[0.8px] mt-8 mb-4 ")
-    button(@click="removeSelected()" class="hidden md:flex w-[10rem] h-[2rem] bg-[#b4b4b4] text-white  hover:cursor-pointer") DELETE SELECTED
+    button(@click="removeSelected()" class="hidden md:flex w-[10rem] h-[2rem] bg-[#b4b4b4] text-white  hover:cursor-pointer items-center justify-center") DELETE SELECTED
     hr(class=" hidden md:flex w-full border-[0.8px] mt-4 mb-8 ")
     div(class="flex flex-col w-full h-auto")
     div(class="flex flex-col space-y-2 w-full   ")
