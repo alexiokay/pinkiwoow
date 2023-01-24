@@ -48,21 +48,21 @@ div#navbar-wrapper(class="z-50 overlaying drop-shadow-xl md:drop-shadow-none w-f
         
         
         hr(class="border-1 border-gray-100 w-full")
-  div#navbar-navigation(:class="{'pointer-events-none': store.isOverlaying}" class=" text-lg font-itim bg-[#F4F6F8] text-black hidden md:flex items-center justify-center w-full h-[3rem] md:px-16  gap-x-4")
+  div#navbar-navigation(v-show="canAdditionalNavbars" :class="{'pointer-events-none': store.isOverlaying}" class=" text-lg font-itim bg-white drop-shadow-xl text-black hidden md:flex items-center justify-center w-full h-[3rem] md:px-16  gap-x-4")
     LazyHydrate(when-idle)
-      NavDropdown#dropdown-1(@click="openDropdown('1')" class="dropdown-hidden hidden hover:flex absolute top-[6.90rem] left-0 z-40")
+      NavDropdown#dropdown-1(@click="openDropdown('1')" @mouseenter="openDropdown('1')"  @mouseleave="closeDropdown('1')" class="dropdown-hidden hidden hover:flex absolute top-[2rem] left-0 z-40")
    
 
-    div(class="h-full")
-      NuxtLink(@mouseenter="openDropdown('1')" @mouseleave="closeDropdown('1')" class="group h-full relative flex items-center justify-center" to="/")
-        div(class="bg-transparent smooth-color group-hover:bg-black h-[0.24rem]  w-full absolute bottom-0")
+    div(class="h-full group")
+      NuxtLink(@mouseenter="openDropdown('1')" @mouseleave="closeDropdown('1')"  class="group h-full relative flex items-center justify-center" to="/")
+        div(:class="{'bg-black': isDropdown1Open }" class="bg-transparent smooth-color group-hover:bg-black h-[0.24rem]  w-full absolute bottom-0")
         p {{$t('components.navbar.products').toUpperCase()}}
 
-    div.relative(class="h-full")
-      NuxtLink(@mouseenter="openDropdown('2')" @mouseleave="closeDropdown('2')" class="h-full group flex items-center justify-center" to="/")
+    div.relative(class="h-full group")
+      NuxtLink(@mouseenter="openDropdown('2')" @mouseleave="closeDropdown('2')" class="h-full flex items-center justify-center" to="/")
         p {{$t('components.navbar.home').toUpperCase()}}
         div(class="bg-transparent smooth-color group-hover:bg-black h-[0.24rem]  w-full absolute bottom-0")
-      NavSmallDropdown#dropdown-2(@click="openDropdown('2')" class="dropdown-hidden hidden hover:flex absolute top-[2.05rem] left-0 z-40")
+      NavSmallDropdown#dropdown-2(@click="openDropdown('2')" class="dropdown-hidden hidden hover:flex absolute top-[2rem] left-0 z-40")
     div(class="h-full")
       NuxtLink(class=" relative h-full group flex items-center justify-center" to="/")
         div(class="bg-transparent smooth-color group-hover:bg-black h-[0.24rem]  w-full absolute bottom-0")
@@ -108,6 +108,10 @@ const { t } = useLang();
 
 let cartStore: any = useCartStore();
 
+const canAdditionalNavbars = computed(() => {
+  if (route.name === "login" || route.name === "register") return false;
+  else return true;
+});
 const closeUserMobileDropdown = () => {
   console.log("test");
   const userDropdownWrapper = document.getElementById(
@@ -116,8 +120,7 @@ const closeUserMobileDropdown = () => {
   userDropdownWrapper.addEventListener("click", (e) => {
     isUserMobileDropdown.value = false;
   });
-  isUserMobileDropdown.value = false;
-  console.log(isUserMobileDropdown.value);
+
   setTimeout(() => {
     userDropdownWrapper.addEventListener("click", (e) => {
       if (window.innerWidth < 768) isUserMobileDropdown.value = true;
@@ -179,18 +182,24 @@ const scrollToContact = () => {
   contact?.classList.add("shake");
 };
 
+const isDropdown1Open = ref(false);
+const isDropdown2Open = ref(false);
 const openDropdown = (dropdownName: string) => {
   if (dropdownName === "1")
-    document.getElementById("dropdown-1")?.classList.add("dropdown-visible");
+    document.getElementById("dropdown-1")?.classList.add("dropdown-visible"),
+      (isDropdown1Open.value = true);
   else if (dropdownName === "2")
-    document.getElementById("dropdown-2")?.classList.add("dropdown-visible");
+    document.getElementById("dropdown-2")?.classList.add("dropdown-visible"),
+      (isDropdown2Open.value = true);
 };
 
 const closeDropdown = (dropdownName: string) => {
   if (dropdownName === "1")
-    document.getElementById("dropdown-1")?.classList.remove("dropdown-visible");
+    document.getElementById("dropdown-1")?.classList.remove("dropdown-visible"),
+      (isDropdown1Open.value = false);
   else if (dropdownName === "2")
-    document.getElementById("dropdown-2")?.classList.remove("dropdown-visible");
+    document.getElementById("dropdown-2")?.classList.remove("dropdown-visible"),
+      (isDropdown2Open.value = false);
 };
 const toContact = () => {
   router.push({ name: "index" });

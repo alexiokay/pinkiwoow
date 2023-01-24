@@ -4,12 +4,12 @@
         CloseIcon(@click="$emit('close')" class="hover:cursor-pointer h-5 w-5")
         p Menu
     div(class="flex flex-col justify-center items-center space-y-2 w-full")
-        button#dropdown-login(class="w-full h-10 md:h-8 rounded-full hover:bg-blue-700 bg-blue-600 text-white text-sm  flex items-center justify-center") Login
+        NuxtLink#dropdown-login(to="/login" class="w-full h-10 md:h-8 rounded-full hover:bg-blue-700 bg-blue-600 text-white text-sm  flex items-center justify-center") Login
         div(class="flex h-5 w-full justify-center items-center ")
             hr(class="w-3/5 h-[1.4px] bg-gray-200")
             p(class="w-full text-center") Nie masz konta?
             hr(class="w-3/5 h-[1.4px] bg-gray-200")
-        button#dropdown-register(class="w-full h-10 md:h-8  rounded-full bg-white text-blue-600 border-[1px] border-blue-600 text-sm  flex items-center justify-center") Zarejestruj się
+        NuxtLink#dropdown-register(to="/register" class="w-full h-10 md:h-8  rounded-full bg-white text-blue-600 border-[1px] border-blue-600 text-sm  flex items-center justify-center") Zarejestruj się
     hr(class="w-[17rem] h-0.3 bg-gray-200 -mx-[12px] my-4")
     div(class="flex w-[calc(30vw+10em)] -mx-[12px] md:w-[17rem] flex-col justify-center  items-center  ")
         button.flex(class="w-full text-slate-700 text-sm  space-x-3 h-[2.4rem] items-center justify-start px-5  hover:cursor-pointer hover:bg-slate-50") 

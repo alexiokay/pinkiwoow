@@ -3,14 +3,23 @@
 div(class="relative h-auto overflow-hidden ")
   .swiper-container(class='')
       .swiper-wrapper(class='')
-          .swiper-slide(v-for="slide in props.slides" :key="slide.title"  class="hover:cursor-pointer overflow-hidden flex flex-col ")
-            div(class=" h-3/5  w-auto flex flex-col ")
-              nuxt-img.swiper-image(:src="slide.image?.url" :alt="slide.image?.alt"  class="aspect-square w-full h-full object-contain")
-              
-            p(class=" text-lg font-robotolight font-bold text-black mt-3") {{slide.title  }}
-            p(v-if="productsStore.getCurrency === 'EUR'") {{slide.price_model.price_eur }} {{ productsStore.getCurrency }}
-            p(v-else-if="productsStore.getCurrency === 'PLN' && slide.price_model.price_pln !== null") {{slide.price_model.price_pln}} {{ productsStore.getCurrency }}
-         
+          .swiper-slide(v-for="slide in props.slides" :key="slide.title"  class="hover:cursor-pointer    overflow-hidden flex flex-col ")
+            div(class="w-[98%] h-[98%] relative group text-sm rounded-xl p-2 text-start hover:shadow-[0px_0px_3px_1px_rgb(0,0,0,0.15)]")
+              div(class="h-8 w-8 absolute  flex  top-[1rem] right-[1rem] z-20 hover:bg-gray-100 rounded-full items-center justify-center ")
+                IconHeart(v-if="!slides.favourite" class="w-5 h-5 text-gray-700 smooth-bg opacity-0 group-hover:opacity-100")
+                IconFillHeart(v-if="slides.favourite" class="w-5 h-5 text-black")
+              div(class="h-5  text-black w-[4.5rem] absolute flex items-center justify-center rounded-full top-[1rem] left-[1rem] z-20 border-[1px] border-gray-400")
+                p(class="text-xs ") Promocja
+              button#buy(class="absolute  items-center hidden group-hover:flex justify-center text-green-600 hover:text-white h-9 w-9 bottom-[0.65rem] right-[0.65rem] z-20 border-[1px] border-green-600 hover:bg-green-600 rounded-full ")
+                IconAddToCart(class="w-4 h-4 ")
+              div(class=" h-3/5  w-auto flex flex-col mt-4")
+                nuxt-img.swiper-image(:src="slide.image?.url" :alt="slide.image?.alt"  class="aspect-square w-full h-full object-contain")
+                
+              p(class=" text-base mb-3  font-robotolight font-bold text-black mt-3") {{slide.title  }}
+              div(class="absolute bottom-[1rem] left-[1rem] ")
+                p(v-if="productsStore.getCurrency === 'EUR'") {{slide.price_model.price_eur }} {{ productsStore.getCurrency }}
+                p(v-else-if="productsStore.getCurrency === 'PLN' && slide.price_model.price_pln !== null") {{slide.price_model.price_pln}} {{ productsStore.getCurrency }}
+          
       .swiper-pagination(class=" absolute left-0 right-0 bottom-[-58rem] ml-auto mr-auto")
 </template>
 
@@ -20,7 +29,9 @@ import type { PropType } from "vue";
 import type { ProductType } from "@/types/Product";
 import "swiper/css";
 import "swiper/css/pagination";
-
+import IconHeart from "~icons/ph/heart";
+import IconFillHeart from "~icons/ph/heart-fill";
+import IconAddToCart from "~icons/material-symbols/add-shopping-cart-rounded";
 import { useProductsStore } from "@/stores/Products";
 
 const productsStore = useProductsStore();
@@ -96,7 +107,14 @@ onMounted(() => {
 });
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
+
+.smooth-bg
+  -webkit-transition: visibility 0.2s linear, opacity 0.2s linear
+  -moz-transition: visibility 0.2s linear, opacity 0.2s linear
+  -o-transition: visibility 0.2s linear, opacity 0.2s linear
+  transition: visibility 0.2s linear, opacity 0.2s linear
+
 
 
 .noselect
@@ -128,6 +146,8 @@ onMounted(() => {
   width: 100%
   height: 42vh
   margin: 20px auto
+
+
 
 .swiper-pagination > *
   width: 0.65rem
