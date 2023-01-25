@@ -1,5 +1,4 @@
-<template lang="pug">
-
+<template lang="pug"> 
 div#navbar-wrapper(class="z-50  overlaying drop-shadow-xl md:drop-shadow-none w-full text-gray-500 h-auto shadow-md  bg-white flex flex-col items-center justify-between lg:justify-center mx-0 ") 
   div(@click="closeMobileNavbar()" class="w-full h-screen bg-[rgba(0,0,0,0.25)] z-40 fixed top-0 block md:hidden" v-if="mobileMenu && loaded")
         ClientOnly
@@ -9,7 +8,7 @@ div#navbar-wrapper(class="z-50  overlaying drop-shadow-xl md:drop-shadow-none w-
   div#navbar-content1(class="z-30 flex items-center justify-between w-full h-[4rem] md:h-[4.1rem] text-xs px-6 md:px-16 ")
     div#mobile-nav(class="flex md:hidden items-center space-x-2 w-[6rem] h-full")
       MenuIcon#mobile-menu-button(@click="showMobileNavbar" class=" hover:cursor-pointer w-7 h-7 text-black ")
-      
+       
     
     NavSearchBar.h-full(class='hidden md:flex w-full') 
     NuxtLink(class="select-none w-full md:ml-[7%] h-full md:h-[4.9rem] flex justify-start md:justify-center items-center" to="/")
