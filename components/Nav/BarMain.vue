@@ -1,4 +1,4 @@
-<template lang="pug"> 
+<template lang="pug">  
 div#navbar-wrapper(class="z-50  overlaying drop-shadow-xl md:drop-shadow-none w-full text-gray-500 h-auto shadow-md  bg-white flex flex-col items-center justify-between lg:justify-center mx-0 ") 
   div(@click="closeMobileNavbar()" class="w-full h-screen bg-[rgba(0,0,0,0.25)] z-40 fixed top-0 block md:hidden" v-if="mobileMenu && loaded")
         ClientOnly
