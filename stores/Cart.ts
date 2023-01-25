@@ -28,26 +28,7 @@ export const useCartStore = defineStore("cart", {
     return {
       initialized: useStorage("initialized", false),
       // all these properties will have their type inferred automatically
-      cart: useStorage("cart", [
-        {
-          id: uniqid(),
-          title: "Koszulka",
-          price_eur: 100,
-          price_pln: 100,
-          quantity: 1,
-          image: "https://picsum.photos/200",
-          select: false,
-        },
-        {
-          id: uniqid(),
-          title: "Koszulka",
-          price: 100,
-          price_pln: 100,
-          quantity: 1,
-          image: "https://picsum.photos/200",
-          select: false,
-        },
-      ] as Array<CartItem>),
+      cart: useStorage("cart", [] as Array<CartItem>),
     };
   },
   getters: {
