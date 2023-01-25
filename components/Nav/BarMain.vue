@@ -109,6 +109,7 @@ const { t } = useLang();
 let cartStore: any = useCartStore();
 
 const canAdditionalNavbars = computed(() => {
+  console.log(route.path);
   if (route.name === "login" || route.name === "register") return false;
   else return true;
 });

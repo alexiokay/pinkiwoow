@@ -40,14 +40,15 @@ div(class="flex flex-col w-full h-auto items-center px-4 md:px-12 justify-center
                 select(v-if="item.quantity<=9" type="number" class="w-[3.5rem] h-[2rem] border-[1px] border-[#a6a6a6] focus:drop-shadow-lg rounded-full text-center" :value="item.quantity" min="1" @change="item.quantity = $event.target.value")
                     option(v-for="i in 9" :key="i" :value="i") {{i}}  
                     option(value="10") 9+
-                p {{item.price * item.quantity}} {{productsStore.getCurrency}}
+                p {{item.price_pln * item.quantity}} {{productsStore.getCurrency}}
 
         div(class="hidden md:flex flex-col w-full md:w-[20%] lg:w-[11%] h-auto")
             img(class="w-full h-auto" :src="item.image" )
         div(class="hidden md:flex flex-col w-[25%] md:w-[35%]  lg:w-[40%]  h-auto")
             input(@change="selectItem(item.id) " type="checkbox" class="w-4 h-4 ml-2")
         div(class="hidden md:flex flex-col w-[15%] h-auto ")
-            p {{item.price}} {{productsStore.getCurrency}}
+            p(v-if="productsStore.getCurrency === 'EUR'") {{item.price_eur.toFixed(2)}} {{productsStore.getCurrency}}
+            p(v-if="productsStore.getCurrency === 'PLN'") {{item.price_pln.toFixed(2)}} {{productsStore.getCurrency}}
         div(class="hidden md:flex flex-row  justify-center items-start w-aut w-[8.8rem]   h-auto gap-x-2")
             input(type="number" class="w-[3.5rem] h-[2rem] border-[1px] focus:drop-shadow-lg text-center" :value="item.quantity" min="1" @change="item.quantity = $event.target.value")
             div( @mousedown="increaseQuantity(item.id)" v-on:mouseup="stopHolding()"  @mouseleave="stopHolding()" class="w-[2rem] h-[2rem] bg-[#434447] select-none hover:cursor-pointer flex flex-col justify-center items-center text-2xl text-white")
@@ -55,7 +56,7 @@ div(class="flex flex-col w-full h-auto items-center px-4 md:px-12 justify-center
             div(@mousedown="decreaseQuantity(item.id)" v-on:mouseup="stopHolding()"  @mouseleave="stopHolding()" class="select-none w-[2rem] h-[2rem] bg-[#434447] hover:cursor-pointer flex flex-col justify-center items-centertext-2xl text-white")
                 p.text-center.mb-1 -
         div(class="hidden md:flex flex-col w-[15%] justify-start items-end h-auto")
-            p(class="w-[3rem] md:w-[4rem] lg:w-[5rem] flex items-center justify-center") {{item.price * item.quantity}} zł
+            p(class="w-[3rem] md:w-[4rem] lg:w-[5rem] flex items-center justify-center") {{(item.price_eur * item.quantity).toFixed(2) }} {{productsStore.getCurrency}}
     hr(class=" w-full border-[0.8px] mt-8 mb-4 ")
     button(@click="removeSelected()" class="hidden md:flex w-[10rem] h-[2rem] bg-[#b4b4b4] text-white  hover:cursor-pointer items-center justify-center") DELETE SELECTED
     hr(class=" hidden md:flex w-full border-[0.8px] mt-4 mb-8 ")
@@ -182,8 +183,8 @@ const increaseQuantity = (itemId: any) => {
   setTimeout(() => {
     interval = setInterval(() => {
       cartStore.value.increaseItemQuantity(itemId);
-    }, 130);
-  }, 300);
+    }, 210);
+  }, 100);
 };
 
 const getCart = (itemId: any) => {
@@ -207,15 +208,16 @@ const decreaseQuantity = (itemId: any) => {
   setTimeout(() => {
     interval = setInterval(() => {
       cartStore.value.decreaseItemQuantity(itemId);
-    }, 130);
-  }, 300);
+    }, 210);
+  }, 100);
 };
 
 const stopHolding = () => {
+  console.log("stop holding");
   setTimeout(() => {
     clearInterval(interval);
     interval = null;
-  }, 50);
+  }, 150);
 };
 
 const removeSelected = () => {

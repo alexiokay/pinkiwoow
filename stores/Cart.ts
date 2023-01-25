@@ -4,6 +4,7 @@ import uniqid from "uniqid";
 import { useStorage } from "@vueuse/core";
 import { useProductsStore } from "@/stores/Products";
 import piniaPersist from "pinia-plugin-persist";
+import type { ProductType } from "@/types/Product";
 
 const pinia = createPinia();
 
@@ -12,10 +13,11 @@ pinia.use(piniaPersist);
 export type CartItem = {
   id: any;
   title: string;
-  price: number;
+  price_eur: number;
   price_pln: number;
   quantity: number;
-  image: string;
+  image: string | undefined;
+  image2?: string | undefined;
   stripePriceId: string;
   select: boolean;
 };
@@ -30,7 +32,7 @@ export const useCartStore = defineStore("cart", {
         {
           id: uniqid(),
           title: "Koszulka",
-          price: 100,
+          price_eur: 100,
           price_pln: 100,
           quantity: 1,
           image: "https://picsum.photos/200",
@@ -54,18 +56,18 @@ export const useCartStore = defineStore("cart", {
     },
     getCartTotal(state) {
       const productsStore = useProductsStore(pinia);
-      let response: any = null;
+      let total_price: any = null;
 
       if (productsStore.getCurrency === "PLN") {
-        response = state.cart.reduce((total, item) => {
+        total_price = state.cart.reduce((total, item) => {
           return total + item.price_pln * item.quantity;
         }, 0);
       } else {
-        response = state.cart.reduce((total, item) => {
-          return total + item.price * item.quantity;
+        total_price = state.cart.reduce((total, item) => {
+          return total + item.price_eur * item.quantity;
         }, 0);
       }
-      return response;
+      return total_price.toFixed(2);
     },
     getCartLength(state) {
       return state.cart.length;
@@ -77,14 +79,27 @@ export const useCartStore = defineStore("cart", {
       this.initialized = true;
     },
 
-    addToCart(item: CartItem) {
-      const cartItem = this.cart.find(
+    addToCart(item: ProductType) {
+      const cartItem: CartItem = {
+        id: item.id,
+        title: item.title,
+        price_eur: item.price_model.price_eur,
+        price_pln: item.price_model.price_pln,
+        quantity: 1,
+        image: item.image?.full_url,
+        image2: item.image2?.full_url,
+        stripePriceId: "nothing yet",
+        select: false,
+      };
+
+      const existing_cart_item = this.cart.find(
         (cartItem) => cartItem.title === item.title
       );
-      if (cartItem) {
-        cartItem.quantity += 1;
+
+      if (existing_cart_item) {
+        existing_cart_item.quantity += 1;
       } else {
-        this.cart.push(item);
+        this.cart.push(cartItem);
       }
     },
     removeFromCart(_item: any) {
@@ -101,7 +116,7 @@ export const useCartStore = defineStore("cart", {
     },
     decreaseItemQuantity(id: any) {
       const item = this.cart.find((item) => item.id === id);
-      if (item && item.quantity > 2) {
+      if (item && item.quantity > 1) {
         item.quantity--;
       }
     },

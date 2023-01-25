@@ -7,8 +7,6 @@ export const getProducts = async () => {
       Authorization: `${config.API_TOKEN}`,
     },
   };
-  //
-
   const products = await useFetch(
     `${config.API_URL}api/v2/pages/?type=shop.ProductPage&fields=title,description,image,image2,image3,price_model,category`,
     options

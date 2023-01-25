@@ -14,7 +14,6 @@ export const useMainStore = defineStore("Main", {
       // all these properties will have their type inferred automatically
       initialized: useStorage("initialized", false),
       isMobileNavbarOpen: useStorage("isMobileNavbarOpen", false),
-
       isLocaleSet: useStorage("isLocaleSet", false),
       isOverlaying: useStorage("isOverlaying", false),
     };

@@ -24,14 +24,6 @@ const props = defineProps({
 });
 
 onMounted(() => {
-  const evaluateMaxNofChild = (number: any) => {
-    const carouselChildren = document.querySelectorAll(
-      "#header-container .swiper-slide"
-    ).length;
-
-    return number >= carouselChildren ? carouselChildren : number;
-  };
-
   const mySwiper = new Swiper("#header-container", {
     modules: [Pagination, Lazy, Autoplay],
     preloadImages: false,
@@ -40,7 +32,7 @@ onMounted(() => {
     },
     loop: true,
     speed: 1000,
-    cssMode: true,
+
     lazy: {
       //  tell swiper to load images before they appear
       loadPrevNext: true,
@@ -50,9 +42,6 @@ onMounted(() => {
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
-      renderBullet: function (index, className) {
-        return `<span class="${className}"></span>`;
-      },
     },
   });
 

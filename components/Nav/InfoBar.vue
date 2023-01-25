@@ -22,7 +22,6 @@ const props = defineProps({
 });
 
 const canAdditionalNavbars = computed(() => {
-  console.log(route.path);
   if (route.name === "login" || route.name === "register") return false;
   else return true;
 });

@@ -22,6 +22,7 @@ export type Category = {
 
 export type ProductType = {
   // Product
+  id: number;
   title: string;
   description: string;
   image: Image;
@@ -29,4 +30,5 @@ export type ProductType = {
   image3: Image;
   price_model: PriceModel;
   category: Object;
+  quantity: number;
 };
