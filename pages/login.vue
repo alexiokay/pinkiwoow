@@ -35,6 +35,10 @@ div#login-page(class="flex w-[1440px] h-full px-12 items-start gap-x-28 justify-
 import { useUserStore } from "@/stores/User";
 const userStore = useUserStore();
 
+definePageMeta({
+  middleware: "redirect-if-logged",
+});
+
 const email = ref("");
 const password = ref("");
 const config = useRuntimeConfig();
@@ -58,8 +62,8 @@ const signIn = () => {
       if (res.status === 200) {
         res.json().then((data) => {
           userStore.setToken(data.key);
-          userStore.setUsername(data.username);
-          userStore.setEmail(data.email);
+          userStore.setUsername(data.user.username);
+          userStore.setEmail(data.user.email);
           userStore.setIsLogged(true);
 
           router.push("/");

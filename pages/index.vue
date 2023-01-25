@@ -4,7 +4,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
  
 
   div(class="w-full h-auto flex justify-center gap-x-4 items-start   ")
-    div(class="w-1/4 h-auto hidden md:flex flex-col rounded-xl shadow-lg px-4 py-4 space-y-4 bg-white text-xl items-center border-2 border-[#47C1BF] ")
+    div(class="w-1/4 h-auto hidden md:flex flex-col rounded-xl shadow-lg px-4 py-4 space-y-4 bg-white opacity-90 text-xl items-center border-2 border-[#47C1BF] ")
       NuxtLink(to="/") Kubki 
       p Puzzle
       p Koszulki
@@ -16,10 +16,10 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
       p Itemy
       p {{ message }}
       
-    div(class="w-full md:w-3/4 h-auto flex flex-col ")
-      div(class="w-full h-[52vh] md:h-[65vh] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
+    div(class="w-full md:w-3/4 h-auto flex flex-col  ")
+      div(class="w-full h-[52vh]  border-2 border-[#47C1BF] md:h-[65vh] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
         
-        Header(:slides="header") 
+        Header(:slides="header" class="") 
           
          
       
@@ -67,6 +67,20 @@ const config = useRuntimeConfig();
 
 const randomProducts = ref(productsStore.getRandomProducts);
 console.log(randomProducts.value);
+
+const headRef = ref(null); // obtain the reference
+onMounted(() => {
+  window.addEventListener("scroll", () => {
+    var curr = window.pageYOffset;
+
+    // You can style header-bg for style purpose
+    if (curr >= 100) {
+      headRef.value.classList.add("header-bg");
+    } else {
+      headRef.value.classList.remove("header-bg");
+    }
+  });
+});
 </script>
 
 <style lang="sass">

@@ -49,6 +49,10 @@ div#login-page(class="relative flex w-[1440px] h-[57rem] px-12 items-start gap-x
 <script setup lang="ts">
 const areAllChecked = ref(false);
 
+definePageMeta({
+  middleware: "redirect-if-logged",
+});
+
 const checkAllChecked = (event: any) => {
   const agreements = document.querySelectorAll(
     "#agreements input"

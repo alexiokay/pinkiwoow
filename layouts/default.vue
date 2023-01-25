@@ -1,13 +1,15 @@
 script
 <template lang="pug">
+<!--Simple Sun and Clouds with css - Beginers css -->
+
 div(id="default" style="display: flex, flex-direction: column  " class="h-auto flex flex-col justify-center items-center overflow-clip ")
     div#overlay(@click="mainStore.setOverlaying(false);" class="fixed overlaying top-0 left-0 w-full h-screen bg-black opacity-40 z-40 hidden-overlay")
-   
+    
     NavInfoBar(class="" title="🥳 Free shipping on orders over $50 🥳")
     NavBarMain(class="sticky top-0 z-50")
     
    
-    div#footer-wrapper(class=" md:mt-4 w-full h-full flex flex-col items-center justify-between lg:justify-center mx-0 bg-white") 
+    div#footer-wrapper(class=" md:mt-4 w-full h-full flex flex-col items-center justify-between lg:justify-center mx-0 ") 
         div(class="flex flex-col justify-between items-center w-full h-full   ")
             <slot class="" />
             Footer(class="mt-12")
@@ -33,19 +35,6 @@ onMounted(() => {});
 
 <style lang="sass">
 
-*
-    scroll-snap-type: y mandatory
-
-body
-    overflow-x: hidden
-
-
-.app-container
-
-    z-index: 10
-    display: flex
-    flex-direction: column
-    justify-content: center
 
 
 
@@ -95,4 +84,6 @@ body
 .visible-overlay
   visibility: visible
   opacity: 0.4
+
+  // sun background
 </style>

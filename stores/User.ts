@@ -7,7 +7,7 @@ const pinia = createPinia();
 pinia.use(piniaPersist);
 
 // @ts-ignore: Unreachable code error
-export const useUserStore = defineStore("cart", {
+export const useUserStore = defineStore("User", {
   state: () => {
     return {
       username: useStorage("username", ""),
@@ -42,6 +42,12 @@ export const useUserStore = defineStore("cart", {
     },
     setIsLogged(bool: boolean) {
       this.isLogged = bool;
+    },
+    logout() {
+      this.username = "";
+      this.email = "";
+      this.token = "";
+      this.isLogged = false;
     },
   },
 

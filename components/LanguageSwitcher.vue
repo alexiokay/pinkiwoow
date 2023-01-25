@@ -25,8 +25,6 @@ const props = defineProps({
 });
 
 const productsStore = useProductsStore();
-console.log("currrency: " + productsStore.getCurrency);
-// state
 const currentStyle = toRef(props, "type");
 const localeSetting = useState<string>("locale.setting");
 localeSetting.value.toLowerCase();
@@ -47,13 +45,31 @@ localeSetting.value.toLowerCase();
         class="transition-colors duration-300"
       >
         <span class="relative flex items-start justify-start">
-          <PolishFlag v-if="localeSetting === 'pl'" class="w-6 h-6" />
-          <EnglishFlag v-else-if="localeSetting === 'en'" class="w-6 h-6" />
-          <DeutschFlag v-else-if="localeSetting === 'de'" class="w-6 h-6" />
-          <ChinneseFlag v-else-if="localeSetting === 'zh'" class="w-6 h-6" />
-          <IndonesianFlag v-else-if="localeSetting === 'id'" class="w-6 h-6" />
-          <JapaneseFlag v-else-if="localeSetting === 'ja'" class="w-6 h-6" />
-          <SouthCoreanFlag v-else="localeSetting === 'ko'" class="w-6 h-6" />
+          <PolishFlag v-if="localeSetting === 'pl'" class="w-4 h-3 md:h-4" />
+          <EnglishFlag
+            v-else-if="localeSetting === 'en'"
+            class="w-4 h-3 md:h-4"
+          />
+          <DeutschFlag
+            v-else-if="localeSetting === 'de'"
+            class="w-4 h-3 md:h-4"
+          />
+          <ChinneseFlag
+            v-else-if="localeSetting === 'zh'"
+            class="w-4 h-3 md:h-4"
+          />
+          <IndonesianFlag
+            v-else-if="localeSetting === 'id'"
+            class="w-4 h-3 md:h-4"
+          />
+          <JapaneseFlag
+            v-else-if="localeSetting === 'ja'"
+            class="w-4 h-3 md:h-4"
+          />
+          <SouthCoreanFlag
+            v-else="localeSetting === 'ko'"
+            class="w-4 h-3 md:h-4"
+          />
         </span>
       </ListboxButton>
       <ListboxOptions

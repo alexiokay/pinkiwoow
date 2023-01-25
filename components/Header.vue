@@ -81,7 +81,7 @@ onMounted(() => {
 #header-container
   width: 100%
 
-  margin: 20px auto
+
 
 .swiper-pagination > *
   width: 0.65rem

@@ -2,6 +2,11 @@
   // hyttps://v3.nuxtjs.org/concepts/typescript
   
   "extends": "./.nuxt/tsconfig.json",
+  "include": [
+    "env.d.ts",
+    ".nuxt/nuxt.d.ts",
+    "**/*"
+  ],
   "vueCompilerOptions": {
     "plugins": [
       "@volar/vue-language-plugin-pug"
@@ -12,7 +17,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "baseUrl": ".",
     "types": [
       "unplugin-icons/types/vue",
       "pinia-plugin-persist",
