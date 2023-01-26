@@ -3,7 +3,7 @@
 div(class="relative h-auto overflow-hidden ")
   .swiper-container(class='overflow-hidden')
       .swiper-wrapper(class='')
-          NuxtLink.swiper-slide(:to="{path: `product/${slide.meta.slug}`, query: {product: slide}}" v-for="slide in props.slides" :key="slide.title"  class="hover:cursor-pointer items-center justify-center    overflow-hidden flex flex-col ")
+          NuxtLink.swiper-slide(@click="router.push({path: `product/${slide.meta.slug}`, query: {image: `${slide.image?.url}`, title: `${slide.title}`, description: `${slide.description}`, price: `${slide.price_model.price_pln}`}  })" v-for="slide in props.slides" :key="slide.title"  class="hover:cursor-pointer items-center justify-center    overflow-hidden flex flex-col ")
             div(class="w-[98%] h-[87%] md:h-[98%] m-auto mt-1 relative group text-sm rounded-xl p-2 text-start hover:shadow-[0px_0px_3px_1px_rgb(0,0,0,0.15)]")
               div(class="h-8 w-8 absolute  flex  top-[1rem] right-[1rem] z-20 hover:bg-gray-100 rounded-full items-center justify-center ")
                 IconHeart(v-if="!slides.favourite" class="w-5 h-5 text-gray-700 smooth-bg opacity-0 group-hover:opacity-100")
@@ -35,6 +35,7 @@ import IconAddToCart from "~icons/material-symbols/add-shopping-cart-rounded";
 import { useProductsStore } from "@/stores/Products";
 import { useCartStore } from "@/stores/Cart";
 
+const router = useRouter();
 const cartStore = useCartStore();
 const productsStore = useProductsStore();
 const props = defineProps({

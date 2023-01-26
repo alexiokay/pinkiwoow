@@ -1,13 +1,10 @@
 <template lang="pug">
 div.collections-panel(class="flex relative  h-full flex-row w-5/6 items-start justify-center gap-x-8 px-16 mt-12  ")
     div#sticky(class="sticky flex mt-6 w-[57%] flex-col h-[42rem]")
-        div( class="flex h-[20rem] md:h-[35rem]  relative aspect-video flex-col items-center justify-center bg-[#E4E5E9]  shadow-lg overflow-hidden  ") <!--bg-[#9DD9CF] -->
+        div( class="flex h-[20rem] md:h-[35rem]  relative aspect-video flex-col items-center justify-center bg-white  shadow-lg overflow-hidden  ") <!--bg-[#9DD9CF] -->
         
-            img(src="/images/your-design.webp"  class="w-full h-full object-contain ")
-            div(class=" group  smooth-bg absolute text-black flex flex-col justify-around py-5 items-center w-3/4 bottom-10 rounded-xl h-2/5 bg-[rgba(255,255,255,0.7)] ")
-                p(class="text-4xl font-robotolight") Get your own design
-                p(class="text-xl mb-2") Express yourself
-                button(class=" flex justify-center items-center  opacity-100  smooth-bg m-0 h-12 x-4 py-4 px-5  group-hover:py-6 group-hover:px-6 smart-button  bg-[#CBCF03] text-white text-lg font-publicsans  rounded-lg shadow-xl ") Zaprojektuj własny
+            img(:src="image1"  class="w-full h-full object-contain ")
+           
         div(class="flex w-full items-center justify-between h-auto flex-wrap gap-x-3 mt-6 gap-y-4")
             ExampleImg(class=" w-2/6 md:w-1/6 aspect-square h-auto")
             ExampleImg(class="w-2/6 md:w-1/6  aspect-square h-auto")
@@ -24,9 +21,9 @@ div.collections-panel(class="flex relative  h-full flex-row w-5/6 items-start ju
            
     div#product-options(class="flex flex-col w-[43%] gap-y-3 h-full items-center justify-center  p-8   rounded-xl") <!-- bg-[#EC92BA] -->
         div(class="flex flex-col text-[#252525] justify-center items-center w-full")
-            h1(class="text-2xl font-roboto w-full") MUG 11oz: YOUR DESIGN
-            p(class="text-3xl  font-roboto  mb-2 w-full") $99.00
-        p(class="text-xl font-mulish text-[#1d1d1d]") Our iconic Raven sneaker - lightweight, breathable and easy slip-on, a very comfortable choice.
+            h1(class="text-2xl font-roboto w-full") MUG 11oz: {{ title }}
+            p(class="text-3xl  font-roboto  mb-2 w-full") {{ price }}
+        p(class="text-xl font-mulish text-[#1d1d1d]") {{description}}
         p(class="text-xl font-mulish text-[#1d1d1d]") This is a demonstration theme for Shopify. All products featured with kind permission from arkkcopenhagen.com. Click here to purchase.
 
 
@@ -59,10 +56,19 @@ import MyDeviceIcon from "~icons/ic/round-computer";
 
 const route = useRoute();
 
-const product_name = route.query.id;
-console.log(product_name);
-console.log(route.query.product);
+console.log(route.query);
 //TODO: FInd component by name
+const image1 = ref(route.query.image);
+const title = ref(route.query.title);
+const price = ref(route.query.price);
+const description = ref(route.query.description);
+
+const props = defineProps({
+  product: {
+    type: Object,
+    required: true,
+  },
+});
 </script>
 
 <style lang="scss" scoped>
