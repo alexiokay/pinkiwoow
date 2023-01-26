@@ -1,21 +1,25 @@
 <template lang="pug">
-div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
+div(class=" w-full h-full  flex flex-col px-3  xl:p-3 ")
   <!-- HEADER -->
  
 
   div(class="w-full h-auto flex justify-center gap-x-4 items-start   ")
   
       
-    div(class="w-full md:w-[90%] mt-2 md:mt-0h-auto flex flex-col  ")
-      div(class="w-full h-[24vh]  border-2 border-[#47C1BF] md:h-[35vh] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
+    div(class="w-full md:w-[90%] mt-2 md:mt-0 h-auto flex flex-col  ")
+      div(class="w-full h-[9rem]  border-2 border-[#47C1BF] md:h-[35vh] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
         
         Header(:slides="header" class="") 
           
          
       
-  div(class="w-[90%] mx-auto h-auto flex flex-col p-4")
-        p(class="text-[#434447] text-[1.5rem] font-bold") Produkty
-        Swiper(:slides="randomProducts") 
+  div(class="w-full md:w-[90%] mx-auto h-auto flex flex-col")
+        div(class="flex w-full h-[2rem] mt-2")
+          p(class=" md:text-[1.5rem] font-bold") Produkty
+          p(class=" md:text-[1.5rem] font-bold ml-auto") Zobacz wszystkie
+        Swiper(:slides="randomProducts" class="-mx-3 -mt-8 md:-mt-3") 
+        div(class="w-full h-[1rem] flex items-center justify-end")
+          button(class="hover:cursor-pointer hover:text-blue-600 p-4 bg-yellow-500 rounded-full") more...
   Wheeler(  )
   LazyHydrate(when-visible)
     CollectionsPanel(class="")

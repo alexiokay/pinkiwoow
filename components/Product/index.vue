@@ -50,23 +50,19 @@ div.collections-panel(class="flex relative  h-full flex-row w-5/6 items-start ju
                     p 11oz
                 div(class="w-14 h-14   flex items-center justify-center border-[1px] border-[#CCCCCC] hover:bg-[#F2F2F2] smooth-color  hover:cursor-pointer")
                     p 11oz
-            p dsapp
-            p dsada
-            p dsadsa
-            p dsapp
-            p dsada
-            p dsadsa
-            p dsapp
-            p dsada
-            p dsadsa
-            p dsapp
-            p dsada
-            p dsadsa
+  
     </template>
 
 <script setup lang="ts">
 import { onMounted } from "vue";
 import MyDeviceIcon from "~icons/ic/round-computer";
+
+const route = useRoute();
+
+const product_name = route.query.id;
+console.log(product_name);
+console.log(route.query.product);
+//TODO: FInd component by name
 </script>
 
 <style lang="scss" scoped>

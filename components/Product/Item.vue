@@ -1,5 +1,5 @@
 <template lang="pug">
-div.col-1(class="w-2/4 relative h-[50rem] flex flex-col space-y-3")
+div.col-1(class="w-2/4 relative h-full flex flex-col space-y-3")
     div.album-cover-image(class=`squared overflow-hidden `  :style="{ backgroundImage: `url(${props.image})`, backgroundSize : 'contain' , backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}" @mouseenter="changeToImage(props.image2? props.image2: props.image, $event)" @mouseleave="changeToImage(props.image, $event)")
         div(class="absolute top-4 right-4 w-[6rem] h-auto space-y-3 flex flex-col items-end justify-center text-sm")
             div(v-if="new" class="  w-[4.7rem] h-4 bg-green-600 text-white flex items-center justify-center text-sm")

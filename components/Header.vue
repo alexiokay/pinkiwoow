@@ -9,7 +9,7 @@ div(class="relative h-full overflow-hidden ")
                 div(class=" space-y-3 absolute flex flex-col left-[1rem] bottom-[1rem] text-black text-xl font-semibold w-[17rem] h-auto rounded-xl")
                   div.header-title(class=" text-black text-xl font-semibold w-full h-full bg-[rgba(255,255,255,0.5)] rounded-xl") Kubki z Ben10
 
-                  div.header-desc(class=" flex flex-col  px-[0.3rem] items-start justify-start text-black text-xl text-start font-normal w-[26rem] h-[4rem] bg-[rgba(255,255,255,0.5)] rounded-xl") 
+                  div.header-desc(class=" flex flex-col  px-[0.3rem] items-start justify-start text-black text-xl text-start font-normal w-[21.5rem] md:w-[26rem] h-[4rem] bg-[rgba(255,255,255,0.5)] rounded-xl") 
                     p Poznajcie się lepiej z Benem 10 i jego przyjaciółmi.
 
         .swiper-pagination(class=" absolute left-0 right-0 bottom-[-58rem] ml-auto mr-auto")
@@ -85,6 +85,7 @@ onMounted(() => {
 
 #header-container
   width: 100%
+
 
 
 

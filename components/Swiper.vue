@@ -3,7 +3,7 @@
 div(class="relative h-auto overflow-hidden ")
   .swiper-container(class='overflow-hidden')
       .swiper-wrapper(class='')
-          .swiper-slide(v-for="slide in props.slides" :key="slide.title"  class="hover:cursor-pointer items-center justify-center    overflow-hidden flex flex-col ")
+          NuxtLink.swiper-slide(:to="{path: `product/${slide.meta.slug}`, query: {product: slide}}" v-for="slide in props.slides" :key="slide.title"  class="hover:cursor-pointer items-center justify-center    overflow-hidden flex flex-col ")
             div(class="w-[98%] h-[87%] md:h-[98%] m-auto mt-1 relative group text-sm rounded-xl p-2 text-start hover:shadow-[0px_0px_3px_1px_rgb(0,0,0,0.15)]")
               div(class="h-8 w-8 absolute  flex  top-[1rem] right-[1rem] z-20 hover:bg-gray-100 rounded-full items-center justify-center ")
                 IconHeart(v-if="!slides.favourite" class="w-5 h-5 text-gray-700 smooth-bg opacity-0 group-hover:opacity-100")
@@ -15,7 +15,7 @@ div(class="relative h-auto overflow-hidden ")
               div(class=" h-3/5  w-auto flex flex-col mt-4")
                 nuxt-img.swiper-image(:src="slide.image?.url" :alt="slide.image?.alt"  class="aspect-square w-full h-full object-contain")
                 
-              p(class=" text-base mb-3  font-robotolight font-bold text-black mt-3") {{slide.title  }}
+              p(class=" text-sm md:text-base mb-3  font-robotolight font-bold text-black mt-3") {{slide.title  }}
               div(class="absolute bottom-[0.2rem] md:bottom-[1rem] left-[1rem] ")
                 p(v-if="productsStore.getCurrency === 'EUR'") {{slide.price_model.price_eur }} {{ productsStore.getCurrency }}
                 p(v-else-if="productsStore.getCurrency === 'PLN' && slide.price_model.price_pln !== null") {{slide.price_model.price_pln}} {{ productsStore.getCurrency }}
