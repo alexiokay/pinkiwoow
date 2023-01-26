@@ -1,12 +1,17 @@
 <template lang="pug">per-container
 div(class="relative h-full overflow-hidden ")
-    #header-container(class=' h-[40vh] md:h-[52vh]')
+    #header-container(class=' h-full')
         .swiper-wrapper(class='')
             .swiper-slide(v-for="slide in props.slides" class="hover:cursor-pointer  flex flex-col")
-                div(class="h-[54rem] w-full flex flex-col overflow-hidden ")
-                    nuxt-img.swiper-image(:src="slide.img" class="w-full h-full object-cover ")
-                   
-           
+                div(class="h-full w-full flex flex-col overflow-hidden ")
+                    nuxt-img.swiper-image(:src="slide.img" format="webp" class="w-full h-full object-cover ")
+                
+                div(class=" space-y-3 absolute flex flex-col left-[1rem] bottom-[1rem] text-black text-xl font-semibold w-[17rem] h-auto rounded-xl")
+                  div.header-title(class=" text-black text-xl font-semibold w-full h-full bg-[rgba(255,255,255,0.5)] rounded-xl") Kubki z Ben10
+
+                  div.header-desc(class=" flex flex-col  px-[0.3rem] items-start justify-start text-black text-xl text-start font-normal w-[26rem] h-[4rem] bg-[rgba(255,255,255,0.5)] rounded-xl") 
+                    p Poznajcie się lepiej z Benem 10 i jego przyjaciółmi.
+
         .swiper-pagination(class=" absolute left-0 right-0 bottom-[-58rem] ml-auto mr-auto")
 </template>
 

@@ -1,7 +1,7 @@
 <template lang="pug">
 div.collections-panel(class="flex relative  h-full flex-row w-5/6 items-start justify-center gap-x-8 px-16 mt-12  ")
     div#sticky(class="sticky flex mt-6 w-[57%] flex-col h-[42rem]")
-        div( class="flex h-[20rem] md:h-[35rem]  relative aspect-square flex-col items-center justify-center bg-[#E4E5E9]  shadow-lg overflow-hidden  ") <!--bg-[#9DD9CF] -->
+        div( class="flex h-[20rem] md:h-[35rem]  relative aspect-video flex-col items-center justify-center bg-[#E4E5E9]  shadow-lg overflow-hidden  ") <!--bg-[#9DD9CF] -->
         
             img(src="/images/your-design.webp"  class="w-full h-full object-contain ")
             div(class=" group  smooth-bg absolute text-black flex flex-col justify-around py-5 items-center w-3/4 bottom-10 rounded-xl h-2/5 bg-[rgba(255,255,255,0.7)] ")
@@ -77,7 +77,7 @@ import MyDeviceIcon from "~icons/ic/round-computer";
 }
 @media screen and (min-width: 640px) {
   #sticky {
-    height: calc(75vh - 4em);
+    height: calc(90vh - 3em);
     top: calc(11vh + 7.5em);
   }
 }

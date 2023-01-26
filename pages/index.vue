@@ -4,28 +4,18 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-8  ")
  
 
   div(class="w-full h-auto flex justify-center gap-x-4 items-start   ")
-    div(class="w-1/4 h-auto hidden md:flex flex-col rounded-xl shadow-lg px-4 py-4 space-y-4 bg-white opacity-90 text-xl items-center border-2 border-[#47C1BF] ")
-      NuxtLink(to="/") Kubki 
-      p Puzzle
-      p Koszulki
-      p Etui
-      p Kalendarze
-      p Przypinki
-      p Skarpetky
-      p Zestawy 
-      p Itemy
-      p {{ message }}
+  
       
-    div(class="w-full md:w-3/4 h-auto flex flex-col  ")
-      div(class="w-full h-[52vh]  border-2 border-[#47C1BF] md:h-[65vh] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
+    div(class="w-full md:w-[90%] mt-2 md:mt-0h-auto flex flex-col  ")
+      div(class="w-full h-[24vh]  border-2 border-[#47C1BF] md:h-[35vh] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
         
         Header(:slides="header" class="") 
           
          
       
-      div(class="w-full h-auto flex flex-col p-4")
-            p(class="text-[#434447] text-[1.5rem] font-bold") Produkty
-            Swiper(:slides="randomProducts") 
+  div(class="w-[90%] mx-auto h-auto flex flex-col p-4")
+        p(class="text-[#434447] text-[1.5rem] font-bold") Produkty
+        Swiper(:slides="randomProducts") 
   Wheeler(  )
   LazyHydrate(when-visible)
     CollectionsPanel(class="")

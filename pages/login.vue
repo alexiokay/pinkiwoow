@@ -2,9 +2,9 @@
 div#login-page(class="flex w-[1440px] h-full px-12 items-start gap-x-28 justify-center" )
         form(class="bg-white w-2/6 h-[23rem] shadow-[0px_0px_2px_1px_rgb(0,0,0,0.15)] rounded-xl px-8 pt-6 pb-8 mb-4")
             h1(class="mb-7 text-3xl  font-itim -ml-2") Login
-            input#username(class="focus:outline-none focus:shadow-outline shadow appearance-none border rounded-full  w-full py-2 px-3 text-gray-700 leading-tight" type="email", v-model="email" placeholder="E-mail or login")
+            input#username(@keyup.enter="signIn" class="focus:outline-none focus:shadow-outline shadow appearance-none border rounded-full  w-full py-2 px-3 text-gray-700 leading-tight" type="email", v-model="email" placeholder="E-mail or login")
             p(class="text-xs text-red-700 mt-2 mb-2") Podaj login lub email
-            input#password.shadow.appearance-none.border.border-red-500.rounded-full.w-full.py-2.px-3.text-gray-700.leading-tight(class="mt-3 focus:outline-none focus:shadow-outline" type="password", v-model="password" placeholder="Password")
+            input#password.shadow.appearance-none.border.border-red-500.rounded-full.w-full.py-2.px-3.text-gray-700.leading-tight(@keyup.enter="signIn" class="mt-3 focus:outline-none focus:shadow-outline" type="password", v-model="password" placeholder="Password")
             p(class="text-xs text-red-700 mt-2") Wpisz hasło. Pole nie może być puste
             p(class="text-xs text-red-700 mt-1") Sprawdź, czy adres e-mail i hasło są poprawne
              div(class="flex items-center justify-between mt-4")

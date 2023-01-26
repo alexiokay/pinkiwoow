@@ -11,7 +11,7 @@ div#navbar-wrapper(class="z-50  overlaying drop-shadow-xl md:drop-shadow-none w-
        
     
     NavSearchBar.h-full(class='hidden md:flex w-full') 
-    NuxtLink(class="select-none w-full md:ml-[7%] h-full md:h-[4.9rem] flex justify-start md:justify-center items-center" to="/")
+    NuxtLink(class="select-none w-full md:ml-[15%] h-full md:h-[4.9rem] flex justify-start md:justify-center items-center" to="/")
       nuxt-img#logo(class=" h-[3.2rem] md:h-[4.9rem" sizes="sm:90px md:130px lg:150px " src='/images/pinkiwoowLogo.webp' alt="logo")
       p(class="text-2xl md:text-3xl text-pink-600 font-itim h-full items-center flex ") PinkiWoow
       <LanguageSwitcher class="h-full self-end mr-auto ml-2" />
@@ -22,7 +22,7 @@ div#navbar-wrapper(class="z-50  overlaying drop-shadow-xl md:drop-shadow-none w-
 
       <!-- User desktop button -->
       div#user-dropdown-wrapper(@click="openUserMobileDropdown"  @mouseenter="openUserDropdown(true)"  class="relative group hover:cursor-pointer flex   bg-white p-4 h-[3rem] lg:h-[4rem] rounded-t-lg md:hover:shadow-[0px_-3px_10px_-5px_rgb(0,0,0,0.15)]  smooth-color  items-center justify-center")
-        div.dropdown-hider(:class="isUserMobileDropdown? 'hidden  ': 'md:flex'" class="absolute   top-[2.5rem] lg:top-[3.38rem] -left-[2rem] w-[4rem] h-[1rem]  bg-white z-[50] [transform:translateX(50%)]")
+        div.dropdown-hider(v-show=" isUserMobileDropdownMiddleware" :class="isUserMobileDropdown? 'hidden  ': 'md:flex'" class="absolute   top-[2.5rem] lg:top-[3.38rem] -left-[2rem] w-[4rem] h-[1rem] bg-white z-[50] [transform:translateX(50%)]")
         UserIcon(class="h-8 w-8 text-[#DB2878] ")
         <component @close="closeUserMobileDropdown" :is="isUserDropdown ? userdropdown : null"  :class="isUserMobileDropdown? 'fixed  ': 'hidden md:-left-[13rem] lg:-left-[0rem] md:top-[3.4rem] lg:top-[4.3rem] md:absolute md:h-auto pb-4  md:w-[18.2rem] md:group-hover:flex '" class="pointer-events-auto  cursor-default  "/>
      
@@ -111,7 +111,10 @@ const isDropdown2Open = ref(false);
 const isCartDropdown = ref(false);
 const isUserDropdown = ref(false);
 const isUserMobileDropdown = useState("isUserMobileDropdown", () => false);
-
+const isUserMobileDropdownMiddleware = () => {
+  if (route.name == "login") return false;
+  else return false;
+};
 //* router section
 const route = useRoute();
 const router = useRouter();

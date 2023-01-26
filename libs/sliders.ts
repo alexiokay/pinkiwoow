@@ -36,7 +36,7 @@ export const wizytowki = [
 export const header = [
   {
     name: "Slide 1",
-    img: "https://picsum.photos/800/412",
+    img: "/images/header/ben-10.jpg",
   },
   {
     name: "Slide 2",
