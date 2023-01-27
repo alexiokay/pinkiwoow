@@ -1,5 +1,5 @@
 <template lang="pug">
-div#login-page(class="flex w-[1440px] h-full px-12 items-start gap-x-28 justify-center" )
+div#login-page(class="flex w-[1440px] h-full px-12 mt-9 items-start gap-x-28 justify-center" )
         form(class="bg-white w-2/6 h-[23rem] shadow-[0px_0px_2px_1px_rgb(0,0,0,0.15)] rounded-xl px-8 pt-6 pb-8 mb-4")
             h1(class="mb-7 text-3xl  font-itim -ml-2") Login
             input#username(@keyup.enter="signIn" class="focus:outline-none focus:shadow-outline shadow appearance-none border rounded-full  w-full py-2 px-3 text-gray-700 leading-tight" type="email", v-model="email" placeholder="E-mail or login")
