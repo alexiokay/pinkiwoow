@@ -3,11 +3,11 @@
 div(class="relative h-auto overflow-hidden ")
   .swiper-container(class='overflow-hidden')
       .swiper-wrapper(class='')
-          NuxtLink.swiper-slide(@click="router.push({path: `product/${slide.meta.slug}`, query: {image: `${slide.image?.url}`, title: `${slide.title}`, description: `${slide.description}`, price: `${slide.price_model.price_pln}`}  })" v-for="slide in props.slides" :key="slide.title"  class="hover:cursor-pointer items-center justify-center    overflow-hidden flex flex-col ")
+          NuxtLink.swiper-slide( v-for="slide in props.slides" :key="slide.title"  class="hover:cursor-pointer items-center justify-center    overflow-hidden flex flex-col ")
             div(class="w-[98%] h-[87%] md:h-[98%] m-auto mt-1 relative group text-sm rounded-xl p-2 text-start hover:shadow-[0px_0px_3px_1px_rgb(0,0,0,0.15)]")
-              div(class="h-8 w-8 absolute  flex  top-[1rem] right-[1rem] z-20 hover:bg-gray-100 rounded-full items-center justify-center ")
-                IconHeart(v-if="!slides.favourite" class="w-5 h-5 text-gray-700 smooth-bg opacity-0 group-hover:opacity-100")
-                IconFillHeart(v-if="slides.favourite" class="w-5 h-5 text-black")
+              button(@click="addToFavourites(slide.id)" class="h-8 w-8 absolute  flex  top-[1rem] right-[1rem] z-20 hover:bg-gray-100 rounded-full items-center justify-center ")
+                IconHeart(v-if="!favourites.includes(slide.id)" class="w-5 h-5 text-gray-700 smooth-bg opacity-0 group-hover:opacity-100")
+                IconFillHeart(v-if="favourites.includes(slide.id)" class="w-5 h-5 text-black")
               div(class="h-5  text-black w-[4.5rem] absolute flex items-center justify-center rounded-full top-[1rem] left-[1rem] z-20 border-[1px] border-gray-400")
                 p(class="text-xs ") Promocja
               button#buy(@click="cartStore.addToCart(slide)" class="absolute  items-center hidden group-hover:flex justify-center text-green-600 hover:text-white h-9 w-9 bottom-[0.65rem] right-[0.65rem] z-20 border-[1px] border-green-600 hover:bg-green-600 rounded-full ")
@@ -34,10 +34,15 @@ import IconFillHeart from "~icons/ph/heart-fill";
 import IconAddToCart from "~icons/material-symbols/add-shopping-cart-rounded";
 import { useProductsStore } from "@/stores/Products";
 import { useCartStore } from "@/stores/Cart";
+import { useUserStore } from "~~/stores/User";
+import Cookies from "js-cookie";
 
+const userStore = useUserStore();
+const favourites = computed(() => userStore.favourites);
 const router = useRouter();
 const cartStore = useCartStore();
 const productsStore = useProductsStore();
+const config = useRuntimeConfig();
 const props = defineProps({
   slides: {
     type: Array as PropType<ProductType[]>,
@@ -46,6 +51,8 @@ const props = defineProps({
 });
 
 onMounted(() => {
+  console.log(props.slides);
+  console.log(favourites);
   const evaluateMaxNofChild = (number: any) => {
     const carouselChildren = document.querySelectorAll(
       ".swiper-container .swiper-slide"
@@ -111,6 +118,27 @@ onMounted(() => {
   const owl_stage = document.querySelector(".swiper-container") as HTMLElement;
   owl_stage.classList.add("noselect");
 });
+
+const addToFavourites = (id: number) => {
+  // adds or removes product from favourites and set userStore.favourites again
+  fetch(`${config.API_URL}api/v1/favourites/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Token " + userStore.getToken,
+    },
+    body: JSON.stringify({
+      product_id: id,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      userStore.setFavourites(data.favourites);
+    });
+};
+
+// @click="router.push({path: `product/${slide.meta.slug}`, query: {image: `${slide.image?.url}`, title: `${slide.title}`, description: `${slide.description}`, price: `${slide.price_model.price_pln}`}  })"
 </script>
 
 <style lang="sass" scoped>

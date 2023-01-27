@@ -65,7 +65,8 @@ const signIn = () => {
           userStore.setUsername(data.user.username);
           userStore.setEmail(data.user.email);
           userStore.setIsLogged(true);
-
+          userStore.setFavourites(data.user.favourites);
+          console.log(data.user.favourites);
           router.push("/");
         });
       }
