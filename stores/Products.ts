@@ -18,7 +18,7 @@ type Mug = ProductType & {
 export const useProductsStore = defineStore("Products", {
   state: () => {
     return {
-      products: useStorage("products", [] as Array<any>),
+      products: useStorage("products", [] as Array<ProductType>),
       currency: useStorage("currency", "EUR" as Currency),
     };
   },

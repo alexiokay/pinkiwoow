@@ -52,6 +52,7 @@ export const useUserStore = defineStore("User", {
       this.email = "";
       this.token = "";
       this.isLogged = false;
+      this.favourites = [];
     },
     setFavourites(favourites: Array<number>) {
       this.favourites = favourites;

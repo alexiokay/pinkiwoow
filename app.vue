@@ -16,7 +16,7 @@ AppSetup();
 const locale = useState<string>("locale.setting");
 const app = useAppConfig();
 const productsStore = useProductsStore();
-let products: Array<ProductType> | null = null;
+let products: Array<ProductType>;
 products = await getProducts();
 // set products in store
 
