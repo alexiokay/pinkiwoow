@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class="flex flex-col w-full items-center justify-center h-auto mt-20 px-8 lg:px-16 xl:px-24")
    
-    LazyModalShipping#shipping-modal(:isOpen="isModalShipping"  @close="isModalShipping = false")
+    LazyModalShipping#shipping-modal(@setShipping="(_shipping) => {shipping = _shipping}" :isOpen="isModalShipping" @close="isModalShipping = false")
     CartProcess(:steps="['Koszyk', 'Dostawa i płatność', 'Podsumowanie', 'Gotowe']" :currentStep='currentStep')
     div(class="flex flex-col w-full items-center md:items-start  justify-center gap-y-4 md:gap-y-0 md:flex-row  gap-x-[3rem] lg:gap-x-[10rem] ") <!-- right panel -->
         div(class="flex flex-col w-full md:w-4/6 h-auto ")
@@ -56,17 +56,25 @@ div(class="flex flex-col w-full items-center justify-center h-auto mt-20 px-8 lg
                             input.checkbox-round(type="checkbox" class="pointer-events-none w-3 h-3")
                         p( class="pointer-events-none") Firma
                    
-            div(class="flex flex-col  h-auto w-full mt-8 space-y-4")
+            div( class="flex flex-col  h-auto w-full mt-8 space-y-4")
                 p(class="text-xl font-semibold") Adres dostawy
-                div(class="h-auto flex text-start space-y-1 text-sm  flex-col  p-4  mt-4 w-1/2 border-[1px] rounded-lg border-black justify-between ")
+                div(v-if="shipping" class="h-auto flex text-start space-y-1 text-sm  flex-col  p-4  mt-4 w-1/2 border-[1px] rounded-lg border-black justify-between ")
                     div(class="flex justify-between")
-                       p Name Surname
+                       p {{shipping.name_surname}}
                        a(@click="isModalShipping = true" class="hover:cursor-pointer text-sm text-blue-600") Zmień
-                    p.order-street Helbeek 251
-                    p.order-city 5914 SB Venlo
-                    p.order-phone +48 123 456 789
-                    p.order-email example@example.com
-                   
+                    p.order-street {{shipping.address}}
+                    p.order-city {{shipping.zip_code}} {{shipping.city}}
+                    p.order-phone {{shipping.phone}}
+                    p.order-email {{shipping.email}}
+
+                div(v-else class="space-y-6 h-auto justify-center items-center md:w-2/3 flex flex-col w-full") <!-- run if user not logged in or doesn't have shipping yet -->
+                  input(v-model="name_surname" class="w-full rounded-full text-start p-2 px-4 h-[2.8rem] border-[1px] border-gray-300" type="text" placeholder="Imię i nazwisko lub nazwa firmy")
+                  input(v-model="address" class="w-full rounded-full text-start p-2 px-4 h-[2.8rem] border-[1px] border-gray-300" type="text" placeholder="Street Address")
+                  input(v-model="zip_code" class="w-full rounded-full text-start p-2 px-4 h-[2.8rem] border-[1px] border-gray-300" type="text" placeholder="Zip code")
+                  input(v-model="city" class="w-full rounded-full text-start p-2 px-4 h-[2.8rem] border-[1px] border-gray-300" type="text" placeholder="City")
+                  input(v-model="country" class="w-full rounded-full text-start p-2 px-4 h-[2.8rem] border-[1px] border-gray-300" type="text" placeholder="Country")
+                  input(v-model="phone" class="w-full rounded-full text-start p-2 px-4 h-[2.8rem] border-[1px] border-gray-300" type="text" placeholder="Phone number")
+                  input(v-model="email" class="w-full rounded-full text-start p-2 px-4 h-[2.8rem] border-[1px] border-gray-300" type="text" placeholder="E-mail")
             div(class="flex flex-col  h-auto w-full mt-8 space-y-4")
                 p(class="text-xl font-semibold") Dane do faktury
 
@@ -137,7 +145,7 @@ div(class="flex flex-col w-full items-center justify-center h-auto mt-20 px-8 lg
                     
                     p(class="") Do zapłaty
                     p(class="")  zł
-                NuxtLink(to="/cart/summary" class="w-full m-auto mt-1 h-11 items-center justify-center flex text-white hover:cursor-pointer text-sm bg-[#119E00] rounded-full") Przejdź do płatności
+                button(@click="saveShippingAndGo" class="w-full m-auto mt-1 h-11 items-center justify-center flex text-white hover:cursor-pointer text-sm bg-[#119E00] rounded-full") Przejdź do płatności
                
 
 
@@ -148,20 +156,68 @@ div(class="flex flex-col w-full items-center justify-center h-auto mt-20 px-8 lg
 import type { Ref } from "vue";
 import { useProductsStore } from "@/stores/Products";
 import { useCartStore } from "@/stores/Cart";
+import { useUserStore } from "@/stores/User";
 import FastShippingIcon from "~icons/la/shipping-fast";
 import ShippingIcon from "~icons/material-symbols/local-shipping-outline-rounded";
 import BoxIcon from "~icons/bi/box-seam";
 import WarehouseIcon from "~icons/la/warehouse";
+import { ValidateShippingInputs } from "@/functions/validateInputs.ts";
 let cartStore: any = useCartStore();
 let cart = ref(computed(() => useCartStore().getCart));
+const userStore = useUserStore();
 const productsStore: any = useProductsStore();
 const currentStep = ref(1);
+
+const router = useRouter();
+// adding addres for not logged user or if doesnt have any shipping yet
+
+const name_surname = ref("");
+const address = ref("");
+const zip_code = ref("");
+const city = ref("");
+const phone = ref("");
+const email = ref("");
+const country = ref("");
+
+//
+const inputs = computed(() => {
+  return {
+    name_surname: name_surname.value,
+    address: address.value,
+    zip_code: zip_code.value,
+    city: city.value,
+    phone: phone.value,
+    email: email.value,
+    country: country.value,
+  };
+});
 
 type shippingMethodType =
   | "courier-inpost"
   | "parcel-locker"
   | "personal-collection";
 // order settings
+
+const shipping = ref(null);
+shipping.value = userStore.getDefaultShipping;
+
+const saveShippingAndGo = async () => {
+  if (shipping === null) {
+    if (ValidateShippingInputs(inputs.value)) {
+      shipping.value = inputs.value;
+      await useSaveShipping(inputs.value);
+      router.push("/cart/summary");
+    } else {
+      console.log("niepoprawne dane");
+    }
+  } else {
+    if (ValidateShippingInputs(inputs.value)) {
+      router.push("/cart/summary");
+    } else {
+      console.log("niepoprawne dane");
+    }
+  }
+};
 
 const isModalShipping = ref(false);
 const shippingMethod: Ref<shippingMethodType> = ref("courier-inpost");
@@ -172,6 +228,7 @@ const choosedLocker = ref({
   name: "Paczkomat 1",
   address: "ul. Kolejowa 1, 00-000 Warszawa",
 });
+
 const checkBox = (el: any) => {
   const AimingCheckbox = el.currentTarget.children[0].querySelector(
     "input"
@@ -213,7 +270,6 @@ const openShippingModal = () => {};
 watch(
   () => isModalShipping.value,
   (val) => {
-
     if (val) {
       const scrollY =
         document.documentElement.style.getPropertyValue("--scroll-y");

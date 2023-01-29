@@ -3,11 +3,11 @@ div(class="flex flex-col w:full sm:w-full xl:w-[1440px] h-auto items-center px-8
     
     h1(class="mt-3  font-robotoLight self-start h-full ml-8 text-xl") KOSZYK ({{cart.length}})
     div(class="flex flex-col w-full items-start justify-center gap-y-4 md:gap-y-0 md:flex-row  gap-x-[3rem] lg:gap-x-[10rem] ") <!-- right panel -->
-        div(class="flex md:sticky top-[8rem] flex-col w-full sm:w-5/6 md:w-2/6 h-[12rem] order-1 border-[1px] border-slate-300 rounded-xl")
+        div(class="flex md:sticky top-[8rem] flex-col w-full sm:w-5/6 md:w-2/6 h-auto order-1 border-[1px] border-slate-300 rounded-xl")
             div(class="flex justify-between h-16 p-2 items-center")
                 p Masz kod promocyjny?
                 button(class="") .
-            div(class="flex flex-col h-full justify-center items-center gap-y-2 bg-slate-100 rounded-t-lg")
+            div(class="flex flex-col h-full py-3 justify-center items-center gap-y-2 bg-slate-100 rounded-t-lg")
                 div(class="flex justify-between text-lg font-semibold items-center w-full")
                     p(class="ml-4") Wartość zamówienia
                     p(class="mr-4") {{cartStore.getCartTotal}} {{productsStore.getCurrency}}

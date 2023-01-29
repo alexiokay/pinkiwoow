@@ -15,6 +15,7 @@ export const useUserStore = defineStore("User", {
       token: useStorage("token", ""),
       isLogged: useStorage("isLogged", false),
       favourites: useStorage("favourites", [] as Array<number>),
+      shippings: useStorage("shippings", [] as Array<Object>),
     };
   },
   getters: {
@@ -32,6 +33,17 @@ export const useUserStore = defineStore("User", {
     },
     getFavourites(state) {
       return state.favourites;
+    },
+    getShippings(state) {
+      return state.shippings;
+    },
+    getShippingById(state) {
+      return (id: number) => {
+        return state.shippings.find((shipping) => shipping.id === id);
+      };
+    },
+    getDefaultShipping(state) {
+      return state.shippings.find((shipping) => shipping.is_default === true);
     },
   },
   actions: {
@@ -53,9 +65,16 @@ export const useUserStore = defineStore("User", {
       this.token = "";
       this.isLogged = false;
       this.favourites = [];
+      this.shippings = [];
     },
     setFavourites(favourites: Array<number>) {
       this.favourites = favourites;
+    },
+    setShippings(shippings: Array<Object>) {
+      this.shippings = shippings;
+    },
+    addShipping(shipping: Object) {
+      this.shippings.push(shipping);
     },
   },
 
