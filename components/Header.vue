@@ -55,7 +55,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 
 
 .noselect
@@ -85,6 +85,8 @@ onMounted(() => {
 
 #header-container
   width: 100%
+  min-height: 100%
+  min-width: 100%
 
 
 

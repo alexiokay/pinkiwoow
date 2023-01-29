@@ -56,7 +56,7 @@ div#navbar-wrapper(class="z-50  overlaying drop-shadow-xl md:drop-shadow-none w-
     div(class="h-full group")
       NuxtLink(@mouseenter="openDropdown('1')" @mouseleave="closeDropdown('1')"  class="group h-full relative flex items-center justify-center" to="/")
         div(:class="{'bg-black': isDropdown1Open }" class="bg-transparent smooth-color group-hover:bg-black h-[0.24rem]  w-full absolute bottom-0")
-        p(class="text-blue-900")   {{$t('components.navbar.products').toUpperCase()}}
+        p(class="text-blue-900")   {{$t('components.navbar.products.title').toUpperCase()}}
 
     div.relative(class="h-full group")
       NuxtLink(@mouseenter="openDropdown('2')" @mouseleave="closeDropdown('2')" class="h-full flex items-center justify-center" to="/")

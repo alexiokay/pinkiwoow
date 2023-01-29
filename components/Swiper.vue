@@ -62,7 +62,7 @@ onMounted(() => {
   };
 
   const mySwiper = new Swiper(".swiper-container", {
-    modules: [Pagination, Lazy],
+    modules: [Lazy],
     preloadImages: false,
     spaceBetween: 4,
     lazy: {
@@ -96,23 +96,6 @@ onMounted(() => {
         spaceBetween: 12,
       },
     },
-  });
-  function hideRedundantBullets(className: string) {
-    var elems = document.querySelectorAll(className) as NodeListOf<HTMLElement>;
-    var index = 0;
-
-    length = elems.length;
-    if (length === props.slides.length)
-      for (; index < length; index++) {
-        if (index > 0 && index < length - 1) {
-          elems[index].style.display = "none";
-        }
-      }
-  }
-  hideRedundantBullets(".swiper-pagination-bullet");
-  window.addEventListener("resize", (event) => {
-    console.log("page is fully loaded");
-    hideRedundantBullets(".swiper-pagination-bullet");
   });
 
   const owl_stage = document.querySelector(".swiper-container") as HTMLElement;

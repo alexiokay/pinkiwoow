@@ -51,7 +51,28 @@ components:
     register: REGISTER
     safe: CLIPHOARD
     cart: CART
-    products: PRODUCTS
+    products:
+      title: PRODUCTS
+      textiles:
+        title: TEXTILES
+        wallets: Wallets
+        face_masks: Face masks
+      accessories:
+        title: Accessories
+        puzzle: Puzzle
+        pins: Pins
+        lighters: Lighters
+        beer_openers: Beer Openers
+        notes: Notes
+      ceramics:
+        title: Ceramics
+        mugs: Mugs
+      it:
+        title: IT
+        phone_hardcase: Phone HardCase
+        phone_rubber_case: Phone Rubber Case
+        mouse_pads: Mouse Pads
+      others:
   footer:
     information:
       information: INFORMATION

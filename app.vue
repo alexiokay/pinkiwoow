@@ -59,4 +59,21 @@ await fetch(`${config.API_URL}api/v1/get_geolocation_ip`, {
 .page-leave-to
   opacity: 0
   filter: blur(1rem)
+
+
+
+*::-webkit-scrollbar
+  width: 16px
+
+
+*::-webkit-scrollbar-track
+  border-radius: 8px
+  background-color: #e7e7e7
+  border: 1px solid #cacaca
+
+*::-webkit-scrollbar-thumb
+  border-radius: 8px
+  border: 3px solid transparent
+  background-clip: content-box
+  background-color: #DB2878
 </style>
