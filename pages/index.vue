@@ -10,6 +10,14 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-3 ")
       div(class="w-full h-[9rem]  border-2 border-[#47C1BF] md:h-[35vh] flex bg-white rounded-xl overflow-hidden shadow-lg items-center justify-center")
         
         Header(:slides="header" class="") 
+      
+      div(class="w-full h-[auto] flex px-4 space-x-3")
+        div.trapezoid-down(class="hover:border-t-[#47C1BF] hover:cursor-pointer")
+  
+          p(class="md:text-base ") Nowości
+        div.trapezoid-down(class="")
+
+          p(class="md:text-base ") Nowości dsadsa sadsa
           
          
       
@@ -63,6 +71,27 @@ console.log(randomProducts.value);
 </script>
 
 <style lang="sass">
+
+
+
+.trapezoid-down
+    font-size: 13px
+    line-height: 16px
+    color: rgb(26, 26, 26)
+    font-weight: normal
+    text-decoration: none
+    display: inline-block
+    padding: 8px 0px
+    border-right: solid transparent
+    border-left: solid transparent
+    border-image: initial
+    border-bottom: none
+    max-width: 100%
+    border-top: 4px solid #47C1BF
+
+
+
+
 
 
 

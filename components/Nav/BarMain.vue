@@ -30,7 +30,7 @@ div#navbar-wrapper(class="z-50  overlaying drop-shadow-xl md:drop-shadow-none w-
           IconCart(class="w-full h-full text-gray-500")
           p(class="absolute top-[0.6rem]  text-white") {{cartStore.getCartLength}}
       
-      div(v-show="route.name!=='cart'" class='hidden lg:flex relative w-[13.3rem] h-[3.1rem] border-[1.2px] mb-2 p-[0.5rem] space-x-2 border-[#47C1BF] items-center justify-center  ')
+      div( class='hidden lg:flex relative w-[13.3rem] h-[3.1rem] border-[1.2px] mb-2 p-[0.5rem] space-x-2 border-[#47C1BF] items-center justify-center  ')
           div(class="w-12 h-12 flex items-center justify-center")
             IconCart(class="w-full h-full text-gray-500")
             p(class="absolute top-[0.9rem]  text-white") {{cartStore.getCartLength}}
@@ -43,11 +43,7 @@ div#navbar-wrapper(class="z-50  overlaying drop-shadow-xl md:drop-shadow-none w-
           
           <component :is="isCartDropdown ? cartdropdown : null" />
          
-      div(v-show="route.name=='cart'" class='hidden md:flex relative w-[13.3rem] h-[3.1rem] border-[1.2px] mb-2 p-[0.5rem] space-x-2 border-gray-200 items-center justify-center  ')
-        p asds
-        
-        
-        hr(class="border-1 border-gray-100 w-full")
+
   div#navbar-navigation(v-show="canAdditionalNavbars" :class="{'pointer-events-none': store.isOverlaying}" class=" border-[#afafaf] w-[95%] text-lg font-itim bg-white drop-shadow-xs text-black hidden md:flex items-center justify-center h-[3rem] md:px-16  gap-x-4")
     LazyHydrate(when-idle)
       NavDropdown#dropdown-1(@click="openDropdown('1')" @mouseenter="openDropdown('1')"  @mouseleave="closeDropdown('1')" class="dropdown-hidden hidden hover:flex absolute top-[6rem] left-0 z-40")

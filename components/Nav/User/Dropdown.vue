@@ -1,6 +1,6 @@
 <template lang="pug">
-#user-dropdown(class="  w-[calc(30vw+10em)]  px-5 space-y-4 h-[calc(100vh-0vw)]   top-0   rounded-b-lg rounded-r-lg right-0  z-40 bg-white  shadow-[0px_0px_10px_-2px_rgb(0,0,0,0.15)]  flex-col justify-start items-center ")
-    div.flex.justify-start.text-xl.space-x-3.items-center(:class="isUserMobileDropdown? '' : ' md:hidden '" class="flex  -mx-5  h-14 px-4 bg-[#F5F5F5] w-[calc(30vw+6em)]  border-b-[1px] border-gray-300 ")
+#user-dropdown(class="  w-[calc(20vw+15em)]  px-5 space-y-4 h-[calc(100vh-0vw)]   top-0   rounded-b-lg rounded-r-lg right-0  z-40 bg-white  shadow-[0px_0px_10px_-2px_rgb(0,0,0,0.15)]  flex-col justify-start items-center ")
+    div.flex.justify-start.text-xl.space-x-3.items-center(:class="isUserMobileDropdown? '' : ' md:hidden '" class="flex  -mx-5  h-14 px-4 bg-[#F5F5F5] w-[calc(20vw+15em)]  border-b-[1px] border-gray-300 ")
         CloseIcon(@click="$emit('close')" class="hover:cursor-pointer h-5 w-5")
         p Menu
     div(v-if="!userStore.getIsLogged" class="flex flex-col justify-center items-start space-y-2 w-full") 

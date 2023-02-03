@@ -5,8 +5,10 @@ script
 div(id="default" style="display: flex, flex-direction: column  " class="h-auto flex flex-col justify-center items-center overflow-clip ")
     div#overlay(@click="mainStore.setOverlaying(false);" class="fixed overlaying top-0 left-0 w-full h-screen bg-black opacity-40 z-40 hidden-overlay")
     
-    NavInfoBar(class="" title="🥳 Free shipping on orders over $50 🥳")
-    NavBarMain(class="sticky top-0 z-50")
+
+    NavInfoBar(v-if="NavbarBlocker" class="" title="🥳 Free shipping on orders over $50 🥳")
+    NavBarMain(v-if="NavbarBlocker" class="sticky top-0 z-50" v)
+    NavSimplified(class="sticky top-0 z-50" v-else)
     
    
     div#footer-wrapper(class="  w-full h-full flex flex-col items-center justify-between lg:justify-center mx-0 ") 
@@ -25,11 +27,21 @@ import { onBeforeMount } from "vue";
 import { useMainStore } from "@/stores/Main";
 const mainStore = useMainStore();
 const router = useRouter();
+const route = useRoute();
 
 const sendEmail = () => {
   document.location = "mailto:graphicdesigner@gmail.com";
 };
-
+const NavbarBlocker = computed(() => {
+  const rout = route.path;
+  if (
+    route.path !== "/login" &&
+    route.path !== "/register" &&
+    !route.path.startsWith("/cart")
+  )
+    return true;
+  else return false;
+});
 onMounted(() => {});
 </script>
 
