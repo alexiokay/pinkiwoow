@@ -2,7 +2,7 @@
 NuxtLayout(name="secondary") 
   div(class="flex flex-col w:full sm:w-full h-auto items-center  justify-center")
       
-      h1(class="mt-3  font-robotoLight self-start h-full ml-8 text-xl") KOSZYK ({{cart.length}})
+      h1(class="mt-3  w-full font-righteous self-start h-full mb-6  text-3xl") KOSZYK ({{cart.length}})
       div(class="flex flex-col w-full items-start justify-center gap-y-4 md:gap-y-0 md:flex-row  gap-x-[3rem] lg:gap-x-[10rem] ") <!-- right panel -->
           div(class="flex md:sticky top-[3rem] flex-col w-full sm:w-5/6 md:w-2/6 h-auto order-1 border-[1px] border-slate-300 rounded-xl")
               div(class="flex justify-between h-16 p-2 items-center")
@@ -55,7 +55,9 @@ NuxtLayout(name="secondary")
                           select(v-if="item.quantity<=9" type="number" class="w-[3.5rem] h-[2rem] border-[1px] border-[#a6a6a6] focus:drop-shadow-lg rounded-full text-center" :value="item.quantity" min="1" @change="item.quantity = $event.target.value")
                               option(v-for="i in 9" :key="i" :value="i") {{i}}  
                               option(value="10") 9+
-                          p {{item.price_pln * item.quantity}} {{productsStore.getCurrency}}
+                     
+                          p(v-if="productsStore.getCurrency === 'EUR'") {{(item.price_eur * item.quantity).toFixed(2)}} {{productsStore.getCurrency}}
+                          p(v-if="productsStore.getCurrency === 'PLN'") {{(item.price_pln * item.quantity).toFixed(2)}} {{productsStore.getCurrency}}
 
                   div(class="hidden md:flex flex-col w-full md:w-[20%] lg:w-[15%] h-auto")
                       nuxt-img(class="w-full h-auto" :src="item.image" )
@@ -76,7 +78,7 @@ NuxtLayout(name="secondary")
 
 
       hr(class=" w-full border-[0.8px] mt-8 mb-4 ")
-      button(@click="removeSelected()" class="hidden md:flex w-[10rem] h-[2rem] bg-[#b4b4b4] text-white  hover:cursor-pointer items-center justify-center") DELETE SELECTED
+      button(@click="removeSelected()" class="hidden md:flex w-[10rem] h-[2rem] bg-[#b4b4b4] text-white  hover:cursor-pointer self-start items-center justify-center") DELETE SELECTED
 </template>
 
 <script setup lang="ts" scoped>

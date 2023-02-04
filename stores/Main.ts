@@ -19,6 +19,9 @@ export const useMainStore = defineStore("Main", {
     };
   },
   getters: {
+    getIsLocaleSet(state) {
+      return state.isLocaleSet;
+    },
     getIsMobileNavbarOpen(state) {
       return state.isMobileNavbarOpen;
     },
@@ -39,8 +42,8 @@ export const useMainStore = defineStore("Main", {
       this.isMobileNavbarOpen = true;
     },
 
-    setLocaleSet() {
-      this.isLocaleSet = true;
+    setLocaleSet(value: boolean = true) {
+      this.isLocaleSet = value;
     },
     setOverlaying(bool: boolean) {
       this.isOverlaying = bool;

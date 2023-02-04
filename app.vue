@@ -10,12 +10,14 @@
 <script lang="ts" setup>
 import { AppSetup } from "./utils/app";
 import { useProductsStore } from "@/stores/Products";
+import { useMainStore } from "@/stores/Main";
 import type { ProductType } from "@/types/Product";
 
 AppSetup();
 const locale = useState<string>("locale.setting");
 const app = useAppConfig();
 const productsStore = useProductsStore();
+const mainStore = useMainStore();
 let products: Array<ProductType>;
 products = await getProducts();
 // set products in store
@@ -39,9 +41,12 @@ await fetch(`${config.API_URL}api/v1/get_geolocation_ip`, {
     const localeSetting = useState<string>("locale.setting");
     if (data.country !== "ZZ") {
       console.log("setting cookie");
+      // open LocationModal
+
       locale.value = data.country; // did'nt work
       localeSetting.value = data.country; //?? teting
     }
+
     console.log("locale set to: " + locale.value);
     productsStore.setCurrency(data.country, true);
   })

@@ -6,7 +6,7 @@
             NuxtLink(to="/" class=" flex items-center justify-between w-auto h-full hover:cursor-pointer")
                 nuxt-img(class="w-12 h-12 sm:w-full sm:h-full" src="/images/pinkiwoowLogo.webp")
                 p(class="text-2xl md:text-3xl text-pink-600 font-itim h-full items-center flex ") PinkiWoow
-            CartProcess(v-if="route.path.startsWith('/cart')" class="sm:ml-4 sm:h-8 sm:w-auto" :steps="['Koszyk', 'Dostawa i płatność', 'Podsumowanie', 'Gotowe']" )
+            CartProcess(v-if="route.path.startsWith('/cart')" class="sm:ml-4 sm:h-8 sm:w-auto" :steps="['Koszyk', 'Dostawa', 'Płatnosc', 'Gotowe']" )
         hr(class="mt-2 sm:mt-0 w-full h-[1px] bg-gray-200")
 </NuxtLayout>
 </template>

@@ -28,13 +28,15 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-3 ")
         Swiper(:slides="randomProducts" class="-mx-3 -mt-8 md:-mt-3") 
         
   Wheeler(  )
+  
   LazyHydrate(when-visible)
     CollectionsPanel(class="")
     Info
   
     Video(class="mt-8 h-[26rem] md:h-[calc(90vh-5em)] w-full")
     Testimonials
- 
+  ClientOnly  
+    component(:is="locationModal" :isOpen="islocationModal" @close="islocationModal = false;  store.setLocaleSet();" :currency="productsStore.getCurrency" )
 </template>
 
 <script setup lang="ts">
@@ -55,14 +57,24 @@ message.value = messageData.value;
 let cartStore = useCartStore();
 let store: any = ref();
 const productsStore = useProductsStore();
+
 //x-nf-client-connection-ip
 //
-
+const locationModal = resolveComponent("ModalLocation");
 store.value = useMainStore();
 store.value.initialize(); //
 
 cartStore.initialize();
+const islocationModal = ref();
+console.log(store.value.getIsLocaleSet);
 
+if (store.value.getIsLocaleSet === false) {
+  // opening location modal if user hasn't set locale yet
+  islocationModal.value = true;
+} else {
+  islocationModal.value = false;
+}
+console.log(islocationModal.value);
 const config = useRuntimeConfig();
 //const localeSetting = useState<string>("locale.setting");
 

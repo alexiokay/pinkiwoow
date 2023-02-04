@@ -12,14 +12,13 @@ div(class="relative h-full overflow-hidden ")
                   div.header-desc(class=" flex flex-col  px-[0.3rem] items-start justify-start text-black text-xl text-start font-normal w-[21.5rem] md:w-[26rem] h-[4rem] bg-[rgba(255,255,255,0.5)] rounded-xl") 
                     p Poznajcie się lepiej z Benem 10 i jego przyjaciółmi.
 
-        .swiper-pagination(class=" absolute left-0 right-0 bottom-[-58rem] ml-auto mr-auto")
+        .swiper-pagination(class="")
 </template>
 
 <script setup lang="ts">
 import { Swiper, Lazy, Pagination, Autoplay } from "swiper";
 import { onMounted } from "vue";
 import "swiper/css";
-import "swiper/css/pagination";
 
 const props = defineProps({
   slides: {
@@ -46,7 +45,12 @@ onMounted(() => {
     },
     pagination: {
       el: ".swiper-pagination",
+      renderBullet: function (index, className) {
+        return `<span class="${className}"></span>`;
+      },
       clickable: true,
+      bulletClass: "swiper-pagination-bullet",
+      bulletActiveClass: "swiper-pagination-bullet-active",
     },
   });
 
@@ -91,33 +95,28 @@ onMounted(() => {
 
 
 
-.swiper-pagination > *
-  width: 0.65rem
-  height: 0.65rem
 
+.swiper-pagination
+    position: absolute
+    top: 10px
+    right: 10px
+    width: auto !important
+    left: auto !important
+    margin: 0
+    .swiper-pagination-bullet
+      padding: 5px 10px
+      border-radius: 0
+      width: auto
+      height: 30px
+      text-align: center
+      line-height: 30px
+      font-size: 12px
+      color:#000
+      opacity: 1
+      background: rgba(0,0,0,0.2)
+    .swiper-pagination-bullet-active
+      background-color: red
 
-.swiper-slide
-  position: relative
-    width: 24%
-    height: 0 auto
-    padding-bottom: 24%
-    background-size: cover
-  text-align: center
-  font-size: 18px
-  background: #fff
-  /* Center slide text vertically */
-  display: -webkit-box
-  display: -ms-flexbox
-  display: -webkit-flex
-  display: flex
-  -webkit-box-pack: center
-  -ms-flex-pack: center
-  -webkit-justify-content: center
-  justify-content: center
-  -webkit-box-align: center
-  -ms-flex-align: center
-  -webkit-align-items: center
-  align-items: center
 
 
 

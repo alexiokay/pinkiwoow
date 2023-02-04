@@ -8,7 +8,7 @@ type Res = {
   };
 };
 
-const setLangByGeolocation = (
+export const setLangByGeolocation = (
   store: any,
   response: Res,
   localeSetting: any

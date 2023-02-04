@@ -1,7 +1,7 @@
 <template lang="pug">
 NuxtLayout(name="secondary")
   div#login-page(class="relative flex flex-col md:flex-row w-full md:h-[57rem] px-2 md:px-12 items-center md:items-start gap-x-28 justify-center" )
-          div(class="flex w-full  flex-col mt-[1rem] md:mt-[3.5rem] md:w-2/6 md:h-[43rem] items-center justify-center")
+          div(class="flex w-full  flex-col mt-[1rem] md:mt-[3.5rem] md:w-2/5 md:h-[43rem] items-center justify-center")
               LoginRegisterForm
               p(class="text-sm") Masz juz konto? 
                   NuxtLink(to="/login" class="text-xs text-blue-600 hover:cursor-pointer hover:text-blue-700") Zaloguj się

@@ -1,11 +1,11 @@
 <template lang="pug">
 NuxtLayout(name="secondary")
-  div(class="flex flex-col  w-full items-center justify-center h-auto mt-20 ")
+  div(class="flex flex-col  w-full items-center justify-center h-auto mt-4")
     
       LazyModalShipping#shipping-modal(@setShipping="(_shipping) => {shipping = _shipping}" :isOpen="isModalShipping" @close="isModalShipping = false")
       div(class="flex flex-col w-full items-center md:items-start  justify-center gap-y-4 md:gap-y-0 md:flex-row  gap-x-[3rem] lg:gap-x-[10rem] ") <!-- right panel -->
           div(class="flex flex-col w-full md:w-4/6 h-auto ")
-              h1(class="text-2xl font-montserrat w-full text-start md:text-center underline mb-4") Dostawa i płatność
+              h1(class="text-3xl  font-righteous w-full text-start mb-4") Dostawa i płatność
               p(class="text-xl font-semibold mb-4")  Dostawa
             
                           
@@ -97,7 +97,7 @@ NuxtLayout(name="secondary")
 
 
 
-          div(class="flex md:sticky md:max-h-[80vh] top-[3rem] flex-col w-full sm:w-5/6 md:w-2/6 h-auto order-1 border-[1px] border-slate-300 rounded-xl")
+          div(class="flex md:sticky md:max-h-[80vh] top-[1rem] flex-col w-full sm:w-5/6 md:w-2/6 h-auto order-1 border-[1px] border-slate-300 rounded-xl")
               div(class="p-2 max-h-[13rem] min-h-[6rem] overflow-y-auto border-b-[1px] border-slate-200")
                   div(v-for="(val, index, key) in cartStore.getCart" class="flex flex-col h-auto ")
                       div(class="flex  gap-x-4 h-auto ")
@@ -203,20 +203,13 @@ const shipping = ref(null);
 shipping.value = userStore.getDefaultShipping;
 
 const saveShippingAndGo = async () => {
-  if (shipping === null) {
-    if (ValidateShippingInputs(inputs.value)) {
-      shipping.value = inputs.value;
-      await useSaveShipping(inputs.value);
-      router.push("/cart/summary");
-    } else {
-      console.log("niepoprawne dane");
-    }
+  if (ValidateShippingInputs(inputs.value)) {
+    shipping.value = inputs.value;
+    if (!userStore.isLogged) await useSaveShipping(inputs.value);
+    //await useSaveOrder()
+    router.push("/cart/summary");
   } else {
-    if (ValidateShippingInputs(inputs.value)) {
-      router.push("/cart/summary");
-    } else {
-      console.log("niepoprawne dane");
-    }
+    console.log("niepoprawne dane");
   }
 };
 

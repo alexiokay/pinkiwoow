@@ -29,6 +29,9 @@ const goToStep = (index: number) => {
   if (index === 0) {
     router.push("/cart");
   }
+  if (index === 1) {
+    router.push("/cart/order");
+  }
 };
 </script>
 

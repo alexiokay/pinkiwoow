@@ -46,6 +46,7 @@ components:
       succeed: Accepted
     button: Send Message
   navbar:
+    other: Other Services
     contact: CONTACT
     login: LOGIN
     register: REGISTER

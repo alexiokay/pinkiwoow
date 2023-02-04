@@ -1,5 +1,5 @@
 <template lang="pug">
-form(class="bg-white w-full md:w-2/6 h-auto md:h-[23rem] shadow-[0px_0px_2px_1px_rgb(0,0,0,0.15)] rounded-xl px-8 pt-6 pb-8 mb-4")
+form(class="bg-white w-full md:w-2/5 h-auto md:h-[23rem] shadow-[0px_0px_2px_1px_rgb(0,0,0,0.15)] rounded-xl px-8 pt-6 pb-8 mb-4")
         h1(class="mb-7 text-3xl  font-itim -ml-2") Login
         input#username(@keyup.enter="$emit('signIn')" class="focus:outline-none focus:shadow-outline shadow appearance-none border rounded-full  w-full py-2 px-3 text-gray-700 leading-tight" type="email", v-model="email" placeholder="E-mail or login")
         p(class="text-xs text-red-700 mt-2 mb-2") Podaj login lub email
