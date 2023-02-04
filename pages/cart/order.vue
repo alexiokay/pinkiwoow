@@ -97,7 +97,7 @@ NuxtLayout(name="secondary")
 
 
 
-          div(class="flex md:sticky md:max-h-[80vh] top-[8rem] flex-col w-full sm:w-5/6 md:w-2/6 h-auto order-1 border-[1px] border-slate-300 rounded-xl")
+          div(class="flex md:sticky md:max-h-[80vh] top-[3rem] flex-col w-full sm:w-5/6 md:w-2/6 h-auto order-1 border-[1px] border-slate-300 rounded-xl")
               div(class="p-2 max-h-[13rem] min-h-[6rem] overflow-y-auto border-b-[1px] border-slate-200")
                   div(v-for="(val, index, key) in cartStore.getCart" class="flex flex-col h-auto ")
                       div(class="flex  gap-x-4 h-auto ")

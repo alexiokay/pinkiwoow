@@ -18,7 +18,7 @@ div
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <div class="p-6 space-y-6 overflow-y-auto h-full sm:h-[60vh] w-[30rem]">
+                    <div class="p-6 space-y-6 overflow-y-auto h-full sm:h-[73vh] w-[30rem]">
                         button(@click="addingShipping = true" class="w-full rounded-full text-center h-[2.4rem] bg-blue-50 text-sm text-blue-800 hover:bg-blue-100")
                             p Dodaj nowy Adres 
                                 span(class="text-base") +
