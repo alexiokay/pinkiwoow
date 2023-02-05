@@ -22,12 +22,10 @@ const email = ref("");
 const password = ref("");
 const emits = defineEmits(["signIn", "emailInput", "loginInput"]);
 watch(email, (value) => {
-  console.log("email", value);
   emits("emailInput", value);
 });
 
 watch(password, (value) => {
-  console.log("login", value);
   emits("loginInput", value);
 });
 </script>

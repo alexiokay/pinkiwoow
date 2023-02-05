@@ -66,7 +66,7 @@ const generateItem = () => {
     price_pln: props.price_pln,
     quantity: 1,
     image: props.image,
-    stripePriceId: props.stripePriceId,
+    stripeProductId: props.stripeProductId,
     select: false,
   };
 
@@ -110,7 +110,7 @@ const props = defineProps({
     type: Boolean,
     required: false,
   },
-  stripePriceId: {
+  stripeProductId: {
     type: String,
     required: true,
   },

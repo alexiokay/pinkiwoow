@@ -56,6 +56,8 @@ const signIn = () => {
           userStore.setFavourites(data.user.favourites);
           userStore.setShippings(data.user.shippings);
           console.log(data.user.favourites);
+          console.log("data: ");
+          console.log(data);
           router.push("/");
         });
       }

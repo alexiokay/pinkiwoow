@@ -87,7 +87,7 @@ NuxtLayout(name="secondary")
                           p(class="text-sm") info
                       div(class="w-full")
                           p Komentarz do zamówienia
-                  textarea(class="w-full h-[10rem] border-[1px] rounded-lg border-black p-4")
+                  textarea(v-model="comment" class="w-full h-[10rem] border-[1px] rounded-lg border-black p-4")
                     
                       
 
@@ -163,6 +163,9 @@ import ShippingIcon from "~icons/material-symbols/local-shipping-outline-rounded
 import BoxIcon from "~icons/bi/box-seam";
 import WarehouseIcon from "~icons/la/warehouse";
 import { ValidateShippingInputs } from "@/functions/validateInputs.ts";
+import type { ShippingT } from "@/types/Shipping";
+import type { CompanyDataT } from "@/types/Shipping";
+import { useSaveOrder } from "@/composables/useSaveOrder";
 let cartStore: any = useCartStore();
 const mainStore = useMainStore();
 let cart = ref(computed(() => useCartStore().getCart));
@@ -199,17 +202,38 @@ type shippingMethodType =
   | "personal-collection";
 // order settings
 
-const shipping = ref(null);
-shipping.value = userStore.getDefaultShipping;
-
+const company_data: Ref<CompanyDataT | null> = ref(null);
+const comment = ref("");
+const shipping: Ref<ShippingT | null> = ref(null);
+shipping.value = userStore.getDefaultShipping as ShippingT | null;
+console.log("default shipping", userStore.getDefaultShipping);
 const saveShippingAndGo = async () => {
-  if (ValidateShippingInputs(inputs.value)) {
-    shipping.value = inputs.value;
-    if (!userStore.isLogged) await useSaveShipping(inputs.value);
-    //await useSaveOrder()
-    router.push("/cart/summary");
+  if (shipping.value) {
+    await useSaveOrder(
+      shipping.value,
+      comment.value,
+      company_data.value,
+      productsStore.getCurrency,
+      cartStore.getCartTotal
+    ).then(() => {
+      router.push("/cart/summary");
+    });
   } else {
-    console.log("niepoprawne dane");
+    if (ValidateShippingInputs(inputs.value)) {
+      shipping.value = inputs.value;
+      if (userStore.isLogged) await useSaveShipping(inputs.value);
+      await useSaveOrder(
+        shipping.value,
+        comment.value,
+        company_data.value,
+        productsStore.getCurrency,
+        cartStore.getCartTotal
+      ).then(() => {
+        router.push("/cart/summary");
+      });
+    } else {
+      console.log("niepoprawne dane");
+    }
   }
 };
 

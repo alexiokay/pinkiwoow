@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { createPinia } from "pinia";
 import { useStorage } from "@vueuse/core";
 import piniaPersist from "pinia-plugin-persist";
+import type { ShippingT } from "@/types/Shipping";
 
 const pinia = createPinia();
 pinia.use(piniaPersist);
@@ -15,7 +16,7 @@ export const useUserStore = defineStore("User", {
       token: useStorage("token", ""),
       isLogged: useStorage("isLogged", false),
       favourites: useStorage("favourites", [] as Array<number>),
-      shippings: useStorage("shippings", [] as Array<Object>),
+      shippings: useStorage("shippings", [] as Array<ShippingT>),
     };
   },
   getters: {
@@ -43,7 +44,9 @@ export const useUserStore = defineStore("User", {
       };
     },
     getDefaultShipping(state) {
-      return state.shippings.find((shipping) => shipping.is_default === true);
+      return state.shippings.find(
+        (shipping) => shipping.is_default === true
+      ) as ShippingT | null;
     },
   },
   actions: {
@@ -70,10 +73,10 @@ export const useUserStore = defineStore("User", {
     setFavourites(favourites: Array<number>) {
       this.favourites = favourites;
     },
-    setShippings(shippings: Array<Object>) {
+    setShippings(shippings: Array<ShippingT>) {
       this.shippings = shippings;
     },
-    addShipping(shipping: Object) {
+    addShipping(shipping: ShippingT) {
       this.shippings.push(shipping);
     },
   },

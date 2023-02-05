@@ -113,10 +113,13 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    STRIPE_TEST_SECRET_KEY: process.env.STRIPE_TEST_SECRET_KEY,
+    STRIPE_LIVE_SECRET_KEY: process.env.STRIPE_LIVE_SECRET_KEY,
     public: {
-      stripePrices: {
-        test: "1",
-      },
+      STRIPE_PUBLIC_KEY: process.env.DEBUG
+        ? process.env.STRIPE_TEST_PUBLIC_KEY
+        : process.env.STRIPE_LIVE_PUBLIC_KEY,
+
       cwd: process.cwd(),
       BASE_URL: process.env.BASE_URL,
       API_TOKEN: process.env.API_TOKEN,

@@ -5,6 +5,8 @@ import { useStorage } from "@vueuse/core";
 import { useProductsStore } from "@/stores/Products";
 import piniaPersist from "pinia-plugin-persist";
 import type { ProductType } from "@/types/Product";
+import type { ShippingT } from "@/types/Shipping";
+import type { CompanyDataT } from "@/types/Shipping";
 
 const pinia = createPinia();
 
@@ -18,7 +20,7 @@ export type CartItem = {
   quantity: number;
   image: string | undefined;
   image2?: string | undefined;
-  stripePriceId: string;
+  stripeProductId: string;
   select: boolean;
 };
 
@@ -29,11 +31,18 @@ export const useCartStore = defineStore("cart", {
       initialized: useStorage("initialized", false),
       // all these properties will have their type inferred automatically
       cart: useStorage("cart", [] as Array<CartItem>),
+      tempOrder: useStorage("tempOrder", [] as any),
     };
   },
   getters: {
+    getTempOrder(state) {
+      return state.tempOrder;
+    },
     getCart(state) {
       return state.cart;
+    },
+    getProductIds(state) {
+      return state.cart.map((item) => item.stripeProductId);
     },
     getCartTotal(state) {
       const productsStore = useProductsStore(pinia);
@@ -59,7 +68,19 @@ export const useCartStore = defineStore("cart", {
       // this is called when the store is initialized
       this.initialized = true;
     },
-
+    setTempOrder(
+      shipping: ShippingT | number,
+      comment: string,
+      companyData: CompanyDataT | null,
+      client_secret: string
+    ) {
+      this.tempOrder = {
+        shipping: shipping,
+        comment: comment,
+        company_data: companyData,
+        client_secret: client_secret,
+      };
+    },
     addToCart(item: ProductType) {
       const cartItem: CartItem = {
         id: item.id,
@@ -69,7 +90,7 @@ export const useCartStore = defineStore("cart", {
         quantity: 1,
         image: item.image?.full_url,
         image2: item.image2?.full_url,
-        stripePriceId: "nothing yet",
+        stripeProductId: item.price_model.product_id,
         select: false,
       };
 

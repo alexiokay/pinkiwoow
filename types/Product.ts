@@ -8,7 +8,7 @@ type Image = {
 } | null;
 
 type PriceModel = {
-  stripe_price_id: string;
+  product_id: string;
   price_eur: number;
   price_pln: number;
   Product_type: string;
