@@ -47,7 +47,8 @@ export const useCartStore = defineStore("cart", {
     getCartTotal(state) {
       const productsStore = useProductsStore(pinia);
       let total_price: any = null;
-
+      console.log("getCartTotal");
+      console.log(productsStore.getCurrency);
       if (productsStore.getCurrency === "PLN") {
         total_price = state.cart.reduce((total, item) => {
           return total + item.price_pln * item.quantity;

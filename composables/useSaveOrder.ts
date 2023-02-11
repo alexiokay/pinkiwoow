@@ -17,6 +17,8 @@ export const useSaveOrder = async (
   console.log("amount: ");
   console.log(amount * 100);
 
+  const createInvoice = async () => {};
+
   const createPaymentIntent = async () => {
     //TODO: optimize for guests
     const response = await fetch(

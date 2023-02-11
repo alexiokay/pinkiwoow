@@ -33,7 +33,7 @@ export const useProductsStore = defineStore("Products", {
     },
     getMousePads(state) {
       const mousePads = state.products.filter((product: any) => {
-        if (product.category) return product.category.name == "mousepad";
+        if (product.category) return product.category.name == "mouse pad";
       });
       return mousePads;
     },
@@ -42,7 +42,7 @@ export const useProductsStore = defineStore("Products", {
         if (product.category) return product.category.name == "mug";
       });
       const mousPads = state.products.filter((product: any) => {
-        if (product.category) return product.category == "mousepad";
+        if (product.category) return product.category.slug == "mouse-pad";
       });
 
       const products = mugs.concat(mousPads).slice(0, 9);
