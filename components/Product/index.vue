@@ -1,17 +1,17 @@
 <template lang="pug">
-div.collections-panel(class="flex relative  h-full flex-row w-5/6 items-start justify-center gap-x-8 px-16 mt-12  ")
-    div#sticky(class="sticky flex mt-6 w-[57%] flex-col h-[42rem]")
-        div( class="flex h-[20rem] md:h-[35rem]  relative aspect-video flex-col items-center justify-center bg-white  shadow-lg overflow-hidden  ") <!--bg-[#9DD9CF] -->
+div.collections-panel(class="flex relative  h-full flex-col md:flex-row w-5/6 items-start justify-center gap-x-8 md:px-16 mt-12  ")
+    div#sticky(class="sticky flex md:mt-6 w-full md:w-[57%] flex-col h-auto md:h-[42rem]")
+        div( class="flex h-[20rem] w-full md:h-[35rem]  relative aspect-video flex-col items-center justify-center bg-white  shadow-lg overflow-hidden  ") <!--bg-[#9DD9CF] -->
         
             img(:src="image1"  class="w-full h-full object-contain ")
            
         div(class="flex w-full items-center justify-between h-auto flex-wrap gap-x-3 mt-6 gap-y-4")
-            ExampleImg(class=" w-2/6 md:w-1/6 aspect-square h-auto")
-            ExampleImg(class="w-2/6 md:w-1/6  aspect-square h-auto")
-            ExampleImg(class="w-2/6 md:w-1/6 aspect-square h-auto")
-            ExampleImg(class="w-2/6 md:w-1/6  aspect-square h-auto")
-            ExampleImg(class="w-2/6 md:w-1/6  aspect-square h-auto")
-            ExampleImg(class="w-2/6 md:w-1/6  aspect-square h-auto")
+            ExampleImg(class=" w-1/6  aspect-square h-auto")
+            ExampleImg(class="w-1/6  aspect-square h-auto")
+            ExampleImg(class="w-1/6  aspect-square h-auto")
+            ExampleImg(class="w-1/6   aspect-square h-auto")
+            ExampleImg(class="w-1/6  aspect-square h-auto")
+            ExampleImg(class="w-1/6   aspect-square h-auto")
 
         
   
@@ -19,7 +19,7 @@ div.collections-panel(class="flex relative  h-full flex-row w-5/6 items-start ju
            
        
            
-    div#product-options(class="flex flex-col w-[43%] gap-y-3 h-full items-center justify-center  p-8   rounded-xl") <!-- bg-[#EC92BA] -->
+    div#product-options(class="flex flex-col w-full md:w-[43%] gap-y-3 h-full items-center justify-center mt-8 md:mt-0 md:p-8   rounded-xl") <!-- bg-[#EC92BA] -->
         div(class="flex flex-col text-[#252525] justify-center items-center w-full")
             h1(class="text-2xl font-roboto w-full") MUG 11oz: {{ title }}
             p(class="text-3xl  font-roboto  mb-2 w-full") {{ price }}

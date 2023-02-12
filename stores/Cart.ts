@@ -83,6 +83,10 @@ export const useCartStore = defineStore("cart", {
       // this is called when the store is initialized
       this.initialized = true;
     },
+    clear() {
+      this.cart = [];
+      this.tempOrder = [];
+    },
     setTempOrder(
       shipping: ShippingT | number,
       comment: string,

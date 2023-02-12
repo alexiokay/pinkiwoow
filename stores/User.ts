@@ -3,7 +3,7 @@ import { createPinia } from "pinia";
 import { useStorage } from "@vueuse/core";
 import piniaPersist from "pinia-plugin-persist";
 import type { ShippingT } from "@/types/Shipping";
-
+import { useCartStore } from "@/stores/Cart";
 const pinia = createPinia();
 pinia.use(piniaPersist);
 
@@ -63,12 +63,14 @@ export const useUserStore = defineStore("User", {
       this.isLogged = bool;
     },
     logout() {
+      const cartStore = useCartStore();
       this.username = "";
       this.email = "";
       this.token = "";
       this.isLogged = false;
       this.favourites = [];
       this.shippings = [];
+      cartStore.clear();
     },
     setFavourites(favourites: Array<number>) {
       this.favourites = favourites;

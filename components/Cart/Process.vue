@@ -23,6 +23,7 @@ const currentStep = computed(() => {
   if (route.name === "cart") return 0;
   if (route.path === "/cart/order") return 1;
   if (route.path === "/cart/payment") return 2;
+  if (route.path === "/cart/ready") return 3;
 });
 const router = useRouter();
 const goToStep = (index: number) => {
