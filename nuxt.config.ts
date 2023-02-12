@@ -116,9 +116,10 @@ export default defineNuxtConfig({
     STRIPE_TEST_SECRET_KEY: process.env.STRIPE_TEST_SECRET_KEY,
     STRIPE_LIVE_SECRET_KEY: process.env.STRIPE_LIVE_SECRET_KEY,
     public: {
-      STRIPE_PUBLIC_KEY: process.env.DEBUG
-        ? process.env.STRIPE_TEST_PUBLIC_KEY
-        : process.env.STRIPE_LIVE_PUBLIC_KEY,
+      STRIPE_PUBLIC_KEY:
+        process.env.DEBUG === "True"
+          ? process.env.STRIPE_TEST_PUBLIC_KEY
+          : process.env.STRIPE_LIVE_PUBLIC_KEY,
 
       cwd: process.cwd(),
       BASE_URL: process.env.BASE_URL,
