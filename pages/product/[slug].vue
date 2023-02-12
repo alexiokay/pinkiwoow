@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="flex flex-col w-full items-center justify-center h-auto mt-10")
+div(class="flex flex-col w-full items-center justify-center h-auto ")
     Product
     Opinions
    
