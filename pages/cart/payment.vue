@@ -1,5 +1,5 @@
 <template lang="pug">
-form#payment-form(class="mx-4 mt-16")
+form#payment-form(class="mx-4 mt-16 w-[25rem]")
     div#payment-element
 
     button( id="submit" class="w-full bg-green-600 h-10 rounded-md mt-6")
@@ -60,7 +60,7 @@ const confirmPayment = async () => {
       //`Elements` instance that was used to create the Payment Element
       elements,
       confirmParams: {
-        return_url: `https://pinkiwoow.pl/cart/summary`,
+        return_url: `https://pinkiwoow.pl/cart/payment`,
       },
     })
     .then((result: any) => {

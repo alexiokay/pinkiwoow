@@ -217,7 +217,7 @@ const saveShippingAndGo = async () => {
       cartStore.getCartTotal,
       cartStore.getProducts
     ).then(() => {
-      router.push("/cart/summary");
+      router.push("/cart/payment");
     });
   } else {
     if (ValidateShippingInputs(inputs.value)) {
@@ -231,7 +231,7 @@ const saveShippingAndGo = async () => {
         cartStore.getCartTotal,
         cartStore.getProducts
       ).then(() => {
-        router.push("/cart/summary");
+        router.push("/cart/payment");
       });
     } else {
       console.log("niepoprawne dane");
