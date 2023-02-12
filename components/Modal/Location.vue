@@ -3,7 +3,7 @@
 Transition(name="fade")
     <div v-if="props.isOpen" @click="$emit('close'), changingLanguage = false" tabindex="-1" class="fixed top-0 pointer-event-none flex items-center bg-[rgba(0,0,0,0.55)] justify-center left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-screen md:h-full"></div>
 <Transition name="jump">
-    <div v-if="props.isOpen && !changingLanguage"  @click.stop="$emit('null')" class="fixed top-0 pointer-event-none flex items-center  justify-center left-0 right-0 z-50  m-auto w-[30rem] p-4  md:inset-0 h-screen md:h-min">
+    <div v-if="props.isOpen && !changingLanguage"  @click.stop="$emit('null')" class="fixed top-0 bottom-0 pointer-event-none flex items-center  justify-center left-0 right-0 z-50  m-auto w-[100vw] md:w-[30rem] p-4  md:inset-0 h-min">
         <!-- Modal content -->
         <div class="relative bg-white pb-5 rounded-lg shadow dark:bg-gray-700 h-full text-gray-600 ">
             <!-- Modal header -->
@@ -15,7 +15,7 @@ Transition(name="fade")
                 </button>
             </div>
             <!-- Modal body -->
-            <div class="px-10 gap-y-4 overflow-y-auto  flex flex-col  justify-start h-auto w-[30rem]">
+            <div class="px-10 gap-y-4 overflow-y-auto  flex flex-col  justify-start h-auto w-full md:w-[30rem]">
                 Flag(class="w-full flex items-center justify-center")
                 p(class="text-2xl ") Your location is set to 
                     span(class="text-2xl font-bold") {{ regionNames.of(locale? locale.toUpperCase() : '')}}
