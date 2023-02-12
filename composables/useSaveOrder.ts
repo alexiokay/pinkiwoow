@@ -74,7 +74,12 @@ export const useSaveOrder = async (
       if (companyData)
         Object.assign(companyData, { id: data.order.company_data.id });
 
-      cartStore.setTempOrder(shipping, comment, companyData, client_secret);
+      cartStore.setTempOrder(
+        shipping,
+        comment,
+        companyData,
+        invoice.client_secret
+      );
       console.log("temp order: ");
       console.log(cartStore.getTempOrder);
     })
