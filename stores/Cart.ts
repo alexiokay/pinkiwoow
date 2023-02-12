@@ -42,7 +42,21 @@ export const useCartStore = defineStore("cart", {
       return state.cart;
     },
     getProductIds(state) {
-      return state.cart.map((item) => item.stripeProductId);
+      const cartPrices = state.cart.map((item) => item.stripeProductId);
+      console.log(cartPrices);
+      return cartPrices;
+    },
+    getProducts(state) {
+      const products = [];
+      for (let item of state.cart) {
+        products.push({
+          stripe_product_id: item.stripeProductId,
+          quantity: item.quantity,
+        });
+      }
+
+      console.log(products);
+      return products;
     },
     getCartTotal(state) {
       const productsStore = useProductsStore(pinia);

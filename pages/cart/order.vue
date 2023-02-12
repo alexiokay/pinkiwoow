@@ -214,7 +214,8 @@ const saveShippingAndGo = async () => {
       comment.value,
       company_data.value,
       productsStore.getCurrency,
-      cartStore.getCartTotal
+      cartStore.getCartTotal,
+      cartStore.getProducts
     ).then(() => {
       router.push("/cart/summary");
     });
@@ -227,7 +228,8 @@ const saveShippingAndGo = async () => {
         comment.value,
         company_data.value,
         productsStore.getCurrency,
-        cartStore.getCartTotal
+        cartStore.getCartTotal,
+        cartStore.getProducts
       ).then(() => {
         router.push("/cart/summary");
       });
