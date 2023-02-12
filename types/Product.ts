@@ -16,10 +16,14 @@ type PriceModel = {
 
 export type Category = {
   name: string;
-  description: string;
   slug: string;
 };
 
+export type SubCategory = {
+  name: string;
+  description: string;
+  slug: string;
+};
 export type ProductType = {
   // Product
   id: number;
