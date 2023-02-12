@@ -49,6 +49,7 @@ const loadElements = async () => {
 
 const confirmPayment = async () => {
   await loadStripe(STRIPE_PUBLIC_KEY).then((result: any) => {
+    console.log(STRIPE_PUBLIC_KEY);
     //console.log(elements)
 
     stripe = result;
@@ -61,6 +62,9 @@ const confirmPayment = async () => {
       confirmParams: {
         return_url: `https://pinkiwoow.pl/cart/summary`,
       },
+    })
+    .then((result: any) => {
+      console.log(result);
     })
     .catch((err: any) => {
       console.log(err);

@@ -47,13 +47,6 @@ export const useProductsStore = defineStore("Products", {
 
       const products = mugs.concat(mousPads).slice(0, 9);
 
-      for (let i = products.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * i);
-        let k = products[i];
-        products[i] = products[j];
-        products[j] = k;
-      }
-
       //console.log(randomProduct_temp);
       return products;
     },

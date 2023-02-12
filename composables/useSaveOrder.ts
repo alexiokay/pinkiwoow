@@ -49,7 +49,7 @@ export const useSaveOrder = async (
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Token 84989f1db7e64e8ed7afa7a42f3cc769b17243d2",
+      Authorization: userStore.getToken,
     },
     body: JSON.stringify({
       shipping: shipping,

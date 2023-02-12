@@ -17,7 +17,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-3 ")
           p(class="md:text-base ") Nowości
         div.trapezoid-down(class="")
 
-          p(class="md:text-base ") Nowości dsadsa sadsa
+          p(class="md:text-base ") This webpage is in development
           
          
       
