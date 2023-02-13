@@ -48,11 +48,13 @@ div.collections-panel(class="flex relative  h-full flex-col md:flex-row w-5/6 it
                     p 11oz
                 div(class="w-14 h-14   flex items-center justify-center border-[1px] border-[#CCCCCC] hover:bg-[#F2F2F2] smooth-color  hover:cursor-pointer")
                     p 11oz
-  
+Opinions(:reviews="reviews")
     </template>
 
 <script setup lang="ts">
 import { onMounted } from "vue";
+import type { Ref } from "vue";
+import type { Rating } from "@/types/Product";
 import MyDeviceIcon from "~icons/ic/round-computer";
 import { useProductsStore } from "@/stores/Products";
 const productsStore = useProductsStore();
@@ -62,21 +64,15 @@ console.log(route.query);
 
 //TODO: FInd component by name
 
-const image1 = ref(route.query.image);
-const title = ref(route.query.title);
-const price_model = ref(route.query.price);
-const description = ref(
-  route.query.description?.toString().replace(/<[^>]*>/g, "")
-);
-
 const slug: string = route.path.split("/").pop() as string;
 
 const product: any = productsStore.getProductBySlug(slug);
-image1.value = product.image.url;
-title.value = product.title;
-price_model.value = product.price_model;
-description.value = product.description.toString().replace(/<[^>]*>/g, "");
-
+const image1 = ref(product.image.url);
+const title = ref(product.title);
+const price_model = ref(product.price_model);
+const description = ref(product.description.toString().replace(/<[^>]*>/g, ""));
+const reviews: Ref<Array<Rating>> = ref(product.rating);
+console.log(reviews);
 const props = defineProps({
   product: {
     type: Object,

@@ -19,6 +19,16 @@ export type Category = {
   slug: string;
 };
 
+export type Rating = {
+  id?: number;
+  rating: number;
+  user: string;
+  review: string;
+  product: string;
+  product_slug: string;
+  created_at: string;
+  updated_at?: string;
+};
 export type SubCategory = {
   name: string;
   description: string;
@@ -33,6 +43,8 @@ export type ProductType = {
   image2: Image;
   image3: Image;
   price_model: PriceModel;
+  sub_category: SubCategory;
+  rating: Rating;
   category: Object;
   quantity: number;
 };

@@ -8,7 +8,7 @@ export const getProducts = async () => {
     },
   };
   const products = await useFetch(
-    `${config.API_URL}api/v2/pages/?type=shop.ProductPage&fields=title,description,image,image2,image3,price_model,category,sub_category`,
+    `${config.API_URL}api/v2/pages/?type=shop.ProductPage&fields=title,description,image,image2,image3,price_model,category,sub_category,rating`,
     options
   ).then((res) => {
     const data: any = res.data.value;
