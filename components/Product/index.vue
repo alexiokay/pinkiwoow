@@ -22,8 +22,8 @@ div.collections-panel(class="flex relative  h-full flex-col md:flex-row w-5/6 it
     div#product-options(class="flex flex-col w-full md:w-[43%] gap-y-3 h-full items-center justify-center mt-8 md:mt-0 md:p-8   rounded-xl") <!-- bg-[#EC92BA] -->
         div(class="flex flex-col text-[#252525] justify-center items-center w-full")
             h1(class="text-2xl font-roboto w-full") MUG 11oz: {{ title }}
-            p(v-if="productsStore.getCurrency === 'EUR'") {{price_model?.price_eur }} {{ productsStore.getCurrency }}
-            p(v-else-if="productsStore.getCurrency === 'PLN' && price_model?.price_pln !== null") {{price_model?.price_pln}} {{ productsStore.getCurrency }}
+            p(class="w-full text-start text-lg font-semibold text-gray-500" v-if="productsStore.getCurrency === 'EUR'") {{price_model?.price_eur }} {{ productsStore.getCurrency }}
+            p(class="w-full text-start text-lg font-semibold text-gray-500"  v-else-if="productsStore.getCurrency === 'PLN' && price_model?.price_pln !== null") {{price_model?.price_pln}} {{ productsStore.getCurrency }}
         p(class="text-xl font-mulish text-[#1d1d1d]") {{description}}
        
 
@@ -69,14 +69,13 @@ const description = ref(
   route.query.description?.toString().replace(/<[^>]*>/g, "")
 );
 
-const product_id = route.path.split("/").pop();
-if (!route.query.title) {
-  const product = productsStore.getProductById(product_id);
-  image1.value = product.image.url;
-  title.value = product.title;
-  price_model.value = product.price_model;
-  description.value = product.description.toString().replace(/<[^>]*>/g, "");
-}
+const slug: string = route.path.split("/").pop() as string;
+
+const product: any = productsStore.getProductBySlug(slug);
+image1.value = product.image.url;
+title.value = product.title;
+price_model.value = product.price_model;
+description.value = product.description.toString().replace(/<[^>]*>/g, "");
 
 const props = defineProps({
   product: {

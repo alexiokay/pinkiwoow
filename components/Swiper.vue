@@ -127,14 +127,7 @@ const addToFavourites = (id: number) => {
 
 const goToProduct = (slide: any) => {
   router.push({
-    path: `/product/${slide.id}`,
-    query: {
-      id: slide.id,
-      image: slide.image?.url,
-      title: slide.title,
-      price_model: slide.price_model,
-      description: slide.description,
-    },
+    path: `/product/${slide.meta.slug}`,
   });
 };
 </script>

@@ -31,6 +31,11 @@ export const useProductsStore = defineStore("Products", {
         return state.products.find((product: any) => product.id == id);
       };
     },
+    getProductBySlug(state) {
+      return (slug: string) => {
+        return state.products.find((product: any) => product.meta.slug == slug);
+      };
+    },
     getMugs(state) {
       return state.products.filter((product: any) => {
         if (product.category) return product.category.name == "mug";
