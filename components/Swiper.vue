@@ -129,9 +129,10 @@ const goToProduct = (slide: any) => {
   router.push({
     path: `/product/${slide.id}`,
     query: {
+      id: slide.id,
       image: slide.image?.url,
       title: slide.title,
-      price: slide.price_model.price_pln,
+      price_model: slide.price_model,
       description: slide.description,
     },
   });

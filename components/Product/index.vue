@@ -22,9 +22,10 @@ div.collections-panel(class="flex relative  h-full flex-col md:flex-row w-5/6 it
     div#product-options(class="flex flex-col w-full md:w-[43%] gap-y-3 h-full items-center justify-center mt-8 md:mt-0 md:p-8   rounded-xl") <!-- bg-[#EC92BA] -->
         div(class="flex flex-col text-[#252525] justify-center items-center w-full")
             h1(class="text-2xl font-roboto w-full") MUG 11oz: {{ title }}
-            p(class="text-3xl  font-roboto  mb-2 w-full") {{ price }}
+            p(v-if="productsStore.getCurrency === 'EUR'") {{price_model?.price_eur }} {{ productsStore.getCurrency }}
+            p(v-else-if="productsStore.getCurrency === 'PLN' && price_model?.price_pln !== null") {{price_model?.price_pln}} {{ productsStore.getCurrency }}
         p(class="text-xl font-mulish text-[#1d1d1d]") {{description}}
-        p(class="text-xl font-mulish text-[#1d1d1d]") This is a demonstration theme for Shopify. All products featured with kind permission from arkkcopenhagen.com. Click here to purchase.
+       
 
 
 
@@ -53,15 +54,29 @@ div.collections-panel(class="flex relative  h-full flex-col md:flex-row w-5/6 it
 <script setup lang="ts">
 import { onMounted } from "vue";
 import MyDeviceIcon from "~icons/ic/round-computer";
-
+import { useProductsStore } from "@/stores/Products";
+const productsStore = useProductsStore();
 const route = useRoute();
-
+const config = useRuntimeConfig();
 console.log(route.query);
+
 //TODO: FInd component by name
+
 const image1 = ref(route.query.image);
 const title = ref(route.query.title);
-const price = ref(route.query.price);
-const description = ref(route.query.description);
+const price_model = ref(route.query.price);
+const description = ref(
+  route.query.description?.toString().replace(/<[^>]*>/g, "")
+);
+
+const product_id = route.path.split("/").pop();
+if (!route.query.title) {
+  const product = productsStore.getProductById(product_id);
+  image1.value = product.image.url;
+  title.value = product.title;
+  price_model.value = product.price_model;
+  description.value = product.description.toString().replace(/<[^>]*>/g, "");
+}
 
 const props = defineProps({
   product: {
