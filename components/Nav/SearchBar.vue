@@ -24,7 +24,7 @@ const focusNavbar = () => {
   overlay?.classList.add("visible-overlay");
   navbarWrapper.style.backgroundColor = "rgba(0, 0, 0, 0)";
   navbarContent.style.backgroundColor = "white";
-  navbarNavigation.style.opacity = "0.4";
+  navbarNavigation.style.opacity = "1";
 
   console.log(overlay?.classList);
   mainStore.setOverlaying(true);

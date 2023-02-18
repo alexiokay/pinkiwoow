@@ -44,13 +44,13 @@ div#navbar-wrapper(class="z-50  overlaying drop-shadow-xl md:drop-shadow-none w-
           <component :is="isCartDropdown ? cartdropdown : null" />
          
 
-  div#navbar-navigation(v-show="canAdditionalNavbars" :class="{'pointer-events-none': store.isOverlaying}" class=" border-[#afafaf] w-[95%] text-lg font-itim bg-white drop-shadow-xs text-black hidden md:flex items-center justify-center h-[3rem] md:px-16  gap-x-4")
+  div#navbar-navigation(v-show="canAdditionalNavbars" :class="{'pointer-events-none': store.isOverlaying}" class=" border-[#afafaf] w-[100%] text-lg font-itim bg-white drop-shadow-xs text-black hidden md:flex items-center justify-center h-[3rem] md:px-16  gap-x-4")
     LazyHydrate(when-idle)
       NavDropdown#dropdown-1(@click="openDropdown('1')" @mouseenter="openDropdown('1')"  @mouseleave="closeDropdown('1')" class="dropdown-hidden hidden hover:flex absolute top-[6rem] left-0 z-40")
    
 
     div(class="h-full group")
-      NuxtLink(@mouseenter="openDropdown('1')" @mouseleave="closeDropdown('1')"  class="group h-full relative flex items-center justify-center" to="/")
+      NuxtLink(@mouseenter="openDropdown('1')" @mouseleave="closeDropdown('1')"  class="group h-full relative flex items-center justify-center" )
         div(:class="{'bg-black': isDropdown1Open }" class="bg-transparent smooth-color group-hover:bg-black h-[0.24rem]  w-full absolute bottom-0")
         p(class="text-blue-900")   {{$t('components.navbar.products.title').toUpperCase()}}
 

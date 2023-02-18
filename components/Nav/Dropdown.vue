@@ -15,7 +15,7 @@ div(class=" w-full h-[23rem] text-[#434447] bg-[#ffffff]  shadow-lg flex flex-ro
     div(class="flex flex-col w-full space-y-3 items-center")
         p(class="font-semibold") {{$t('components.navbar.products.ceramics.title')}}
         hr(class="w-3/4")
-        p(class="hover:cursor-pointer")  {{$t('components.navbar.products.ceramics.mugs')}}
+        NuxtLink(to="/products/mugs/1" class="hover:cursor-pointer" )  {{$t('components.navbar.products.ceramics.mugs')}}
     div(class="flex flex-col w-full space-y-3 items-center")
         p lighters
         p beer openers
@@ -25,7 +25,7 @@ div(class=" w-full h-[23rem] text-[#434447] bg-[#ffffff]  shadow-lg flex flex-ro
         hr(class="w-3/4")
         p(class="hover:cursor-pointer") {{$t('components.navbar.products.it.phone_hardcase')}}
         p(class="hover:cursor-pointer") {{$t('components.navbar.products.it.phone_rubber_case')}}
-        p(class="hover:cursor-pointer") {{$t('components.navbar.products.it.mouse_pads')}}
+        NuxtLink(to="/products/mouse-pads/1" class="hover:cursor-pointer") {{$t('components.navbar.products.it.mouse_pads')}}
     div.w-full.bg-black.absolute.bottom-0.left-0(class="h-[0.1rem]")
 </template>
 

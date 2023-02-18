@@ -36,6 +36,7 @@ import { useProductsStore } from "@/stores/Products";
 import { useCartStore } from "@/stores/Cart";
 import { useUserStore } from "~~/stores/User";
 import Cookies from "js-cookie";
+import { addToFavourites } from "@/functions/addToFavourites";
 
 const userStore = useUserStore();
 const favourites = computed(() => userStore.favourites);
@@ -101,29 +102,6 @@ onMounted(() => {
   const owl_stage = document.querySelector(".swiper-container") as HTMLElement;
   owl_stage.classList.add("noselect");
 });
-
-const addToFavourites = (id: number) => {
-  // adds or removes product from favourites and set userStore.favourites again
-  if (userStore.getToken === null) {
-    router.push("/login");
-  } else {
-    fetch(`${config.API_URL}api/v1/favourites/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Token " + userStore.getToken,
-      },
-      body: JSON.stringify({
-        product_id: id,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        userStore.setFavourites(data.favourites);
-      });
-  }
-};
 
 const goToProduct = (slide: any) => {
   router.push({

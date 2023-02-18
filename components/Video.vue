@@ -7,7 +7,7 @@ div.relative.w-full
 
     .overlay.flex.flex-col
         h2(class="w-5/6 md:w-2/5 h-[1rem] md:h-auto text-xl md:text-6xl") Join us on our Journey...
-        h2(class="w-5/6 md:w-2/5 text-2xl md:text-3xl") Like fashion and art - sneaker design is never finished.
+        h2(class="w-5/6 md:w-2/5 text-2xl md:text-3xl") We provide the best quality products for your home and office.
         button(class="w-[15rem] h-[3.5rem] bg-[#ffffff] text-[#000000]  mt-4")  Learn more
 </template>
 

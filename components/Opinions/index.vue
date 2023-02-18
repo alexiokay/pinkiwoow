@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class="flex flex-col w-full md:w-5/6 px-10 md:px-16 items-center justify-center h-auto mt-8")
     div(class="flex w-full h-6 items-center justify-start space-x-3")
-        p(class="text-3xl font-semibold") {{props.reviews.length}} reviews
+        p(class="text-3xl text-gray-900 font-robotolight") {{props.reviews.length}} reviews
         Rating(class="w-[9rem] h-6" width="small" :rated="4.5" :editable="false")
     div(class="flex w-full  h-4 items-center justify-start mt-12 space-x-2")
         div(:class="opinionType ==='item'? 'bg-gray-100 ': 'bg-white hover:bg-gray-50 hover:cursor-pointer'" class="flex w-auto space-x-3 items-center justify-start  rounded-full py-1 md:py-2 px-4 md:px-2")

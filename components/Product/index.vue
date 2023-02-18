@@ -20,24 +20,24 @@ div.collections-panel(class="flex relative  h-full flex-col md:flex-row w-5/6 it
        
            
     div#product-options(class="flex flex-col w-full md:w-[43%] gap-y-3 h-full items-center justify-center mt-8 md:mt-0 md:p-8   rounded-xl") <!-- bg-[#EC92BA] -->
-        div(class="flex flex-col text-[#252525] justify-center items-center w-full")
-            h1(class="text-2xl font-roboto w-full") MUG 11oz: {{ title }}
-            p(class="w-full text-start text-lg font-semibold text-gray-500" v-if="productsStore.getCurrency === 'EUR'") {{price_model?.price_eur }} {{ productsStore.getCurrency }}
-            p(class="w-full text-start text-lg font-semibold text-gray-500"  v-else-if="productsStore.getCurrency === 'PLN' && price_model?.price_pln !== null") {{price_model?.price_pln}} {{ productsStore.getCurrency }}
+        div(class="flex flex-col text-gray-800 justify-center items-center w-full")
+            h1(class="text-2xl font-roboto text-[#1d1d1d] w-full") {{ title }}
+            p(class="w-full text-start text-lg font-semibold text-gray-600" v-if="productsStore.getCurrency === 'EUR'") {{price_model?.price_eur }} {{ productsStore.getCurrency }}
+            p(class="w-full text-start text-lg font-semibold text-gray-600"  v-else-if="productsStore.getCurrency === 'PLN' && price_model?.price_pln !== null") {{price_model?.price_pln}} {{ productsStore.getCurrency }}
         p(class="text-xl font-mulish text-[#1d1d1d]") {{description}}
        
 
 
 
         hr(class="w-full h-[1px] border-[#F1F1F1] my-4")
-        div(class="flex flex-col w-full h-auto")
+        div(v-if="$props.isConfigurable" class="flex flex-col w-full h-auto")
             p(class="text-lg  font-semibold mb-3") Add design from...
             div(class="flex items-center text-xl text-[#17262B] justify-center w-full h-[4.5rem] border-[1px] gap-x-4 hover:bg-[#F2F2F2] smooth-color  hover:cursor-pointer border-[#CCCCCC]")
                 MyDeviceIcon
                 p My device
         div(class="flex flex-col w-full h-auto")
-            p 11oz Size
-            div(class="flex flex-row flex-wrap items-center justify-start w-full h-auto gap-x-2")
+            p Size
+            div(class="flex mt-2 flex-row flex-wrap items-center justify-start w-full h-auto gap-x-2")
                 div(class="w-14 h-14  flex items-center justify-center border-[1px] border-[#CCCCCC] bg-[#202020] font-semibold text-white hover:cursor-pointer")
                     p 11oz
                 div(class="w-14 h-14  flex items-center justify-center border-[1px] border-[#CCCCCC] hover:bg-[#F2F2F2] smooth-color  hover:cursor-pointer")
@@ -48,6 +48,8 @@ div.collections-panel(class="flex relative  h-full flex-col md:flex-row w-5/6 it
                     p 11oz
                 div(class="w-14 h-14   flex items-center justify-center border-[1px] border-[#CCCCCC] hover:bg-[#F2F2F2] smooth-color  hover:cursor-pointer")
                     p 11oz
+        button(class="w-full mt-4 h-[3rem] rounded-full bg-[#2B2B2B] text-lg font-semibold text-white smooth-color") Add to cart
+
 Opinions(:reviews="reviews")
     </template>
 
@@ -63,22 +65,28 @@ const config = useRuntimeConfig();
 console.log(route.query);
 
 //TODO: FInd component by name
+const props = defineProps({
+  product: {
+    type: Object,
+    required: false,
+  },
+  isConfigurable: {
+    type: Boolean,
+    required: true,
+  },
+});
 
 const slug: string = route.path.split("/").pop() as string;
 
 const product: any = productsStore.getProductBySlug(slug);
-const image1 = ref(product.image.url);
-const title = ref(product.title);
-const price_model = ref(product.price_model);
-const description = ref(product.description.toString().replace(/<[^>]*>/g, ""));
-const reviews: Ref<Array<Rating>> = ref(product.rating);
+const image1 = ref(props.product?.image.url);
+const title = ref(props.product?.title);
+const price_model = ref(props.product?.price_model);
+const description = ref(
+  props.product?.description.toString().replace(/<[^>]*>/g, "")
+);
+const reviews: Ref<Array<Rating>> = ref(props.product?.rating);
 console.log(reviews);
-const props = defineProps({
-  product: {
-    type: Object,
-    required: true,
-  },
-});
 </script>
 
 <style lang="scss" scoped>
