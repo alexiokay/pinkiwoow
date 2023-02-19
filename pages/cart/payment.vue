@@ -17,14 +17,38 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useUserStore } from "@/stores/User";
 import { useCartStore } from "@/stores/Cart";
 
+definePageMeta({
+  title: "Payment",
+  description: "Payment",
+  meta: [
+    // <meta name="description" content="My amazing site">
+    {
+      hid: `description`,
+      name: "description",
+      content: "PinkiWoow - Customized mugs, t-shirts, and more!",
+    },
+  ],
+});
 const userStore = useUserStore();
 const cartStore = useCartStore();
 const config = useRuntimeConfig();
 
+definePageMeta({
+  //include script link
+  script: [
+    {
+      src: "https://js.stripe.com/v3/",
+      async: true,
+      defer: true,
+    },
+  ],
+});
 const STRIPE_PUBLIC_KEY = config.STRIPE_PUBLIC_KEY;
 console.log("STRIPE_PUBLIC_KEY", STRIPE_PUBLIC_KEY);
 
-let stripe = loadStripe(STRIPE_PUBLIC_KEY);
+const stripe = Stripe(STRIPE_PUBLIC_KEY);
+
+//let stripe = loadStripe(STRIPE_PUBLIC_KEY);
 let elements: any = null;
 let options = {};
 
@@ -38,38 +62,11 @@ const loadElements = async () => {
     },
   };
 
-  elements = await stripe.then((result: any) => {
-    return result.elements(options);
-  });
+  elements = stripe.elements(options);
 
   // Create and mount the Payment Element
   const paymentElement = elements.create("payment");
   paymentElement.mount("#payment-element");
-};
-
-const confirmPayment = async () => {
-  await loadStripe(STRIPE_PUBLIC_KEY).then((result: any) => {
-    console.log(STRIPE_PUBLIC_KEY);
-    //console.log(elements)
-
-    stripe = result;
-  });
-
-  await stripe
-    .confirmPayment({
-      //`Elements` instance that was used to create the Payment Element
-      elements,
-      confirmParams: {
-        return_url: `https://pinkiwoow.pl/cart/payment`,
-      },
-    })
-    .then((result: any) => {
-      console.log(result);
-    })
-    .catch((err: any) => {
-      console.log(err);
-    });
-  console.log("success");
 };
 
 const createSubmitListener = async () => {
@@ -77,34 +74,20 @@ const createSubmitListener = async () => {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    await loadStripe(STRIPE_PUBLIC_KEY).then((result: any) => {
-      //console.log(elements)
-
-      stripe = result;
-    });
-
-    const { error } = await stripe.confirmPayment({
-      //`Elements` instance that was used to create the Payment Element
-      elements,
-      confirmParams: {
-        return_url: "https://example.com/order/123/complete",
-      },
-    });
-
-    if (error) {
-      // This point will only be reached if there is an immediate error when
-      // confirming the payment. Show error to your customer (for example, payment
-      // details incomplete)
-      const messageContainer = document.querySelector(
-        "#error-message"
-      ) as HTMLDivElement;
-      messageContainer.textContent = error.message;
-    } else {
-      console.log("success");
-      // Your customer will be redirected to your `return_url`. For some payment
-      // methods like iDEAL, your customer will be redirected to an intermediate
-      // site first to authorize the payment, then redirected to the `return_url`.
-    }
+    await stripe
+      .confirmPayment({
+        //`Elements` instance that was used to create the Payment Element
+        elements,
+        confirmParams: {
+          return_url: "http://localhost:3000/cart/ready",
+        },
+      })
+      .then(function (result: any) {
+        if (result.error) {
+          // Inform the customer that there was an error.
+        }
+        console.log("test2");
+      });
   });
 };
 onMounted(async () => {

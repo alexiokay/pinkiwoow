@@ -77,6 +77,7 @@ export default defineNuxtConfig({
       title: "PinkiWoow - Extra Custooms, Giga Fun",
       meta: [
         // <meta name="description" content="My amazing site">
+
         {
           hid: `description`,
           name: "description",

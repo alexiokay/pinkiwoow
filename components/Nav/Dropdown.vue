@@ -5,6 +5,10 @@ div(class=" w-full h-[23rem] text-[#434447] bg-[#ffffff]  shadow-lg flex flex-ro
         hr(class="w-3/4")
         NuxtLink(class="hover:cursor-pointer " to="/") {{$t('components.navbar.products.textiles.wallets')}}
         p(class="hover:cursor-pointer") {{$t('components.navbar.products.textiles.face_masks')}}
+        p(class="hover:cursor-pointer") {{$t('components.navbar.products.textiles.backpacks')}}
+        p(class="hover:cursor-pointer") {{$t('components.navbar.products.textiles.tshirts')}}
+        p(class="hover:cursor-pointer") {{$t('components.navbar.products.textiles.pillows')}}
+
         
     div(class="flex flex-col w-full space-y-3 items-center")
         p(class="font-semibold") {{$t('components.navbar.products.accessories.title')}}

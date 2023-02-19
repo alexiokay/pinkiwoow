@@ -5,8 +5,10 @@ NuxtLayout(name="secondary")
             IconSuccesfullyOrdered(class="w-[6rem] md:w-[9rem] h-[6rem] md:h-[9rem] text-blue-500")
             div(class="flex flex-col items-center text-lg md:text-3xl")
                 h2 Thank You!
-                h1 Your Order succesfully
+                h1(v-if="redirect_status === 'succeeded'") Your Order succesfully
                     p been placed.
+                h1(v-else) Something get wrong
+                    
             p(class="text-sm text-gray-400") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel tincidunt lacinia, nisl nisl aliquet nunc, eget aliquam nisl nisl eu lectus. Sed euismod, nisl vel tincidunt lacinia, nisl nisl aliquet nunc, eget aliquam nisl nisl eu lectus.
             button(class="bg-orange-500 w-[20rem] rounded-full py-2 px-4 text-white") View Order Status
        
@@ -72,6 +74,10 @@ NuxtLayout(name="secondary")
 
 <script setup lang="ts">
 import IconSuccesfullyOrdered from "~icons/lucide/package-check";
+
+const route = useRoute();
+const redirect_status = ref(route.query.redirect_status);
+console.log(redirect_status.value);
 </script>
 
 <style lang="sass"></style>

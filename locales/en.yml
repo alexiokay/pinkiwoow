@@ -58,6 +58,9 @@ components:
         title: TEXTILES
         wallets: Wallets
         face_masks: Face masks
+        backpacks: Backpacks
+        tshirts: T-shirts
+        pillows: Pillows
       accessories:
         title: Accessories
         puzzle: Puzzle
