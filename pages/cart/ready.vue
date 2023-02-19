@@ -1,5 +1,6 @@
 <template lang="pug">
-NuxtLayout(name="secondary")    
+NuxtLayout(name="secondary")
+    p(v-if="!redirect_status") loading     
     div(class="flex flex-col w-full h-auto items-center  px-2 md:px-0 justify-center")
         div(class="flex flex-col w-[25rem]  text-center h-auto gap-y-4 mt-12 items-center justify-center")
             IconSuccesfullyOrdered(class="w-[6rem] md:w-[9rem] h-[6rem] md:h-[9rem] text-blue-500")

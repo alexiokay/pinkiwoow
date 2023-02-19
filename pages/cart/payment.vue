@@ -13,15 +13,21 @@ form#payment-form(class="mx-4 mt-16 w-[25rem]")
 </template>
 
 <script setup lang="ts">
-import { loadStripe } from "@stripe/stripe-js";
 import { useUserStore } from "@/stores/User";
 import { useCartStore } from "@/stores/Cart";
 
-definePageMeta({
+useHead({
   title: "Payment",
-  description: "Payment",
+  script: [
+    {
+      src: "https://js.stripe.com/v3/",
+      async: true,
+      defer: true,
+    },
+  ],
   meta: [
     // <meta name="description" content="My amazing site">
+
     {
       hid: `description`,
       name: "description",
@@ -32,23 +38,14 @@ definePageMeta({
 const userStore = useUserStore();
 const cartStore = useCartStore();
 const config = useRuntimeConfig();
+const router = useRouter();
+const isLoading = ref(false);
 
-definePageMeta({
-  //include script link
-  script: [
-    {
-      src: "https://js.stripe.com/v3/",
-      async: true,
-      defer: true,
-    },
-  ],
-});
 const STRIPE_PUBLIC_KEY = config.STRIPE_PUBLIC_KEY;
 console.log("STRIPE_PUBLIC_KEY", STRIPE_PUBLIC_KEY);
 
 const stripe = Stripe(STRIPE_PUBLIC_KEY);
 
-//let stripe = loadStripe(STRIPE_PUBLIC_KEY);
 let elements: any = null;
 let options = {};
 
@@ -74,20 +71,21 @@ const createSubmitListener = async () => {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    await stripe
-      .confirmPayment({
-        //`Elements` instance that was used to create the Payment Element
-        elements,
-        confirmParams: {
-          return_url: "http://localhost:3000/cart/ready",
-        },
-      })
-      .then(function (result: any) {
-        if (result.error) {
-          // Inform the customer that there was an error.
-        }
-        console.log("test2");
-      });
+    isLoading.value = true;
+    const response = await stripe.confirmPayment({
+      //`Elements` instance that was used to create the Payment Element
+      elements,
+      confirmParams: {},
+      redirect: "if_required",
+    });
+
+    if (response.error) {
+      isLoading.value = false;
+      router.push("/cart/ready");
+      console.log(`Payment Succeeded: ${response.error.message}`);
+    } else {
+      alert(`Something get wrong: ${response.paymentIntent.id} `);
+    }
   });
 };
 onMounted(async () => {
