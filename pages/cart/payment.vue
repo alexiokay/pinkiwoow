@@ -40,55 +40,55 @@ const cartStore = useCartStore();
 const config = useRuntimeConfig();
 const router = useRouter();
 const isLoading = ref(false);
-
 const STRIPE_PUBLIC_KEY = config.STRIPE_PUBLIC_KEY;
 console.log("STRIPE_PUBLIC_KEY", STRIPE_PUBLIC_KEY);
 
-const stripe = Stripe(STRIPE_PUBLIC_KEY);
+onMounted(async () => {
+  const stripe = Stripe(STRIPE_PUBLIC_KEY);
 
-let elements: any = null;
-let options = {};
+  let elements: any = null;
+  let options = {};
 
-const loadElements = async () => {
-  options = {
-    clientSecret: cartStore.getTempOrder.client_secret,
+  const loadElements = async () => {
+    options = {
+      clientSecret: cartStore.getTempOrder.client_secret,
 
-    // Fully customizable with appearance API.
-    appearance: {
-      /*...*/
-    },
+      // Fully customizable with appearance API.
+      appearance: {
+        /*...*/
+      },
+    };
+    console.log(cartStore.getTempOrder.client_secret);
+    elements = stripe.elements(options);
+
+    // Create and mount the Payment Element
+    const paymentElement = elements.create("payment");
+    paymentElement.mount("#payment-element");
   };
 
-  elements = stripe.elements(options);
+  const createSubmitListener = async () => {
+    const form = document.getElementById("payment-form") as HTMLFormElement;
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
 
-  // Create and mount the Payment Element
-  const paymentElement = elements.create("payment");
-  paymentElement.mount("#payment-element");
-};
+      isLoading.value = true;
+      const response = await stripe.confirmPayment({
+        //`Elements` instance that was used to create the Payment Element
+        elements,
+        confirmParams: {},
+        redirect: "if_required",
+      });
 
-const createSubmitListener = async () => {
-  const form = document.getElementById("payment-form") as HTMLFormElement;
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    isLoading.value = true;
-    const response = await stripe.confirmPayment({
-      //`Elements` instance that was used to create the Payment Element
-      elements,
-      confirmParams: {},
-      redirect: "if_required",
+      if (!response.error) {
+        isLoading.value = false;
+        router.push({ path: "/cart/ready" });
+        console.log(`Payment Succeeded: ${response.error.message}`);
+      } else {
+        alert(`Something get wrong: ${response.paymentIntent.id} `);
+      }
     });
+  };
 
-    if (response.error) {
-      isLoading.value = false;
-      router.push("/cart/ready");
-      console.log(`Payment Succeeded: ${response.error.message}`);
-    } else {
-      alert(`Something get wrong: ${response.paymentIntent.id} `);
-    }
-  });
-};
-onMounted(async () => {
   await loadElements();
 
   createSubmitListener();

@@ -88,12 +88,14 @@ export const useCartStore = defineStore("cart", {
       this.tempOrder = [];
     },
     setTempOrder(
+      order_id: any,
       shipping: ShippingT | number,
       comment: string,
       companyData: CompanyDataT | null,
       client_secret: string
     ) {
       this.tempOrder = {
+        order_id: order_id,
         shipping: shipping,
         comment: comment,
         company_data: companyData,

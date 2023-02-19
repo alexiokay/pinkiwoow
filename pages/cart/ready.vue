@@ -1,12 +1,12 @@
 <template lang="pug">
 NuxtLayout(name="secondary")
-    p(v-if="!redirect_status") loading     
+ 
     div(class="flex flex-col w-full h-auto items-center  px-2 md:px-0 justify-center")
         div(class="flex flex-col w-[25rem]  text-center h-auto gap-y-4 mt-12 items-center justify-center")
             IconSuccesfullyOrdered(class="w-[6rem] md:w-[9rem] h-[6rem] md:h-[9rem] text-blue-500")
             div(class="flex flex-col items-center text-lg md:text-3xl")
                 h2 Thank You!
-                h1(v-if="redirect_status === 'succeeded'") Your Order succesfully
+                h1(v-if="order.order_id") Your Order succesfully
                     p been placed.
                 h1(v-else) Something get wrong
                     
@@ -14,7 +14,7 @@ NuxtLayout(name="secondary")
             button(class="bg-orange-500 w-[20rem] rounded-full py-2 px-4 text-white") View Order Status
        
         div#more-products(class="w-full md:w-3/5 h-auto mt-8  flex flex-col items-center justify-center gap-y-6")
-            p(class="font-bold w-full text-end text-sm -mb-4") Order #98945944
+            p(class="font-bold w-full text-end text-sm -mb-4") Order {{order.order_id}}
             div.product-card(class="w-full h-[9rem] p-4 flex items-center justify-center space-x-4 border-2 border-gray-200")
                 ExampleImg(class="w-auto object-cover md:h-[7rem] h-[6rem] aspect-square")
                 div(class="flex flex-col items-start justify-start w-4/6 h-full")
@@ -75,10 +75,11 @@ NuxtLayout(name="secondary")
 
 <script setup lang="ts">
 import IconSuccesfullyOrdered from "~icons/lucide/package-check";
+import { useCartStore } from "@/stores/Cart";
 
+const cartStore = useCartStore();
+const order = ref(cartStore.getTempOrder);
 const route = useRoute();
-const redirect_status = ref(route.query.redirect_status);
-console.log(redirect_status.value);
 </script>
 
 <style lang="sass"></style>
