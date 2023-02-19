@@ -35,16 +35,24 @@ export const wizytowki = [
 
 export const header = [
   {
-    name: "Slide 1",
+    name: "Ben 10",
     img: "/images/header/ben-10.jpg",
+    description: "Poznajcie się z Benem i jego wcieleniami!",
   },
   {
-    name: "Slide 2",
-    img: "https://picsum.photos/800/413",
+    name: "Help for Ukraine",
+    img: "https://i.ibb.co/PNqh4S0/mockup-14.webp",
+    description: "Get products with Ukrainian motives and help Ukraine!",
   },
   {
-    name: "Slide 3",
-    img: "https://picsum.photos/800/414",
+    name: "Inspired with your favourite characters",
+    img: "https://i.ibb.co/chMdSM3/kubek-a4-zaba-i-igi-1-2-2.webp",
+    description: "Look at our products inspired by your favourite characters!",
+  },
+  {
+    name: "Personalize",
+    img: "https://i.ibb.co/VCT5rd6/mug-personalise-1611816585.webp",
+    description: "You can personalize most of products in our shop!",
   },
 ];
 

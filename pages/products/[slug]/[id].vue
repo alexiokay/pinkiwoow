@@ -3,7 +3,7 @@ div(class="flex flex-col font-montserrat w-full px-4   h-full md:px-16 xl:px-24 
     
     h1(class="text-2xl z-20 w-full md:text-3xl text-white font-itim h-full items-center flex mt-4") Mugs
 
-    ProductNav
+    NavHeader
     div(class="w-full mt-[2rem] md:mt-[5rem] h-auto flex flex-wrap  items-center justify-between gap-x-4" v-if="products")
         div(  v-for="product in products"  class="w-[48%] sm:w-1/4 lg:w-[20%] h-[16rem] md:h-[17rem] lg:h-[20rem]  mt-1 relative group text-sm rounded-xl p-2 text-start hover:shadow-[0px_0px_3px_1px_rgb(0,0,0,0.15)]")
             button(@click.stop="addToFavourites(product.id)" class="h-8 w-8 absolute  flex  top-[1rem] right-[1rem] z-20 hover:bg-gray-100 rounded-full items-center justify-center ")

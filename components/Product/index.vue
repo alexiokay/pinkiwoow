@@ -32,22 +32,15 @@ div.collections-panel(class="flex relative  h-full flex-col md:flex-row w-5/6 it
         hr(class="w-full h-[1px] border-[#F1F1F1] my-4")
         div(v-if="$props.isConfigurable" class="flex flex-col w-full h-auto")
             p(class="text-lg  font-semibold mb-3") Add design from...
-            div(class="flex items-center text-xl text-[#17262B] justify-center w-full h-[4.5rem] border-[1px] gap-x-4 hover:bg-[#F2F2F2] smooth-color  hover:cursor-pointer border-[#CCCCCC]")
+            div(class="flex noselect items-center text-xl text-[#17262B] justify-center w-full h-[4.5rem] border-[1px] gap-x-4 hover:bg-[#F2F2F2] smooth-color  hover:cursor-pointer border-[#CCCCCC]")
                 MyDeviceIcon
                 p My device
         div(class="flex flex-col w-full h-auto")
             p Size
-            div(class="flex mt-2 flex-row flex-wrap items-center justify-start w-full h-auto gap-x-2")
-                div(class="w-14 h-14  flex items-center justify-center border-[1px] border-[#CCCCCC] bg-[#202020] font-semibold text-white hover:cursor-pointer")
-                    p 11oz
-                div(class="w-14 h-14  flex items-center justify-center border-[1px] border-[#CCCCCC] hover:bg-[#F2F2F2] smooth-color  hover:cursor-pointer")
-                    p 11oz
-                div(class="w-14 h-14   flex items-center justify-center border-[1px] border-[#CCCCCC] hover:bg-[#F2F2F2] smooth-color  hover:cursor-pointer")
-                    p 11oz
-                div(class="w-14 h-14   flex items-center justify-center border-[1px] border-[#CCCCCC] hover:bg-[#F2F2F2] smooth-color  hover:cursor-pointer")
-                    p 11oz
-                div(class="w-14 h-14   flex items-center justify-center border-[1px] border-[#CCCCCC] hover:bg-[#F2F2F2] smooth-color  hover:cursor-pointer")
-                    p 11oz
+            div(class="flex mt-2  flex-row flex-wrap items-center justify-start w-full h-auto gap-x-2")
+                div(v-for="size in sizes" @click="selectSize(size)" :class="size.selected? ' bg-[#202020] text-white font-semibold': 'text-black hover:bg-[#F2F2F2]'" class="w-14 h-14  smooth-color  flex items-center justify-center border-[1px] border-[#CCCCCC]   hover:cursor-pointer")
+                    p(class="noselect") {{size.size}}
+              
         button(class="w-full mt-4 h-[3rem] rounded-full bg-[#2B2B2B] text-lg font-semibold text-white smooth-color") Add to cart
 
 Opinions(:reviews="reviews")
@@ -78,7 +71,20 @@ const props = defineProps({
 
 const slug: string = route.path.split("/").pop() as string;
 
-const product: any = productsStore.getProductBySlug(slug);
+const sizes = ref([
+  { size: "11oz", selected: true },
+  { size: "13oz", selected: false },
+  { size: "14oz", selected: false },
+  { size: "16oz", selected: false },
+  { size: "17oz", selected: false },
+]);
+
+const selectSize = (size: any) => {
+  sizes.value.forEach((s) => {
+    s.selected = false;
+  });
+  size.selected = true;
+};
 const image1 = ref(props.product?.image.url);
 const title = ref(props.product?.title);
 const price_model = ref(props.product?.price_model);

@@ -22,9 +22,7 @@ div(class=" w-full h-full  flex flex-col px-3  xl:p-3 ")
          
       
   div(class="w-full md:w-[90%] mx-auto h-auto flex flex-col")
-        div(class="flex w-full h-[2rem] mt-2")
-          p(class=" md:text-[1.5rem] font-bold") Produkty
-          p(class=" md:text-[1.5rem] font-bold ml-auto") Zobacz wszystkie
+
         Swiper(:slides="randomProducts" class="-mx-3 -mt-8 md:-mt-3") 
         
   Wheeler(  )

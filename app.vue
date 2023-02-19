@@ -65,6 +65,13 @@ await fetch(`${config.API_URL}api/v1/get_geolocation_ip`, {
   opacity: 0
   filter: blur(1rem)
 
+.noselect
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
 
 
 *::-webkit-scrollbar

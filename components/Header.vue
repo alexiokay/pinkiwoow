@@ -7,10 +7,10 @@ div(class="relative h-full overflow-hidden ")
                     nuxt-img.swiper-image(:src="slide.img" format="webp" class="w-full h-full object-cover ")
                 
                 div(class=" space-y-3 absolute flex flex-col left-[1rem] bottom-[1rem] text-black text-xl font-semibold w-[17rem] h-auto rounded-xl")
-                  div.header-title(class=" text-black text-xl font-semibold w-full h-full bg-[rgba(255,255,255,0.5)] rounded-xl") Kubki z Ben10
+                  div.header-title(class=" text-black text-xl font-semibold w-full h-full px-[0.4rem] bg-[rgba(255,255,255,0.5)] rounded-xl") {{slide.name}}
 
-                  div.header-desc(class=" flex flex-col  px-[0.3rem] items-start justify-start text-black text-xl text-start font-normal w-[21.5rem] md:w-[26rem] h-[4rem] bg-[rgba(255,255,255,0.5)] rounded-xl") 
-                    p Poznajcie się lepiej z Benem 10 i jego przyjaciółmi.
+                  div.header-desc(class=" flex flex-col  px-[0.4rem] items-start justify-start text-black text-xl text-start font-normal w-full  md:w-[26rem] h-[4rem] bg-[rgba(255,255,255,0.5)] rounded-xl") 
+                    p {{slide.description}}
 
         .swiper-pagination(class="")
 </template>
@@ -62,13 +62,6 @@ onMounted(() => {
 <style lang="sass" scoped>
 
 
-.noselect
-  -webkit-touch-callout: none
-  -webkit-user-select: none
-  -khtml-user-select: none
-  -moz-user-select: none
-  -ms-user-select: none
-  user-select: none
 
 
 
